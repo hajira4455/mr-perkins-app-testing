@@ -1,0 +1,36 @@
+---
+id: alert
+title: Alert
+sidebar_label: Alert
+slug: /components/alert
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Alert component is slightly modified to make it more beautiful and provide custom animation. Let's have a glance</p>
+
+### Alert Structure
+
+---
+
+<p>
+  We have added <code>.alert-heading</code> class for heading and <code>.alert-body</code> for body-content. Also we
+  have added a class for link inside alert.
+</p>
+
+```jsx
+<Alert color='warning'>
+  <h4 className='alert-heading'>Lorem ipsum dolor sit amet</h4>
+  <div className='alert-body'>
+    Lorem ipsum dolor sit amet
+    <a className='alert-link' href='/' onClick={e => e.preventDefault()}>
+      consectetur
+    </a>
+    adipisicing elit. Ducimus, laborum!.
+  </div>
+</Alert>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border' src={useBaseUrl('img/alert-structure.jpg')} />

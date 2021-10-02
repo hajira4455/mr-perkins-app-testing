@@ -1,0 +1,295 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --ifm-color-primary         : #7367f0;
+  --ifm-color-primary-dark    : #5648ed;
+  --ifm-color-primary-darker  : #4838eb;
+  --ifm-color-primary-darkest : #2716db;
+  --ifm-color-primary-light   : #9086f3;
+  --ifm-color-primary-lighter : #9e96f5;
+  --ifm-color-primary-lightest: #c9c5f9;
+  --ifm-code-font-size        : 95%;
+  --ifm-background-color      : #fff;
+  --ifm-heading-color         : #2c2c2c;
+  --ifm-leading               : #626262;
+}
+
+body {
+  color    : var(--ifm-leading);
+  
+}
+
+a {
+  color: var(--ifm-color-primary) !important;
+}
+
+.btn-get-started {
+  background-color: var(--ifm-color-primary) !important;
+  color           : white !important;
+}
+
+[data-theme='dark'] {
+  --ifm-background-color: #161d31 !important;
+  --ifm-heading-color   : #d0d2d6 !important;
+  --ifm-leading         : #b4b7bd !important;
+}
+
+[data-theme='dark'] p,
+li,
+.card-body {
+  color: #b4b7bd !important;
+}
+
+[data-theme='dark'] .navbar,
+[data-theme='dark'] .footer {
+  border-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme='dark'] .navbar,
+[data-theme='dark'] .menu,
+[data-theme='dark'] .footer,
+[data-theme='dark'] .card {
+  background-color: #283046 !important;
+}
+
+[data-theme='dark'] .markdown {
+  margin-top: 0.8rem;
+}
+
+[data-theme='dark'] .menu__link:not(.menu__link--active) {
+  color: white !important;
+}
+
+a.table-of-contents__link:not(.table-of-contents__link--active),
+a.navbar__link:not(.navbar__link--active) {
+  color: var(--ifm-leading) !important;
+}
+
+.navbar {
+  position     : fixed !important;
+  top          : 0 !important;
+  box-shadow   : none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navbar__link {
+  padding: 0;
+}
+
+.navbar__link {
+  margin-right: 1.5rem;
+}
+
+.navbar.navbarHidden_node_modules-\@docusaurus-theme-classic-src-theme-Navbar- {
+  top: 0 !important;
+}
+
+.main-wrapper {
+  padding-top: 4rem;
+}
+
+.footer {
+  background-color: #fff;
+  color           : var(--ifm-leading);
+  border-top      : 1px solid rgba(0, 0, 0, 0.05);
+}
+
+[role='complementary'] {
+  border: 0 !important;
+}
+
+.menu {
+  background-color: #fff;
+  font-weight     : 400;
+  width           : 260px;
+  border-right    : 1px solid rgba(0, 0, 0, 0.05);
+  padding         : 0 15px !important;
+  padding-top     : 1rem !important;
+}
+
+a[class^='sidebarLogo'] {
+  background-color: #fff;
+  margin          : 0;
+  width           : 260px;
+  padding-left    : 1rem;
+}
+
+a[class^='sidebarLogo'] strong {
+  color: var(--ifm-color-primary);
+}
+
+.docSidebarContainer_node_modules-\@docusaurus-theme-classic-lib-next-theme-DocPage- {
+  min-height: calc(100vh - 61px) !important;
+}
+
+[data-theme='dark'] a[class^='sidebarLogo'] {
+  background-color: #10163a;
+}
+
+.menu .menu__list .menu__list {
+  margin-left: 0 !important;
+}
+
+.menu .menu__list .menu__list .menu__list-item .menu__link {
+  padding-left: 1.5rem !important;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: linear-gradient(118deg, var(--ifm-color-primary), rgba(115, 103, 240, 0.7)) !important;
+  color     : white !important;
+}
+
+.menu__list-item .menu__link {
+  padding: 10px 15px !important;
+}
+
+.menu .menu__link--sublist .menu__list {
+  padding: 10px 15px 10px 20px !important;
+}
+
+.menu .menu__link {
+  position   : relative;
+  line-height: 1.5 !important;
+}
+
+.menu .menu__link:after {
+  position       : absolute;
+  top            : 0.75rem;
+  right          : 0.75rem;
+  background-size: 1.5rem 1.5rem !important;
+}
+
+.menu__link.menu__link--sublist.menu__link--active {
+  background: #f5f5f5 !important;
+}
+
+.menu__link.menu__link--sublist {
+  padding: 10px 15px !important;
+}
+
+[data-theme='dark'] .menu__link.menu__link--sublist.menu__link--active {
+  background: #262c49 !important;
+}
+
+.menu__link {
+  color: var(--ifm-leading) !important;
+}
+
+body {
+  background-color: transparent !important;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display         : block;
+  margin          : 0 calc(-1 * var(--ifm-pre-padding));
+  padding         : 0 var(--ifm-pre-padding);
+}
+
+article header h1 {
+  font-size  : 32px !important;
+  border-left: 2px solid #744cbc;
+  padding    : 0 16px;
+}
+
+p.doc-subtitle {
+  margin-bottom : 2rem;
+  padding-left  : 16px;
+  padding-bottom: 16px;
+  border-bottom : 1px solid #e6ecf1;
+}
+
+.menu__link[to] {
+  margin-top   : 1rem;
+  border-top   : 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+}
+
+h3 {
+  margin-bottom: 1rem !important;
+}
+
+.card .card-header {
+  padding-bottom: 0 !important;
+}
+
+.footer {
+  padding: 1rem 2.2rem !important;
+}
+
+.markdown {
+  margin-top: 2rem;
+}
+
+.markdown>p {
+  margin-bottom: 1rem;
+}
+
+.markdown>h3 {
+  margin-top   : 2rem !important;
+  margin-bottom: 1rem;
+}
+
+.table-of-contents li {
+  font-size: 0.9rem;
+}
+
+.markdown .card:first-child,
+.markdown h3:first-child {
+  margin-top: 2rem !important;
+}
+
+.navbar__title,
+[class^='sidebarLogo'] strong {
+  font-size  : 1.5rem;
+  font-weight: 600;
+}
+
+p,
+li {
+  color: var(--ifm-leading) !important;
+}
+
+@media (min-width: 993px) {
+  [class^='sidebar_node_modules'] {
+    position: fixed !important;
+  }
+}
+
+@media (max-width: 993px) {
+  .container {
+    max-width: 100% !important;
+  }
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display         : block;
+  margin          : 0 calc(-1 * var(--ifm-pre-padding));
+  padding         : 0 var(--ifm-pre-padding);
+}
+
+/* Blog Styles */
+.blog-wrapper h3:first-child,
+.blog-wrapper .markdown {
+  margin-top: 0 !important;
+}
+
+.blog-wrapper .col.col--2 {
+  --ifm-col-width: calc(3 / 12 * 100%);
+  flex           : 0 0 var(--ifm-col-width);
+  max-width      : var(--ifm-col-width);
+}
+
+.blog-wrapper .col.col--8 {
+  --ifm-col-width: calc(9 / 12 * 100%);
+  flex           : 0 0 var(--ifm-col-width);
+  max-width      : var(--ifm-col-width);
+}

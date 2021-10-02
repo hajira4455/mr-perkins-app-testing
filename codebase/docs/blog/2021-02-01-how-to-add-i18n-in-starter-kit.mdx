@@ -1,0 +1,165 @@
+---
+title: How to add i18n in starter kit
+tags: [i18n, translation]
+description: Adding Internationalization in Starter Kit.
+hide_table_of_contents: true
+---
+
+### Steps
+
+<p>Follow below mentioned steps to add internationalization in starter-kit:</p>
+
+<ul className='pl-3'>
+  <li>
+    <p>
+      First step is to add the text to translate in <code>src/assets/data/locales</code>
+    </p>
+  </li>
+</ul>
+
+```json title="fr.json"
+{
+  "Dashboard": "Tableau de bord"
+}
+```
+
+<ul className='pl-3 mt-4'>
+  <li>
+    <p className='mb-0'>
+      Add Intl Context in <code>src/index.js</code>.
+    </p>
+    <p className='my-2'>Import your wrapper as shown below and wrap your app with it.</p>
+  </li>
+</ul>
+
+```jsx
+// ** Import Intl Context
+import { IntlProviderWrapper } from './utility/context/Internationalization'
+
+// ** Lazy load app
+const LazyApp = lazy(() => import('./App'))
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Suspense fallback={<Spinner />}>
+      <ThemeContext>
+        <IntlProviderWrapper>
+          <LazyApp />
+          <ToastContainer newestOnTop />
+        </IntlProviderWrapper>
+      </ThemeContext>
+    </Suspense>
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+<ul className='pl-3 mt-4'>
+  <li>
+    <p>
+      You can now use <code>switchLanguage</code> from anywhere in your app to change language.
+    </p>
+  </li>
+</ul>
+
+```jsx
+// ** React Imports
+import { useContext } from 'react'
+
+// ** Internationalization Context
+import { IntlContext } from '@src/utility/context/Internationalization'
+
+const Component = () => {
+  return <Button onClick={() => intlContext.switchLanguage('fr')}>Change Language</Button>
+}
+```
+
+<ul className='pl-3 mt-4'>
+  <li>
+    <p>Now only thing remains is to display changed language text.</p>
+  </li>
+</ul>
+
+```jsx
+// ** Component to render changed language text.
+import { FormattedMessage } from 'react-intl'
+
+const Component = () => {
+  // ** Id is the text in your json files.
+  return <FormattedMessage id='Colors' />
+}
+```
+
+### Adding Intl in sidebar
+
+<p>Please follow these steps to add intl in sidebar:</p>
+
+<ul className='pl-3'>
+  <li>
+    Add your menu translations in <code>src/assets/data/locale</code>
+  </li>
+  <li>
+    Navigate to <code>src/@core/layouts/components/menu</code>
+  </li>
+  <li>
+    Copy <code>vertical-menu/VerticalNavMenuLink.js</code> & <code>vertical-menu/VerticalNavMenuGroup.js</code> &
+    replace these files in starter-kit in the path same as first step.
+  </li>
+  <li>
+    Copy <code>horizontal-menu/HorizontalNavMenuLink.js</code> & <code>horizontal-menu/HorizontalNavMenuGroup.js</code>{' '}
+    & replace these files in starter-kit in the path same as first step.
+  </li>
+</ul>
+
+### Full Example
+
+```jsx
+// ** React Imports
+import { useContext } from 'react'
+
+// ** Component to render changed language text.
+import { FormattedMessage } from 'react-intl'
+
+// ** Internationalization Context
+import { IntlContext } from '@src/utility/context/Internationalization'
+
+// ** Reactstrap Components
+import { Button, Card, CardHeader, CardBody, CardTitle } from 'reactstrap'
+
+const Home = () => {
+  // ** Context
+  const intlContext = useContext(IntlContext)
+
+  // ** Function to switch Language
+  const handleLangUpdate = lang => {
+    intlContext.switchLanguage(lang)
+  }
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Kick start your project 🚀</CardTitle>
+      </CardHeader>
+      <CardBody>
+        <p>
+          <FormattedMessage id='Colors' />
+        </p>
+        <Button className='mr-1' color='primary' onClick={() => handleLangUpdate('en')}>
+          En
+        </Button>
+        <Button className='mr-1' color='primary' onClick={() => handleLangUpdate('fr')}>
+          Fr
+        </Button>
+        <Button className='mr-1' color='primary' onClick={() => handleLangUpdate('de')}>
+          De
+        </Button>
+        <Button color='primary' onClick={() => handleLangUpdate('pt')}>
+          Pt
+        </Button>
+      </CardBody>
+    </Card>
+  )
+}
+
+export default Home
+```

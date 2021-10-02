@@ -1,0 +1,144 @@
+---
+id: avatar
+title: Avatar
+sidebar_label: Avatar
+slug: /custom-components/avatar
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>
+  Often you need to add an user's avatar to your app. In order to make this we have created custom avatar component.
+  Let's have a glance.
+</p>
+
+<p>
+  You can check all of the collapse demos from{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/avatar' target='_blank'>
+    here
+  </a>
+</p>
+
+### Basic
+
+---
+
+<p>
+  Creating an avatar is easy all you have to do is pass a <code>content</code> prop
+</p>
+
+<p>
+  Use prop <code>initials</code> to show only content initials
+</p>
+
+```jsx
+import Avatar from '@components/avatar'
+
+const AvatarComponent = () => <Avatar content='PI' />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-basic.png')} />
+
+### Sizes
+
+---
+
+<p>
+  Use <code>size</code> prop to change avatar to predefined sizes or use <code>imgHeight</code> & <code>imgWidth</code>{' '}
+  props to customize the size.
+</p>
+
+```jsx
+<Avatar img={avatarImg} size='sm' />
+<Avatar img={avatarImg} />
+<Avatar img={avatarImg} size='lg' />
+<Avatar img={avatarImg} size='xl' />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-sizes.png')} />
+
+### Colors
+
+---
+
+<p>
+  Use <code>color</code> prop to change avatar color.
+</p>
+
+```jsx
+<Avatar color='primary' content='PI' />
+<Avatar color='secondary' content='PI' />
+<Avatar color='success' content='PI' />
+<Avatar color='danger' content='PI' />
+<Avatar color='warning' content='PI' />
+<Avatar color='info' content='PI' />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-colors.png')} />
+
+### Light Colors
+
+---
+
+<p>
+  You can also create light avatar with background, just add <code>light</code> prefix with your color.
+</p>
+
+```jsx
+<Avatar color='light-primary' content='PI' />
+<Avatar color='light-secondary' content='PI' />
+<Avatar color='light-success' content='PI' />
+<Avatar color='light-danger' content='PI' />
+<Avatar color='light-warning' content='PI' />
+<Avatar color='light-info' content='PI' />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-colors-light.png')} />
+
+### Icons
+
+---
+
+<p>
+  Use <code>icon</code> to add an icon to avatar
+</p>
+
+```jsx
+<Avatar color='primary' icon={<Calendar size={14} />} />
+<Avatar color='secondary' icon={<GitHub size={14} />} />
+<Avatar color='success' icon={<Inbox size={14} />} />
+<Avatar color='light-danger' icon={<Camera size={14} />} />
+<Avatar color='light-warning' icon={<Award size={14} />} />
+<Avatar color='light-info' icon={<Star size={14} />} />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-icons.png')} />
+
+### Status
+
+---
+
+<p>
+  Use <code>status</code> to add a status to avatar
+</p>
+
+```jsx
+<Avatar img={avatarImg} status='offline' />
+<Avatar color='info' content='LD' status='busy' />
+<Avatar color='light-primary' icon={<GitHub size={14} />} status='away' />
+<Avatar color='light-success' content='AB' status='online' />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded' src={useBaseUrl('img/avatar-status.png')} />

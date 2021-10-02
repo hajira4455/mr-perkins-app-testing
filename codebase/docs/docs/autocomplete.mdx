@@ -1,0 +1,243 @@
+---
+id: autocomplete
+title: Autocomplete
+sidebar_label: Autocomplete
+slug: /custom-components/autocomplete
+---
+
+import { Table } from 'reactstrap'
+
+<p>We have created our custom Autocomplete to make it easier for you to use the template. Let's have a glance.</p>
+
+<p>
+  You can check all of the collapse demos from{' '}
+  <a
+    href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/auto-complete'
+    target='_blank'
+  >
+    here
+  </a>
+</p>
+
+### Basic
+
+---
+
+<p>
+  Create a basic Autocomplete using our Autocomplete complete and passing <code>suggestions</code> &{' '}
+  <code>filterKey</code> props. Refer below mentioned code for more info.
+</p>
+
+```jsx
+import AutoComplete from '@components/autocomplete'
+
+const AutoCompleteBasic = () => {
+
+  const suggestions [
+    {
+      title : "Something"
+    }
+    ...
+  ]
+
+  return (
+    <AutoComplete
+      suggestions={suggestions}
+      className='form-control'
+      filterKey='title'
+      suggestionLimit={4}
+      placeholder="Type 'a'"
+    />
+  )
+}
+```
+
+### Grouped
+
+---
+
+<p>
+  Pass <code>grouped</code> prop to create a grouped AutoComplete
+</p>
+
+```jsx
+import AutoComplete from '@components/autocomplete'
+
+const AutoCompleteGrouped = () => {
+
+  const suggestions [
+    {
+      groupTitle: '1970s',
+      data: [
+        {
+          title: 'C'
+        }
+      ]
+    }
+    ...
+  ]
+
+  return (
+    <AutoComplete
+      suggestions={suggestions}
+      className='form-control'
+      filterKey='title'
+      filterHeaderKey='groupTitle'
+      grouped={true}
+      placeholder="Type 'c'"
+    />
+  )
+}
+```
+
+### Custom Render
+
+---
+
+<p>
+  Pass <code>customRender</code> prop to customize suggestions.
+</p>
+
+```jsx
+import AutoComplete from '@components/autocomplete'
+
+const AutoCompleteCustomRender = () => {
+
+  const suggestions [
+     {
+      name: 'Jake Shelton',
+      img: img1
+    }
+    ...
+  ]
+
+  return (
+      <AutoComplete
+      suggestions={suggestions}
+      className='form-control'
+      filterKey='name'
+      placeholder="Type 'a'"
+      customRender={(suggestion, i, filteredData, activeSuggestion, onSuggestionItemClick, onSuggestionItemHover) => (
+        <li
+          className={classnames('suggestion-item', {
+            active: filteredData.indexOf(suggestion) === activeSuggestion
+          })}
+          key={i}
+          onMouseEnter={() => onSuggestionItemHover(filteredData.indexOf(suggestion))}
+          onClick={e => {
+            onSuggestionItemClick(null, e)
+          }}
+        >
+          <img src={suggestion.img} alt={suggestion.name} height='32' width='32' className='mr-1' />
+          <span>{suggestion.name}</span>
+        </li>
+      )}
+    />
+  )
+}
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>suggestions</td>
+      <td>Array of objects</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Data to render.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>filterKey</td>
+      <td>String</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Property of your object to be filtered.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>defaultValue</td>
+      <td>Boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Shows suggestions by default on input focus.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>grouped</td>
+      <td>Boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To create grouped suggestions.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>filterHeaderKey</td>
+      <td>String</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Property of your object to be used as group title.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>customRender</td>
+      <td>Function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To customize suggestions.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>suggestionLimit</td>
+      <td>Number</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To limit search result. </p>
+      </td>
+    </tr>
+    <tr>
+      <td>wrapperClass</td>
+      <td>String</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Search wrapper className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>placeholder</td>
+      <td>String</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Search placeholder</p>
+      </td>
+    </tr>
+    <tr>
+      <td>autoFocus</td>
+      <td>Boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To focus input on mount</p>
+      </td>
+    </tr>
+    <tr>
+      <td>externalClick</td>
+      <td>Function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Function to run on external click.</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

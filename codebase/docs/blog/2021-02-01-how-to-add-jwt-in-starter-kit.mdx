@@ -1,0 +1,44 @@
+---
+title: How to add JWT in starter kit
+tags: [auth, jwt]
+description: Adding JWT in starter kit
+hide_table_of_contents: true
+---
+
+<p>
+  Using JWT is easy. We have provided JWT folder for developers usage in full version <code>src/auth/jwt</code> copy
+  that folder paste it in starter-kit.
+</p>
+
+<p>Now all you have to do is using it's jwt service:</p>
+
+```jsx
+import useJwt from '@src/auth/jwt/useJwt'
+
+const LoginForm = () => {
+  const handleSubmit = () => {
+    useJwt
+      .login({
+        email: userEmail,
+        password: userPassword
+      })
+      .then(() => {
+        // Do something on success
+      })
+      .catch(() => {
+        // Do something on error
+      })
+  }
+
+  return <Form onSubmit={handleSubmit}>...</Form>
+}
+```
+
+<p className='my-3'>
+  This is same for register. You can use JWT helper methods like <code>setToken</code> as well.
+</p>
+
+<p>
+  Certainly, if you have any configuration regrading JWT then you might have to modify it a little bit. Please check our
+  docs on <a href='/docs/development/auth'>authentication</a>.
+</p>

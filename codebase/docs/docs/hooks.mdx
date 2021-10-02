@@ -1,0 +1,175 @@
+---
+id: hooks
+title: Hooks
+sidebar_label: Hooks
+slug: /development/hooks
+---
+
+<p>We've created some custom hooks to make your development easier. Let's check them out</p>
+
+<p>
+  You can find custom hooks in <code>src/utility/hooks</code>.
+</p>
+
+### useSkin
+
+---
+
+<p>
+  <code>useSkin</code> hook can be used to get current skin and change skin.
+</p>
+
+<p>
+  <code>useSkin</code> hook stores current skin to <code>localStorage</code> hence, it has precedence over skin in{' '}
+  <code>themeConfig.js</code>
+</p>
+
+<p>
+  <code>setSkin</code> takes: <strong>light</strong>, <strong>dark</strong>, <strong>bordered</strong>,{' '}
+  <strong>semi-dark</strong>
+</p>
+
+```jsx
+import { useSkin } from '@hooks/useSkin'
+
+const [skin, setSkin] = useSkin()
+```
+
+### useRTL
+
+---
+
+<p>
+  <code>useRTL</code> hook can be used to get current layout direction & change current layout direction.
+</p>
+
+<p>
+  <code>setIsRtl</code> takes a <strong>boolean</strong>.
+</p>
+
+```jsx
+import { useRTL } from '@hooks/useRTL'
+
+const [isRtl, setIsRtl] = useRTL()
+```
+
+### useLayout
+
+---
+
+<p>
+  <code>useLayout</code> hook can be used to get current layout & change current layout.
+</p>
+
+<p>
+  <code>setLayout</code> takes: <strong>horizontal</strong> or <strong>vertical</strong>.
+</p>
+
+```jsx
+import { useLayout } from '@hooks/useLayout'
+
+const [layout, setLayout] = useLayout()
+```
+
+### useRouterTransition
+
+---
+
+<p>
+  <code>useRouterTransition</code> hook can be used to get current router transition & change current router transition.
+</p>
+
+<p>
+  <code>setTransition</code> takes a class from{' '}
+  <a href='https://animate.style/' target='_blank'>
+    animate.css
+  </a>{' '}
+  refer this{' '}
+  <a href='https://animate.style/' target='_blank'>
+    link
+  </a>{' '}
+  for list of all classes.
+</p>
+
+<p>
+  <strong>Note:</strong> You can't use <strong>out</strong> animations are content will disappear. For example:{' '}
+  <code>fadeOut</code>
+</p>
+
+```jsx
+import { useRouterTransition } from '@hooks/useRouterTransition'
+
+const [transition, setTransition] = useRouterTransition()
+```
+
+### useNavbarType
+
+---
+
+<p>
+  <code>useNavbarType</code> hook can be used to get current navbar type & change current navbar type.
+</p>
+
+<p>
+  <code>setNavbarType</code> takes: <strong>static</strong>, <strong>sticky</strong>, <strong>floating</strong>,{' '}
+  <strong>hidden</strong>.
+</p>
+
+```jsx
+import { useNavbarType } from '@hooks/useNavbarType'
+
+const [navbarType, setNavbarType] = useNavbarType()
+```
+
+### useNavbarColor
+
+---
+
+<p>
+  <code>useNavbarColor</code> hook can be used to get current navbar color & change current navbar color.
+</p>
+
+<p>
+  <code>setNavbarColor</code> takes: <strong>bootstrap colors</strong>.
+</p>
+
+```jsx
+import { useNavbarColor } from '@hooks/useNavbarColor'
+
+const [navbarColor, setNavbarColor] = useNavbarColor()
+```
+
+### useFooterType
+
+---
+
+<p>
+  <code>useFooterType</code> hook can be used to get current navbar color & change current navbar color.
+</p>
+
+<p>
+  <code>setFooterType</code> takes: <strong>static</strong>, <strong>sticky</strong>, <strong>hidden</strong>.
+</p>
+
+```jsx
+import { useFooterType } from '@hooks/useFooterType'
+
+const [footerType, setFooterType] = useFooterType()
+```
+
+### useOnClickOutside
+
+---
+
+<p>
+  <code>useOnClickOutside</code> hook takes two parameter first is component ref and second a function to call on click
+  outside.
+</p>
+
+```jsx
+import { useOnClickOutside } from '@hooks/useOnClickOutside'
+
+useOnClickOutside(container, () => {
+  console.log('Clicked Outside')
+})
+```

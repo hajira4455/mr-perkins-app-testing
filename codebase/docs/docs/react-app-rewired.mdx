@@ -1,0 +1,81 @@
+---
+id: react-app-rewired
+title: React App Rewired
+sidebar_label: React App Rewired
+slug: /development/react-app-rewired
+---
+
+<p>
+  We've integrated{' '}
+  <a href='https://github.com/timarney/react-app-rewired' target='_blank'>
+    react-app-rewired
+  </a>{' '}
+  to make it easier for you to add <strong>webpack configurations</strong> without ejecting.
+</p>
+
+<p>
+  Use file <code>vuexy-react-template/config-overrides.js</code> to add your own configurations.
+</p>
+
+### postcss-rtl
+
+---
+
+<p>
+  We've used <code>postcss-rtl</code> with react-app-rewired to add RTL support in the template.
+</p>
+
+```js
+require('react-app-rewire-postcss')(config, {
+  plugins: loader => [require('postcss-rtl')()]
+})
+```
+
+### react-app-rewire-sass-rule
+
+---
+
+<p>
+  We've used <code>react-app-rewire-sass-rule</code> to add include paths for scss.
+</p>
+
+```js
+new SassRuleRewire()
+  .withRuleOptions({
+    test: /\.s[ac]ss$/i,
+    use: [
+      {
+        loader: 'sass-loader',
+        options: {
+          sassOptions: {
+            includePaths: ['node_modules', 'src/assets']
+          }
+        }
+      }
+    ]
+  })
+  .rewire(config, env)
+```
+
+### react-app-rewire-aliases
+
+---
+
+<p>
+  We've used <code>react-app-rewire-aliases</code> to add path aliases so you don't have to navigate 4 folder to import
+  a component.
+</p>
+
+```js
+rewireAliases.aliasesOptions({
+  '@src': path.resolve(__dirname, 'src'), // root src folder
+  '@assets': path.resolve(__dirname, 'src/@core/assets'), // core assets
+  '@components': path.resolve(__dirname, 'src/@core/components'), // core components
+  '@layouts': path.resolve(__dirname, 'src/@core/layouts'), // core layouts
+  '@store': path.resolve(__dirname, 'src/redux'), // store
+  '@styles': path.resolve(__dirname, 'src/@core/scss'), // core styles
+  '@configs': path.resolve(__dirname, 'src/configs'), // config files
+  '@utils': path.resolve(__dirname, 'src/utility/Utils'), // global utils
+  '@hooks': path.resolve(__dirname, 'src/utility/hooks') // custom hooks
+})(config, env)
+```

@@ -1,0 +1,148 @@
+---
+id: folder-structure
+title: Folder Structure
+sidebar_label: Folder Structure
+slug: /development/folder-structure
+---
+
+<p>Understand folder structure of template and what everything contains</p>
+
+### Overview
+
+---
+
+<p>Before checking folder structure it is better you know some stuff related to folder structure.</p>
+
+<ul className='mb-3'>
+  <li>
+    <code>@core</code> folder contains core files of template which <strong>should not be modified</strong> unless our
+    support team guide you to do it.
+  </li>
+  <li>
+    Outside of <code>@core</code> folder are files you can move and modify as your wish. Basically that is your
+    playground where you can modify anything.
+  </li>
+  <li>
+    <code>@core</code> folder contains layouts and styles but those are core files so you can still write your our
+    layout using our layout and override our styles.
+  </li>
+  <li>
+    <code>@fake-db</code> folder just contains dummy data which we get in response of API call. This enables us to take
+    step forward in providing API ready template.
+  </li>
+  <li>
+    <code>/src/layouts</code> older outside of <code>@core</code> is your layouts which you can modify however you like.
+    Template will render this layouts.
+  </li>
+</ul>
+
+<p className='mb-5'>
+  Other folders and details of it will be available in docs. This overview is here so you don't get confused.
+</p>
+
+### Main Package
+
+---
+
+<p>
+  Once you unzip the package from ThemeForest you will find folder named <code>vuexy-react-template</code> folder which
+  contains actual files and folders required to run Vuexy Admin.
+</p>
+
+```text
+|-- docs/                                   -> Documentation
+|-- public/
+| |-- favicon.ico                           -> Favicon
+| |-- index.html                            -> Main HTML
+| |-- logo.png
+|-- src/
+| | -- @core                                -> Vuexy Admin core files
+| | -- @fake-db                             -> Fake Database for mocking axios requests (Fake API Calls)
+| | -- assets                               -> Assets
+| |    | -- img
+| |    | -- scss
+| | -- auth                                 -> Your Authentication Files/Configuration
+| | -- configs                              -> Template config files
+| | -- layouts                              -> Your Layouts
+| | -- navigation                           -> Vertical & Horizontal Navigation menu files
+| |    | -- horizontal
+| |    | -- vertical
+| | -- redux                                -> Global Redux Store
+| |    | -- actions                         -> actions
+| |    | -- reducers                        -> reducers
+| |    | -- storeConfig                     -> Creates & Exports Store config
+| | -- router                               -> App Router Files
+| |    | -- route                           -> Components Routes
+| |    | -- index.js                        -> Router index file
+| | -- Utility                              -> Utilities & Context
+| | -- Views                                -> View files for all pages
+| | -- App.js                               -> Main App File
+| | -- index.js                             -> App Index File
+|-- package.json
+```
+
+### @core folder
+
+---
+
+<p>
+  <code>@core</code> folder is core of our template which includes core files like layouts, custom components, assets,
+  etc.
+</p>
+
+<p>
+  <strong>@core folder isn't meant to be modified</strong> When you will update of our template replacing this @core
+  folder will hopefully update the template with minimum changes. This is improvement over our old structure which will
+  ease your update process.
+</p>
+
+<p>
+  It's good idea to have a look at it and know what it contains to use stuff we already invented so{' '}
+  <strong>you don't have to reinvent the wheel</strong>.
+</p>
+
+<p>e.g. we have customized Wizard component which make 3rd party component bs-stepper easy to use.</p>
+
+### Understanding @core folder
+
+---
+
+<p>
+  Understanding <code>@core</code> folder will save your development time and you will know how to get most of our
+  template.
+</p>
+
+<ul className='pl-3'>
+  <li>assets</li>
+</ul>
+
+<p>Contains Intl data & images</p>
+
+<ul className='pl-3'>
+  <li>auth</li>
+</ul>
+<p>
+  This folder contains auth related files. Currently, It has JWT service and other supporting files. Please refer to{' '}
+  <a href='/docs/development/auth'>JWT page</a> for getting detailed information on this.
+</p>
+
+<ul className='pl-3'>
+  <li>components</li>
+</ul>
+<p>It contains core component of template. Make sure to check them all in our custom components section.</p>
+
+<ul className='pl-3'>
+  <li>layouts</li>
+</ul>
+<p>
+  This contains layouts of our template and layout components. You can find detailed information in{' '}
+  <a href='/docs/development/layouts'>layout</a> page.
+</p>
+
+<ul className='pl-3'>
+  <li>scss</li>
+</ul>
+<p>
+  This folder contains core styles of template. You can find more details and folder structure of it in{' '}
+  <a href='/docs/development/template-styles'>SCSS folder structure</a> section.
+</p>

@@ -1,0 +1,261 @@
+---
+id: acl
+title: Access Control (ACL)
+sidebar_label: Access Control
+slug: /development/acl
+---
+
+import { Alert } from 'reactstrap'
+
+<p>In this page you will understand usage of ACL in our template and how you can use it.</p>
+
+### Overview
+
+---
+
+<p>
+  Unlike previous version of Vuexy, new Vuexy uses CASL package for providing access control. Which is future oriented
+  and is more detailed on Access Control.
+</p>
+
+<p>
+  You can find docs for CASL{' '}
+  <a href='https://casl.js.org/v4/en/guide/intro' target='_blank'>
+    here
+  </a>
+  .
+</p>
+
+<p className='mb-5'>
+  CASL may look complex at first so please make sure you first read their docs carefully and understand base logic of
+  Access Control to proceed further.
+</p>
+
+### ACL Flow
+
+---
+
+<p>
+  You can find CASL configuration in <code>src/configs/acl</code> folder.
+</p>
+<p>
+  We've also created a <code>Can</code> context to verify user abilities. You can find the context in{' '}
+  <code>src/utility/Can.js</code>
+</p>
+<p>Let's explore ACL related files:</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>ability.js</strong>: This file exports ACL ability
+  </li>
+  <li>
+    <strong>initialAbility.js</strong>: This file exports users initial ability.
+  </li>
+</ul>
+
+<Alert className='my-5' color='warning'>
+  <h4 className='alert-heading'>Warning</h4>
+  <div className='alert-body'>
+    Files might get updated/moved/removed in future updates to make structure more minimal and clutter free.
+  </div>
+</Alert>
+
+<h5 className='mb-3'>ability.js</h5>
+<p>
+  It imports <code>initialAbility</code> & exports current user's ability. If user is not logged in or user's ability
+  isn't retrieved from localStorage then it uses <code>initialAbility</code> defined in <code>initialAbility.js</code>{' '}
+  file.
+</p>
+<p className='mb-5'>
+  Once user logs in ability is updated using <code>ability.update(newAbility)</code> from <code>Can</code> Context.
+  Sample newAbility array:
+</p>
+
+```js
+newAbility: [
+  {
+    action: 'read',
+    subject: 'User'
+  }
+]
+```
+
+<p className='my-4'>
+  Also, this same ability is stored in user's object <code>userData</code> in localStorage under <code>ability</code>{' '}
+  property.
+</p>
+
+```js
+// User data stored in localStorage
+// Key Name: userData
+
+{
+  id: 1,
+  fullName: "John Doe",
+  username: "johndoe",
+  avatar: "/img/13-small.d796bffd.png",
+  email: "admin@demo.com",
+  ability: [
+    {
+      action: "manage",
+      subject: "all"
+    }
+  ],
+  // more...
+}
+```
+
+<Alert className='my-5' color='info'>
+  <h4 className='alert-heading'>Info</h4>
+  <div className='alert-body'>
+    We are getting user ability on refresh from <code>userData</code> which is stored in localStorage. We have stored
+    ability in <code>userData.ability</code>. If you have different approach for storing and retrieving ability then
+    please update <code>src/configs/acl/ability.js</code> file.
+  </div>
+</Alert>
+
+### Route Protection
+
+---
+
+<p>
+  You can protect your route from being visited by other users through as well. We already configured{' '}
+  <code>FinalRoute</code>
+  function in router to redirect user to not authorized page if user don't have ability for that route. All you have to do
+  is use route meta to define user ability.
+</p>
+
+```js
+{
+  path: '/access-control',
+  component: lazy(() => import('../../views/extensions/access-control')),
+  meta: {
+    action: 'read',
+    resource: 'ACL'
+  }
+}
+```
+
+<p className='mt-3'>
+  Here, resource refers to subject in CASL{' '}
+  <a href='https://casl.js.org/v4/en/guide/intro#basics' target='_blank'>
+    docs
+  </a>
+</p>
+
+<p>
+  Once you define ability for route using meta, if user don't have defined ability for visiting route then it will be
+  redirected to not authorized page.
+</p>
+
+<p className='mb-5'>
+  If user is not logged in and try to visit the route with ability which user don't have then user will get redirected
+  to login page instead of not authorized page.
+</p>
+
+### Omitting Defining `resource` and `action` for route
+
+---
+
+<p>If you do not define resource and action then only user with below ability will be able to visit the route:</p>
+
+```js
+{
+  action: 'manage',
+  subject: 'all'
+}
+```
+
+<Alert className='my-3' color='success'>
+  <h4 className='alert-heading'>Tip</h4>
+  <div className='alert-body'>
+    <code>manage</code> and <code>all</code> are special keywords in CASL. <code>manage</code> represents any action and
+    <code>all</code> represents any subject.
+  </div>
+</Alert>
+
+<p>
+  So, in your project if you don't have any user with above mentioned ability and you don't define <code>action</code>{' '}
+  and <code>resource</code>
+  for route then no one will be able to visit that route ever.
+</p>
+
+<Alert className='mb-5' color='info'>
+  <h4 className='alert-heading'>Info</h4>
+  <div className='alert-body'>
+    We have user (Admin user) with above mentioned ability in our demo. That's why we don't have to write{' '}
+    <code>action</code> and
+    <code>resource</code> on each route.
+  </div>
+</Alert>
+
+### Show/Hide Navigation Items
+
+---
+
+<p>Besides route protection you can also show/hide navigation items based on user ability.</p>
+
+<p>Besides existing options provided by navigation items there's two more option you can specify if you use ACL.</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>resource</strong>: This refers to subject in CASL docs
+  </li>
+  <li>
+    <strong>action</strong>: This is action for ability.
+  </li>
+</ul>
+
+<p>Add these two options in your navigation item to show/hide navigation items based on user ability.</p>
+
+<h5 className='mb-3'>Omitting defining resource and action for groups</h5>
+<p>
+  You can optionally define <code>resource</code> & <code>action</code> on navigation item type which have children:
+</p>
+
+<ul className='pl-3'>
+  <li>Vertical Navigation Menu Group</li>
+  <li>Horizontal Navigation Menu Group</li>
+  <li>Horizontal Navigation Menu Header Group</li>
+</ul>
+
+<p>
+  e.g. If you have vertical navigation menu group and your provided both options for every group child and you want to
+  hide group if all it's child don't have ability then don't worry about adding both option in menu group options. We
+  already handled hiding group if none of it's child is visible. Means, We will hide group if there's no child to render
+  due to lack of ability.
+</p>
+
+```jsx
+/** Both group child have `resource` and `action` defined
+   * So, If I omit defining `resource` and `action` for group
+   * => then group will be hidden if both child are hidden
+   * Conclusion: You can omit defining `resource` and `action` for group if you want this kind of behavior
+*/
+{
+    id: 'access-control',
+    title: 'Access Control',
+    icon: <Shield size={12} />,
+    action: 'read',
+    resource: 'ACL',
+    navLink: '/access-control'
+  }
+```
+
+<h5 className='my-3'>Group & ACL scenarios</h5>
+
+<Alert color='info'>
+  <h4 className='alert-heading'>NOTE</h4>
+  <div className='alert-body'>
+    "can be viewed" means ACL ability is resolved to true and user can view it. "hidden" means ACL ability is resolved
+    to false and user can't view it.
+  </div>
+</Alert>
+
+<p>Please note this scenarios apply to all three group types of navigation item:</p>
+
+<ul className='pl-3'>
+  <li>Vertical Navigation Menu Group</li>
+  <li>Horizontal Navigation Menu Group</li>
+  <li>Horizontal Navigation Menu Header Group</li>
+</ul>

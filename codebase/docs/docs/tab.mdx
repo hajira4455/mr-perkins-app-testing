@@ -1,0 +1,78 @@
+---
+id: tab
+title: Tab
+sidebar_label: Tab
+slug: /components/tab
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Tab component is slightly modified to make it more beautiful. Let's have a glance.</p>
+
+### Tab Right
+
+---
+
+<p>
+  You'll need to add <code>className="nav-right"</code> and wrap your nav with <code>className="nav-vertical"</code>{' '}
+  custom class for it to work perfectly.
+</p>
+
+```jsx
+<div className='nav-vertical'>
+  <Nav tabs className='nav-right'>
+    <NavItem>
+      <NavLink>Tab 1</NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink>Tab 2</NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink>Tab 3</NavLink>
+    </NavItem>
+  </Nav>
+  <TabContent>
+    <TabPane tabId='1'>...</TabPane>
+    <TabPane tabId='2'>...</TabPane>
+    <TabPane tabId='3'>...</TabPane>
+  </TabContent>
+</div>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/tab-right.jpg')} />
+
+### Tab Left
+
+---
+
+<p>
+  You'll need to add <code>className="nav-left"</code> and wrap your nav with <code>className="nav-vertical"</code>{' '}
+  custom class for it to work perfectly.
+</p>
+
+```jsx
+<div className='nav-vertical'>
+  <Nav tabs className='nav-left'>
+    <NavItem>
+      <NavLink>Tab 1</NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink>Tab 2</NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink>Tab 3</NavLink>
+    </NavItem>
+  </Nav>
+  <TabContent>
+    <TabPane tabId='1'>...</TabPane>
+    <TabPane tabId='2'>...</TabPane>
+    <TabPane tabId='3'>...</TabPane>
+  </TabContent>
+</div>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/tab-left.jpg')} />

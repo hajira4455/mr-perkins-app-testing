@@ -1,0 +1,39 @@
+---
+id: splash-screen
+title: Splash Screen
+sidebar_label: Splash Screen
+slug: /development/splash-screen
+---
+
+<p>Vuexy provides splash screen for heavy projects which requires more time to load. </p>
+
+### Usage
+
+---
+
+<p>
+  Splash screen is shown using React's <code>&lt;suspense&gt;</code> component. You can read about suspense component{' '}
+  <a href='https://reactjs.org/docs/code-splitting.html' target='_blank'>
+    here
+  </a>
+</p>
+<p>Splash screen is already included in full version and starter-kit so you don't have to include it separately.</p>
+
+### Customization
+
+---
+
+<p>There are two splash screen fallbacks the first one is for the main App and second is for the content.</p>
+
+<p>Let see how to change both of them.</p>
+
+<ol className='pl-3'>
+  <li>
+    <strong>Main App</strong>: Navigate to <code>src/index.js</code> import your loader and replace ours with yours in{' '}
+    <code>fallback</code> prop.
+  </li>
+  <li>
+    <strong>Content</strong>: Navigate to <code>src/router/Router.js</code> import your loader and replace null in{' '}
+    <code>ResolveRoutes</code> with yours in <code>fallback</code> prop.
+  </li>
+</ol>

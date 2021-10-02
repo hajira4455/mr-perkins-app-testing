@@ -1,0 +1,183 @@
+---
+id: switch
+title: Switch
+sidebar_label: Switch
+slug: /forms/switch
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Switch component supports icon and custom colors to make it more informative</p>
+
+### Colors
+
+---
+
+<p>
+  Use class <code>.custom-control-[color]</code> to change switch's color
+</p>
+
+```jsx
+<div>
+  <CardText className='mb-0'>Primary</CardText>
+  <CustomInput type='switch' id='switch-primary' name='primary' inline defaultChecked />
+</div>
+<div>
+  <CardText className='mb-0'>Secondary</CardText>
+  <CustomInput
+    className='custom-control-secondary'
+    type='switch'
+    id='secondary'
+    name='secondary'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Success</CardText>
+  <CustomInput
+    className='custom-control-success'
+    type='switch'
+    id='success'
+    name='success'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Danger</CardText>
+  <CustomInput
+    className='custom-control-danger'
+    type='switch'
+    id='danger'
+    name='danger'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Warning</CardText>
+  <CustomInput
+    className='custom-control-warning'
+    type='switch'
+    id='warning'
+    name='warning'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Info</CardText>
+  <CustomInput className='custom-control-info' type='switch' id='info' name='info' inline defaultChecked />
+</div>
+<div>
+  <CardText className='mb-0'>Dark</CardText>
+  <CustomInput className='custom-control-dark' type='switch' id='dark' name='dark' inline defaultChecked />
+</div>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/switch-colors.jpg')} />
+
+### Icons
+
+---
+
+<p>
+  Use class <code>.switch-icon-left</code> & <code>.switch-icon-right</code> as label to create a switch with icon.
+</p>
+
+```jsx
+const Label = () => (
+  <Fragment>
+    <span className='switch-icon-left'>
+      <Check size={14} />
+    </span>
+    <span className='switch-icon-right'>
+      <X size={14} />
+    </span>
+  </Fragment>
+)
+
+<div>
+  <CardText className='mb-0'>Primary</CardText>
+  <CustomInput type='switch' label={<Label />} id='icon-primary' name='icon-primary' inline defaultChecked />
+</div>
+<div>
+  <CardText className='mb-0'>Secondary</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-secondary'
+    id='icon-secondary'
+    name='icon-secondary'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Success</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-success'
+    id='icon-success'
+    name='icon-success'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Danger</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-danger'
+    id='icon-danger'
+    name='icon-danger'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Warning</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-warning'
+    id='icon-warning'
+    name='icon-warning'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Info</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-info'
+    id='icon-info'
+    name='icon-info'
+    inline
+    defaultChecked
+  />
+</div>
+<div>
+  <CardText className='mb-0'>Dark</CardText>
+  <CustomInput
+    type='switch'
+    label={<Label />}
+    className='custom-control-dark'
+    id='icon-dark'
+    name='icon-dark'
+    inline
+    defaultChecked
+  />
+</div>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border' src={useBaseUrl('img/switch-icons.png')} />

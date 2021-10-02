@@ -1,0 +1,133 @@
+---
+id: sidebar
+title: Sidebar
+sidebar_label: Sidebar
+slug: /custom-components/sidebar
+---
+
+import { Table } from 'reactstrap'
+
+<p>We've created a sidebar component in case you want a slide in sidebar. Let's have a glance.</p>
+
+### Default
+
+---
+
+<p>
+  Creating a sidebar component is easy all you need is <code>open</code>, <code>toggleSidebar</code> &{' '}
+  <code>title</code> props.
+</p>
+
+<p>
+  You can check demo on{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/apps/invoice/preview' target='_blank'>
+    this
+  </a>{' '}
+  page.
+</p>
+
+```jsx
+import Sidebar from '@components/sidebar'
+
+const component = () => (
+  <Sidebar
+    size='lg'
+    open={open}
+    title='Add Payment'
+    headerClassName='mb-1'
+    contentClassName='p-0'
+    toggleSidebar={toggleSidebar}
+  >
+    ...
+  </Sidebar>
+)
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Sidebar title</p>
+      </td>
+    </tr>
+    <tr>
+      <td>open</td>
+      <td>boolean</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>sidebar open state</p>
+      </td>
+    </tr>
+    <tr>
+      <td>toggleSidebar</td>
+      <td>function</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>function to toggle sidebar</p>
+      </td>
+    </tr>
+    <tr>
+      <td>size</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>sidebar size</p>
+      </td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>sidebar className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>bodyClassName</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>sidebar body className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>contentClassName</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>sidebar content className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>wrapperClassName</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>sidebar wrapper className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>width</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>For custom sidebar width.</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>{' '}

@@ -1,0 +1,52 @@
+---
+id: intl
+title: Internationalization
+sidebar_label: Internationalization
+slug: /development/intl
+---
+
+<p>In this page you will find how to add/update Internationalization.</p>
+
+### Overview
+
+---
+
+<p className='mb-5'>
+  We're using context for Internationalization. You can find our templates intl configuration in{' '}
+  <code>src/utility/context/Internationalization.js</code>
+</p>
+
+### Adding new translations
+
+---
+
+<p>
+  <code>@core/assets/data/locales</code> folder contains template's core intl translations files.
+</p>
+<p className='mb-5'>
+  <code>@src/assets/data/locales</code> is for you to add your own translation. The files for translations are already
+  created in that folder.
+</p>
+
+### Adding new languages
+
+---
+
+<p>Right now there are only four languages configured in the template.</p>
+<p>Follow these steps to add new languages:</p>
+
+<ol className='pl-3'>
+  <li>
+    Add new <code>YOUR_LANG.json</code> file in <code>@src/assets/data/locales</code>.
+  </li>
+  <li>
+    Navigate to intl context in <code>@src/utility/context/Internationalization.js</code>{' '}
+  </li>
+  <li>Import your language json file.</li>
+  <li>
+    Add your language to <code>menuMessages</code> variable.
+  </li>
+  <li>
+    Thats it you can use <code>switchLanguage</code> in your app to change the language.
+  </li>
+</ol>

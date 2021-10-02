@@ -1,0 +1,58 @@
+---
+id: theme-configurations
+title: Theme Configurations
+sidebar_label: Theme Configurations
+slug: /development/theme-configurations
+---
+
+<p>
+  Change template to fit your needs. To configure template we will use <code>themeConfig.js</code> file, which have all
+  template configurations listed with their valid values.
+</p>
+
+### Using themeConfig.js
+
+---
+
+<p>
+  <code>$themeConfig</code> This is the file where you can update template behavior.
+</p>
+
+<p className='mb-5'>
+  <code>$themeConfig</code> object options and it's valid values are already listed there. Hence, it is self
+  explanatory. Just changed configuration as your requirement and you are done.
+</p>
+
+### Accessing theme colors in JS files
+
+---
+
+<p>
+  We've created a ThemeColors context to make it accessible in every component. You can use <code>useContext</code> hook
+  to get <code>themeColors</code> object anywhere in your app. You can find Theme Context in{' '}
+  <code>src/utility/context/ThemeColors</code>
+</p>
+
+<p>Usage Example:</p>
+
+```jsx
+import { useContext } from 'react'
+import { ThemeColors } from '@src/utility/context/ThemeColors'
+
+const { colors } = useContext(ThemeColors)
+
+console.log(colors)
+```
+
+### Changing theme colors
+
+---
+
+<p>
+  To update template colors just update bootstrap color variables in:{' '}
+  <code>src/assets/scss/variables/_variables.scss</code>
+</p>
+
+```scss title="_variables.scss"
+$primary: #00cfe8; // Changing primary color
+```

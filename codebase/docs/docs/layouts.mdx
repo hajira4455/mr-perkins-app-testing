@@ -1,0 +1,258 @@
+---
+id: layouts
+title: Layout
+sidebar_label: Layout
+slug: /development/layouts
+---
+
+import { Alert } from 'reactstrap'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Understanding template layouts will help you create page with your desired layout.</p>
+
+### Layout Types
+
+---
+
+<p>There are two layout types:</p>
+
+<h5 className='mb-3'>1. Blank Layout</h5>
+<p>
+  This is useful if you want to create pages without any other content like Authentication page where you don't need
+  navbar, navigation menu, footer, etc.
+</p>
+
+<p>Basically this is blank page and you can create everything from scratch.</p>
+
+<p>Template Example:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/pages/login-v1' target='_blank'>
+      Login V1
+    </a>
+  </li>
+  <li>
+    <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/pages/register-v1' target='_blank'>
+      Register V1
+    </a>
+  </li>
+  <li>
+    <a
+      href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/pages/forgot-password-v1'
+      target='_blank'
+    >
+      Forgot Password V1
+    </a>
+  </li>
+</ul>
+
+<p>
+  <strong>How to enable blank layout for specific route?</strong>
+</p>
+
+<p>
+  To create route with blank layout use layout prop and set it's value to 'BlankLayout' in{' '}
+  <code>src/router/routes</code>.
+</p>
+
+```js
+  {
+    path: '/login',
+    component: lazy(() => import('../../views/pages/authentication/Login')),
+    layout: 'BlankLayout',
+    meta: {
+      authRoute: true
+    }
+  },
+```
+
+<h5 className='mt-5 mb-3'>2. Layout w/ Layout Components</h5>
+<p>This is default layout for every route. With this layout you will get below layout components:</p>
+<ol className='pl-3'>
+  <li>Navigation Menu</li>
+  <li>Navbar</li>
+  <li>Footer</li>
+</ol>
+<p className='mb-5'>
+  All of above layout components are configurable. You can customize this layout components using{' '}
+  <a href='/docs/development/theme-configurations'>themeConfig</a> to get your desired layout.
+</p>
+
+### Modifying/Extending Layouts
+
+---
+
+<p>You can modify existing layout and create your own custom layouts as well.</p>
+
+<p>
+  Template's core layouts and it's components have scoped slots so you can update layout components with props without
+  breaking the core layouts and easily get update of bug fixes and features.
+</p>
+
+<p>
+  On the other hand if you don't want to extend your layout from base layout (Which is not recommended) and want to
+  create layout of your own with your own styles you can do that as well. Isn't this template so flexible 😍?
+</p>
+
+<p>
+  Our provided layouts in <code>src/layouts</code> is extended layout from our core layouts.
+</p>
+
+<ol className='pl-3'>
+  <li>
+    <strong>full:</strong> Full layout
+  </li>
+  <li>
+    <strong>vertical:</strong> Layout /w layout components but navigation menu type is vertical
+  </li>
+  <li>
+    <strong>horizontal:</strong> Layout /w layout components but navigation menu type is horizontal
+  </li>
+</ol>
+
+<Alert className='my-4' color='success'>
+  <h4 className='alert-heading'>Info</h4>
+  <div className='alert-body'>
+    <code>vertical</code> & <code>horizontal</code> are Layouts with layout components (2nd type of layout). These names
+    are assigned based on navigation type.
+    <ol className='mt-3 pl-3'>
+      <li>
+        <strong>Vertical Layout</strong> means Layout with layout components and navigation menu type is vertical
+      </li>
+      <li>
+        <strong>Horizontal Layout</strong> means Layout with layout components and navigation menu type is horizontal
+      </li>
+    </ol>
+  </div>
+</Alert>
+
+### 1. Extending Vertical layout
+
+---
+
+<p>
+  To extend Vertical layout navigate to <code>src/layout/VerticalLayout.js</code>. Vertical layout is already imported
+  you can use
+  <code>navbar</code>, <code>menu</code> & <code>footer</code> props to replace the components with your own.
+</p>
+
+```jsx title="VerticalLayout.js"
+// !Do not remove the Layout import
+import Layout from '@layouts/VerticalLayout'
+
+const VerticalLayout = props => (
+  <Layout navbar={<CustomNavbar />} menu={<CustomMenu />} footer={<CustomFooter />} {...props}>
+    {props.children}
+  </Layout>
+)
+
+export default VerticalLayout
+```
+
+### 2. Extending Horizontal layout
+
+---
+
+<p>
+  To extend Horizontal layout navigate to <code>src/layout/HorizontalLayout.js</code>. Horizontal layout is already
+  imported you can use
+  <code>navbar</code>, <code>menu</code> & <code>footer</code> props to replace the components with your own.
+</p>
+
+```jsx title="HorizontalLayout.js"
+// !Do not remove the Layout import
+import Layout from '@layouts/HorizontalLayout'
+
+const HorizontalLayout = props => (
+  <Layout navbar={<CustomNavbar />} menu={<CustomMenu />} footer={<CustomFooter />} {...props}>
+    {props.children}
+  </Layout>
+)
+
+export default HorizontalLayout
+```
+
+### Core Layouts
+
+---
+
+<h5 className='mb-3'>1. Vertical Layout</h5>
+<p className='mb-4'>Vertical layout provides below slots/scoped-slots to render your custom content in component:</p>
+<p>navbar</p>
+<p>
+  Use this prop to render your custom navbar. You need to use this prop to override our template's default navbar, you
+  will not use our demo navbar in your project, right? 😉
+</p>
+
+```jsx title="VerticalLayout.js"
+// !Do not remove the Layout import
+import Layout from '@layouts/VerticalLayout'
+
+const VerticalLayout = props => (
+  <Layout navbar='I am in navbar, Everything else is removed' {...props}>
+    {props.children}
+  </Layout>
+)
+
+export default VerticalLayout
+```
+
+<p className='my-3'>
+  <i>Result:</i>
+</p>
+<img className='rounded border mb-5' src={useBaseUrl('img/vertical-layout-custom-navbar.jpg')} />
+
+<p>menu</p>
+<p>Use this prop to render your custom menu. You need to use this prop to override our template's default menu.</p>
+
+```jsx title="VerticalLayout.js"
+// !Do not remove the Layout import
+import Layout from '@layouts/VerticalLayout'
+
+const Menu = () => {
+  return (
+    <ul className='pl-2'>
+      <li>Menu Item 1</li>
+      <li>Menu Item 2</li>
+    </ul>
+  )
+}
+
+const VerticalLayout = props => (
+  <Layout menu={<Menu />} {...props}>
+    {props.children}
+  </Layout>
+)
+
+export default VerticalLayout
+```
+
+<p className='my-3'>
+  <i>Result:</i>
+</p>
+<img className='rounded border mb-5' src={useBaseUrl('img/vertical-layout-custom-menu.png')} />
+
+<p>menu</p>
+<p>Use this prop to render your custom menu. You need to use this prop to override our template's default menu.</p>
+
+```jsx title="VerticalLayout.js"
+// !Do not remove the Layout import
+import Layout from '@layouts/VerticalLayout'
+
+const VerticalLayout = props => (
+  <Layout footer='@ Some Company 2021' {...props}>
+    {props.children}
+  </Layout>
+)
+
+export default VerticalLayout
+```
+
+<p className='my-3'>
+  <i>Result:</i>
+</p>
+<img className='rounded border mb-5' src={useBaseUrl('img/vertical-layout-custom-footer.png')} />
+
+<h5 className='mb-3'>2. Horizontal Layout</h5>
+<p>All of the props & usage for Horizontal Layout are same as Vertical Layout</p>

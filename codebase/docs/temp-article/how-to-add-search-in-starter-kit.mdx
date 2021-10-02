@@ -1,0 +1,94 @@
+---
+title: How to add Search in starter kit
+tags: [search, autocomplete]
+description: Adding Search in starter kit
+hide_table_of_contents: true
+---
+
+<p>
+  We're using custom <code>&lt;Autocomplete&gt;</code> for navbar search.
+</p>
+
+<p>
+  You can read how to create a <code>&lt;Autocomplete&gt;</code> from{' '}
+  <a href='/docs/custom-components/autocomplete'>here</a>
+</p>
+
+<p>
+  Our search data is located in <code>@fakedb/navbar/navbarSearch.js</code>. You can update that file with your own data
+  or get your data from an API.
+</p>
+
+<p>The data structure should be as follows:</p>
+
+```js
+const data = [
+  {
+    groupTitle: 'Pages',
+    searchLimit: 4,
+    data:[
+      {
+        id: 1,
+        target: 'analyticsDash', // You can remove this if you don't want bookmarks
+        isBookmarked: false, // You can remove this if you don't want bookmarks
+        title: 'Analytics Dashboard',
+        icon: 'Home',
+        link: '/dashboard/analytics'
+      }
+      ...
+    ]
+  },
+  {
+    groupTitle: 'Files',
+    searchLimit: 4,
+    data: [
+      {
+        title: 'Passport Image',
+        by: 'Oliver Queen',
+        size: '52kb',
+        file: require('@src/assets/images/icons/jpg.png').default
+      },
+      ...
+    ]
+  },
+  groupTitle: 'Contacts',
+    searchLimit: 4,
+    data: [
+      {
+        title: 'Mia Davis',
+        email: 'miadavis@teleworm.us',
+        img: require('@src/assets/images/portrait/small/avatar-s-8.jpg').default,
+        date: '01/03/2020'
+      },
+      ...
+    ]
+]
+```
+
+<p className='mt-3'>
+  Now navigate to <code>full-version/src/@core/layouts/components/navbar/</code> & copy <code>NavbarSearch.js</code> and
+  paste it into same path as before only in starter-kit.
+</p>
+
+<p className='mt-3'>
+  After copying <code>NavbarSearch.js</code> you'll have to import it in <code>NavbarUser.js</code>
+</p>
+
+<p>
+  In <code>NavbarSearch.js</code> we're getting data on mount from <code>@fakedb</code>. You'll change to change it your
+  api call and <code>setSuggestions</code> to your data.
+</p>
+
+```jsx
+// ** ComponentDidMount
+useEffect(() => {
+  axios.get('/api/main-search/data').then(({ data }) => {
+    setSuggestions(data.searchArr)
+  })
+}, [])
+```
+
+<p className='mt-3'>
+  You can also change the UI of your suggestion using <code>customRender</code> prop of{' '}
+  <code>&lt;Autocomplete&gt;</code> component.
+</p>

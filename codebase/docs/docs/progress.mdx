@@ -1,0 +1,32 @@
+---
+id: progress
+title: Progress
+sidebar_label: Progress
+slug: /components/progress
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Progress is slightly modified to make it more beautiful. Let's have a glance.</p>
+
+### Progress Variant
+
+---
+
+<p>
+  Use <code>.progress-bar-[color-name]</code> custom class along with progress bar to get light unfilled variant.
+</p>
+
+```jsx
+<Progress value={25} />
+<Progress className='progress-bar-secondary' value={35} />
+<Progress className='progress-bar-success' value={45} />
+<Progress className='progress-bar-danger' value={55} />
+<Progress className='progress-bar-warning' value={65} />
+<Progress className='progress-bar-info' value={75} />
+<Progress className='progress-bar-dark' value={85} />
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border' src={useBaseUrl('img/progress-variant.jpg')} />

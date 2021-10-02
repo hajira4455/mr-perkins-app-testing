@@ -1,0 +1,220 @@
+---
+id: app-collapse
+title: App Collapse
+sidebar_label: App Collapse
+slug: /custom-components/app-collapse
+---
+
+import { Table } from 'reactstrap'
+
+<p>We have created our custom collapse components to make it more beautiful. Let's have a glance.</p>
+
+<p>
+  You can check all of the collapse demos from{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/collapse' target='_blank'>
+    here
+  </a>
+</p>
+
+### Default Collapse
+
+---
+
+<p>It is easy to create a default collapse all you have to do is pass in data.</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Collapse Item 1",
+    content : ( <h1>Collapse Content</h1> )
+  }
+  ...
+]
+
+const CollapseDefault = () => <AppCollapse data={data} />
+```
+
+### Accordion Collapse
+
+---
+
+<p>
+  Pass prop <code>accordion</code> to make your collapse an accordion.
+</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Accordion Item 1",
+    content : ( <h1>Accordion Content</h1> )
+  }
+  ...
+]
+
+const Accordion = () => <AppCollapse data={data} accordion />
+```
+
+### Collapse Shadow
+
+---
+
+<p>
+  Pass prop <code>type='shadow'</code> to create an accordion shadow.
+</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Accordion Item 1",
+    content : ( <h1>Accordion Content</h1> )
+  }
+  ...
+]
+
+const Accordion = () => <AppCollapse type='shadow' data={data} accordion />
+```
+
+### Collapse Border
+
+---
+
+<p>
+  Pass prop <code>type='border'</code> to create an accordion border.
+</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Accordion Item 1",
+    content : ( <h1>Accordion Content</h1> )
+  }
+  ...
+]
+
+const Accordion = () => <AppCollapse type='border' data={data} accordion />
+```
+
+### Collapse Margin
+
+---
+
+<p>
+  Pass prop <code>type='margin'</code> to create an accordion margin.
+</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Accordion Item 1",
+    content : ( <h1>Accordion Content</h1> )
+  }
+  ...
+]
+
+const Accordion = () => <AppCollapse type='margin' data={data} accordion />
+```
+
+### Collapse Hover
+
+---
+
+<p>
+  Pass prop <code>type='hover'</code> to create an accordion hover.
+</p>
+
+```jsx
+import AppCollapse from '@components/app-collapse'
+
+const data = [
+  {
+    title : "Accordion Item 1",
+    content : ( <h1>Accordion Content</h1> )
+  }
+  ...
+]
+
+const Accordion = () => <AppCollapse type='hover' data={data} accordion />
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>data</td>
+      <td>array of objects</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Data to render.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>accordion</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To make your collapse an accordion.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Type of accordion</p>
+      </td>
+    </tr>
+    <tr>
+      <td>active</td>
+      <td>string or array</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To control collapse by passing in default active.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>titleKey</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To render collapse title based on titleKey.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>contentKey</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To render collapse title based on contentKey.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Collapse className</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

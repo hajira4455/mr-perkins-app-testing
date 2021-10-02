@@ -1,0 +1,120 @@
+---
+title: How to add ACL in starter-kit
+tags: [auth, ACL]
+description: Adding Auth and ACL in Starter Kit.
+hide_table_of_contents: false
+---
+
+import { Alert } from 'reactstrap'
+
+<Alert className='mt-4' color='success'>
+  <h4 className='alert-heading'>Tip</h4>
+  <div className='alert-body'>
+    Please make sure you read our docs on{' '}
+    <a className='alert-link' href='/docs/development/acl'>
+      ACL
+    </a>
+    .
+  </div>
+</Alert>
+
+<p>
+  Currently, we are showing the way where you just have to Copy Files / Folders from the full version to get the Auth
+  and ACL working but in future we will make this process more smooth.
+</p>
+
+<p>
+  Copy Router file <code>src/router/Router.js</code> from full version and replace it with the one in starter kit at the
+  same path in starter kit folder.
+</p>
+
+<p>Update following imports according to your current paths:</p>
+
+```js
+const NotAuthorized = lazy(() => import('@src/views/pages/misc/NotAuthorized'))
+
+// ** Init Error Component
+const Error = lazy(() => import('@src/views/pages/misc/Error'))
+```
+
+<p className='my-3'>If you have not moved those files</p>
+
+```js
+const NotAuthorized = lazy(() => import('@src/views/NotAuthorized'))
+
+// ** Init Error Component
+const Error = lazy(() => import('@src/views/Error'))
+```
+
+<p className='mt-3'>
+  The main difference between those two router files is <code>FinalRoute</code> function which is enabled in the Full
+  version and which is also responsible to check the Authentication and implement ACL while visiting any route.
+</p>
+
+<p>
+  You only have to copy two files from full-version to starter-kit. Navigate to <code>src/@core/layouts/menu</code> and{' '}
+  <code>vertical-menu/VerticalNavMenuItems.js</code> or if you're using{' '}
+  <code>horizontal-menu/HorizontalNavMenuItems.js</code>
+</p>
+
+<p>
+  Copy <code>acl</code> folder found at <code>src/configs/acl</code> and paste it in the starter at path{' '}
+  <code>src/configs</code>.
+</p>
+
+<p>
+  Import Ability Context in <code>src/index.js</code> and wrap your <code>&lt;LazyApp /&gt;</code> with it.
+</p>
+
+```jsx
+// ** Initial ability & context
+import ability from './configs/acl/ability'
+import { AbilityContext } from './utility/context/Can'
+
+// ** Lazy load app
+const LazyApp = lazy(() => import('./App'))
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Suspense fallback={<Spinner />}>
+      <AbilityContext.Provider value={ability}>
+        <ThemeContext>
+          <LazyApp />
+          <ToastContainer newestOnTop />
+        </ThemeContext>
+      </AbilityContext.Provider>
+    </Suspense>
+  </Provider>,
+  document.getElementById('root')
+)
+```
+
+<p className='my-3'>
+  Now when a user login you'll have to update their ability. You can do that using ability context like shown in below
+  example.
+</p>
+
+```jsx
+import { useContext } from 'react'
+import useJwt from '@src/auth/jwt/useJwt'
+import { AbilityContext } from '@src/utility/context/Can'
+
+const LoginForm = () => {
+  const ability = useContext(AbilityContext)
+
+  const handleSubmit = (event, errors) => {
+    if (errors && !errors.length) {
+      useJwt
+        .login({ email, password })
+        .then(res => ability.update(res.data.userData.ability))
+        .catch(err => console.log(err))
+    }
+  }
+
+  return <form onSubmit={handleSubmit}>...</form>
+}
+```
+
+<p className='mt-3 mb-0'>
+  You can learn about how ACL works <a href='/docs/development/acl'>here</a>
+</p>

@@ -1,0 +1,76 @@
+---
+id: auth
+title: Authentication
+sidebar_label: Authentication
+slug: /development/auth
+---
+
+<p>Here you will find how to use JWT authentication provided by our template.</p>
+
+### JWT
+
+---
+
+<p>
+  We provided JWT service for quickly getting started with authentication. It is also extendable so you can write your
+  own JWT without removing ours or modify our JWT config.
+</p>
+
+<p>
+  You can find our core JWT files in <code>src/@core/auth/jwt</code>. Let's understand what each file has to offer:
+</p>
+
+<ul className='mb-5'>
+  <li>
+    <strong>uswJwt.js:</strong> his file holds composition function <code>useJwt</code>. <code>useJwt</code> function
+    accepts axios instance as first parameter and jwt config object as second parameter. It return instance of JWT
+    service.
+  </li>
+  <li>
+    <strong>jwtDefaultConfig.js:</strong> This file has default config we used in our template. Still, you can modify by
+    passing your own config object in <code>useJwt</code> composition function.
+  </li>
+  <li>
+    <strong>jwtService.js:</strong> This is actual JWT service which provides login, register, etc method for working
+    with JWT.
+  </li>
+</ul>
+
+### jwtService
+
+---
+
+<p>
+  <code>jwtService.js</code> holds <code>JwtService</code> class which have several method and properties which we will
+  explore below. You will get instance of this class when you use <code>useJwt</code> composition function
+</p>
+
+<h5 className='mb-3'>Axios response interceptor</h5>
+<p className='mb-5'>
+  We added axios response interceptor to auto renew JWT token once it get expired. We tried our best to provide this
+  interceptor usable by almost all people. Still if you have any suggestions for us we are always ready for it. We love
+  to improve our template and serve you better. 😇
+</p>
+
+### Using JWT Service
+
+<p>
+  Above mentioned JWT files are core files so please don't update them, you might break something if we provide the
+  update. So, you can use composition function we provided to use JWT. You can find your JWT files in{' '}
+  <code>src/auth/jwt</code>. In <code>useJwt.js</code> file instead of passing blank object you can pass your own config
+  to configure JWT service. You can refer to default config to check which options are available to override.
+</p>
+
+<p>We haven't provided config for storing user data because it is up to you how to save user data.</p>
+
+<p className='mb-5'>
+  You will also find auth utils in <code>src/auth/utils.js</code> file. Those utils are well commented and self
+  explanatory as well.
+</p>
+
+### Overriding Jwt Service
+
+<p>
+  Certainly, you might not want to use localStorage to save token as it is not much secure and you want to use cookies
+  instead. In this case you can use our class to create your own JWT service and use that.
+</p>

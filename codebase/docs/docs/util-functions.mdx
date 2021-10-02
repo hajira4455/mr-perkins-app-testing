@@ -1,0 +1,128 @@
+---
+id: util-functions
+title: Util Functions
+sidebar_label: Util Functions
+slug: /development/util-functions
+---
+
+<p>We've created some utility functions to make your development easier. Let's check them out</p>
+
+<p>
+  You can find utility functions in <code>src/utility/Utils.js</code>.
+</p>
+
+### isObjEmpty
+
+---
+
+<p>
+  Checks if an object is empty. Takes an object and return <code>boolean</code>.
+</p>
+
+```jsx
+import { isObjEmpty } from '@utils'
+
+const func = () => {
+  if (isObjEmpty(object)) {
+    console.log('Object is empty')
+  }
+}
+```
+
+### kFormatter
+
+---
+
+<p>
+  If a number is above 999 then returns a <code>K formatted</code> number.
+</p>
+
+```jsx
+import { kFormatter } from '@utils'
+
+console.log(kFormatter(100000))
+```
+
+### htmlToString
+
+---
+
+<p>Takes html content and return a single lined string.</p>
+
+```jsx
+import { htmlToString } from '@utils'
+
+console.log(htmlToString(<p>Hello World</p>))
+```
+
+### formatDate
+
+---
+
+<p>Takes a date and returns human friendly version of passed date.</p>
+
+```jsx
+import { formatDate } from '@utils'
+
+console.log(formatDate(2021-02-02T16:30:41.866Z))
+```
+
+### formatDateToMonthShort
+
+---
+
+<p> Returns short month of passed date</p>
+
+```jsx
+import { formatDateToMonthShort } from '@utils'
+
+console.log(formatDateToMonthShort(2021-02-02T16:30:41.866Z))
+```
+
+### isUserLoggedIn
+
+---
+
+<p>
+  Checks if <code>userData</code> is in localStorage and then return <code>boolean</code>{' '}
+</p>
+
+```jsx
+import { isUserLoggedIn } from '@utils'
+
+console.log(isUserLoggedIn())
+```
+
+### getUserData
+
+---
+
+<p>
+  Returns <code>userData</code> found in localStorage
+</p>
+
+```jsx
+import { getUserData } from '@utils'
+
+console.log(getUserData())
+```
+
+### selectThemeColors
+
+---
+
+<p>Returns react select styles based on our theme.</p>
+
+```jsx
+import Select from 'react-select'
+import { selectThemeColors } from '@utils'
+
+const Component = I() => {
+  return <Select
+          theme={selectThemeColors}
+          className='react-select'
+          classNamePrefix='select'
+          ...
+         />
+}
+```

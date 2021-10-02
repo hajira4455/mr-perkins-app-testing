@@ -1,0 +1,95 @@
+---
+id: page-layouts
+title: Page Layouts
+sidebar_label: Page Layouts
+slug: /development/page-layouts
+---
+
+### Menu Collapsed
+
+---
+
+<p>Menu collapsed layout collapses the menu.</p>
+<p>
+  If you want menu collapsed in all pages then change <code>isCollapsed</code> to <code>true</code> in{' '}
+  <code>themeConfig.js</code>
+</p>
+<p>
+  If you want menu collapsed only for a specific page then add <code>menuCollapsed: true</code> in the component route
+  file.
+</p>
+
+```js
+ {
+  path: '/page-layout/collapse-menu',
+  component: lazy(() => import('../../views/ui-elements/page-layouts/CollapsedMenu')),
+  meta: {
+    menuCollapsed: true
+  }
+}
+```
+
+### Boxed Layout
+
+---
+
+<p>Boxed layout makes the wrapper act like a container in larger screens.</p>
+<p>
+  If you want Boxed layout in all pages then change <code>contentWidth</code> to <code>'boxed'</code> in{' '}
+  <code>themeConfig.js</code>
+</p>
+<p>
+  If you want Boxed layout only for a specific page then add <code>contentWidth: 'boxed'</code> in the component route
+  file.
+</p>
+
+```js
+{
+  path: '/page-layout/layout-boxed',
+  component: lazy(() => import('../../views/ui-elements/page-layouts/BoxedLayout')),
+  meta: {
+    contentWidth: 'boxed'
+  }
+}
+```
+
+### Without Menu
+
+---
+
+<p>Layout Without Menu removes navigation menu from the layout.</p>
+<p>
+  If you want Boxed Layout Without Menu in all pages then change <code>isHidden</code> to <code>true'</code> in{' '}
+  <code>themeConfig.js</code>
+</p>
+<p>
+  If you want Layout Without Menu only for a specific page then add <code>menuHidden: true</code> in the component route
+  file.
+</p>
+
+```js
+{
+  path: '/page-layout/without-menu',
+  component: lazy(() => import('../../views/ui-elements/page-layouts/WithoutMenu')),
+  meta: {
+    menuHidden: true
+  }
+}
+```
+
+### Blank Layout
+
+---
+
+<p>Blank Layout is the layout without menu, navbar & footer.</p>
+<p>
+  To render a blank layout Add <code>layout: 'BlankLayout'</code> in it's route file.
+</p>
+
+```js
+{
+  path: '/page-layout/layout-blank',
+  component: lazy(() => import('../../views/ui-elements/page-layouts/LayoutBlank')),
+  layout: 'BlankLayout'
+}
+```

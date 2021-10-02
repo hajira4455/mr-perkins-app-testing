@@ -1,0 +1,121 @@
+---
+id: template-styles
+title: Template Styles
+sidebar_label: Template Styles
+slug: /development/template-styles
+---
+
+import { Alert } from 'reactstrap'
+
+<p>
+  Here you will find where you can find template styles and how you can modify/override it. Also you will learn where to
+  add your own styles.
+</p>
+
+### Core styles
+
+---
+
+<p>
+  <code>@core/scss</code> folder contains template's core styles. In this folder you will:
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>base directory:</strong> Holds Template's base style independent of any framework (In this case - React).
+    e.g. Bootstrap components' styles, template layout styles, etc.
+  </li>
+  <li>
+    <strong>react:</strong> This folder contains styles for react version specific styles which isn't part of base
+    styles. e.g. Some react extension styles, reactstrap extends, react specific page styles, etc.
+  </li>
+  <li>
+    <strong>core.scss:</strong> This fille is included in <code>index.js</code> file. This files imports all other
+    styles of templates. So you can say that it is entry point of template styles.
+  </li>
+</ul>
+
+### Writing your styles
+
+---
+
+<p>
+  You can write your styles in <code>src/assets/scss/style.scss</code> file. You can add your own structure in{' '}
+  <code>src/assets/scss/</code>
+  folder. <code>src/assets/scss/</code> Folder is completely yours to tweak except you should not remove or rename
+  <code>src/assets/scss/variables</code> folder provided by us.
+</p>
+
+<p>Let's understand what each file has to do with style in src/assets/scss/ folder:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <code>style.scss</code>: This files is your entry point of styles. Write your styles in this file or import other
+    files. This file is imported in <code>index.js</code>
+  </li>
+  <li>
+    <code>variables/_variables.scss</code>: You can override bootstrap variables using this file.
+  </li>
+  <li>
+    <code>variables/_variables-components.scss</code>: Use this file to override component variables.
+  </li>
+</ul>
+
+### Using @core for your styles
+
+---
+
+<p>
+  There might be case that you want to use style from our <code>@core</code> folder.
+</p>
+
+<p>
+  e.g. You want to create your own FAQ page with some extra components and want to extend our current page. In this case
+  you can create a new SCSS file which imports our faq page style and write your own styles beneath it, just like a
+  normal SCSS import. Lastly just import your newly created file in your JS file.
+</p>
+
+<p>Let's understand what each folder contains:</p>
+
+<ul className='pl-3'>
+  <li>
+    <code>base</code>: Base styles
+  </li>
+  <li>
+    <code>react/apps</code>: This contains apps' styles. You can import it in your JS file and create your own app with
+    our styles.
+  </li>
+  <li>
+    <code>react/libs</code>: This contains third party packages' styles.
+  </li>
+  <li>
+    <code>react/pages</code>: This contains styles for template pages. If you want style of specific package import it
+    from this folder.
+  </li>
+  <li>
+    <code>react/reactstrap</code>: This contains reactstrap components extends and overrides of template. You don't have
+    to import them in your JS Files.
+  </li>
+  <li>
+    <code>_base-extended.scss</code>: Extra styles of component or part of layout which isn't covered in{' '}
+    <code>base</code> folder
+  </li>
+  <li>
+    <code>_dark-layout.scss</code>: Extended dark-layout styles from base dark-layout
+  </li>
+  <li>
+    <code>_index.scss</code>: All React specific styles are imported in this file. And this file is imported in
+    core.scss file.
+  </li>
+  <li>
+    <code>_rtl.scss</code>: RTL specific styles. Styles which are not covered by postcss-rtl or RTL override styles.
+  </li>
+</ul>
+
+<Alert className='mt-5' color='success'>
+  <h4 className='alert-heading'>Tip</h4>
+  <div className='alert-body'>
+    All SCSS files starting with <code>_</code>[underscore] (SCSS partials) are already imported in template styles so
+    there's no need to import it. Other SCSS Files are meant to get imported only if they are required.
+  </div>
+</Alert>

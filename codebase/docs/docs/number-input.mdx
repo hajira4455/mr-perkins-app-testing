@@ -1,0 +1,166 @@
+---
+id: number-input
+title: Number Input
+sidebar_label: Number Input
+slug: /custom-components/number-input
+---
+
+import { Table } from 'reactstrap'
+
+<p>We've created Number Input component for a counter. Let's have a glance.</p>
+
+### Default
+
+---
+
+<p>
+  Using Number Input is easy all of the props are same as reactstrap{' '}
+  <a href='https://reactstrap.github.io/components/form/' target='_blank'>
+    input component
+  </a>
+  .
+</p>
+
+<p>
+  You can check demo on{' '}
+  <a
+    href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/forms/elements/number-input'
+    target='_blank'
+  >
+    this
+  </a>{' '}
+  page.
+</p>
+
+```jsx
+<NumberInput id='basic-number-input' value={count} onChange={count => setCount(count)} />
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>min</td>
+      <td>number</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Minimum step number</p>
+      </td>
+    </tr>
+    <tr>
+      <td>max</td>
+      <td>number</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Maximum step number</p>
+      </td>
+    </tr>
+    <tr>
+      <td>wrap</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Go back to min or max instead of disabling the button on min or max.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>step</td>
+      <td>number</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Use this prop to skip the value.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>value</td>
+      <td>number</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To control the number input value.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>style</td>
+      <td>object</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To add custom styles to input.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>vertical</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To change input orientation to vertical.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>disabled</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To disable the input.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>readonly</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To create readonly the input.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>upIcon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To change upIcon.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>downIcon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To change downIcon.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>onIncrement</td>
+      <td>function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Function to run on Increment.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>onDecrement</td>
+      <td>function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Function to run on Decrement.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>size</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>To change the input size.</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

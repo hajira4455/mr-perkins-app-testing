@@ -1,0 +1,171 @@
+---
+id: routing
+title: Routing
+sidebar_label: Routing
+slug: /development/routing
+---
+
+<p>In this page you will find how to add new routes and how we handled existing routes.</p>
+
+### Overview
+
+---
+
+<p>
+  You can find our template's router configuration in <code>src/router/index.js</code>. <code>src/router/routes</code>{' '}
+  folder contains all routes of our template.
+</p>
+
+<p className='mb-5'>
+  You can follow our pattern or use <code>src/router/index.js</code> to write your routes, it's completely up to you.
+</p>
+
+### Router.js
+
+---
+
+<p>
+  In <code>Router.js</code> file you'll find following:
+</p>
+<ol className='pl-3 mb-4'>
+  <li>Layouts</li>
+  <li>LayoutRoutesAndPaths</li>
+  <li>FinalRoute</li>
+  <li>ResolveRoutes</li>
+</ol>
+
+<h5 className='mb-3'>Layouts</h5>
+<p className='mb-4'>
+  <code>Router.js</code> file imports all layouts to be used for routes.
+</p>
+
+<h5 className='mb-3'>LayoutRoutesAndPaths</h5>
+<p className='mb-4'>
+  <code>LayoutRoutesAndPaths</code> function takes a layout as parameter and returns different arrays of routes for
+  different layouts
+</p>
+
+<h5 className='mb-3'>FinalRoute</h5>
+<p>
+  <code>FinalRoute</code> function determines following login, user role
+</p>
+<p>
+  In <code>FinalRoute</code> If user is not logged in & <code>route.meta</code> is <code>undefined</code> or if user is
+  not Logged in & <code>route.meta.authRoute</code> & <code>!route.meta.publicRoute</code> are undefined. Then redirect
+  user to login
+</p>
+<p>Else If route has meta and authRole and user is Logged in then redirect user to home page (DefaultRoute)</p>
+<p>Else If user is Logged in and doesn't have ability to visit the page then redirect the user to Not Authorized</p>
+<p className='mb-4'>Else return component</p>
+
+<h5 className='mb-3'>ResolveRoutes</h5>
+<p className='mb-5'>
+  <code>ResolveRoutes</code> loops through the layouts wraps the route with the appropriate layout tag and return the
+  route.
+</p>
+
+### Routes
+
+---
+
+<p>
+  Our routes are not just simple routes. There is layout, className & meta is also required to render proper page. Let's
+  find out each of them:
+</p>
+
+<ul className='pl-3 mb-4'>
+  <li>layout</li>
+  <li>className</li>
+  <li>
+    meta:
+    <ul>
+      <li>navLink</li>
+      <li>action</li>
+      <li>resource</li>
+      <li>contentWidth</li>
+      <li>menuCollapsed</li>
+      <li>menuHidden</li>
+      <li>authRoute</li>
+      <li>publicRoute</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 className='mb-3'>Layout</h5>
+<p>
+  use <code>layout</code> to change layout for specific route.
+</p>
+<p>Example:</p>
+
+```js
+{
+  path: '/pages/login-v1',
+  component: lazy(() => import('../../views/pages/authentication/LoginV1')),
+  layout: 'BlankLayout'
+}
+```
+
+<h5 className='mb-3 mt-5'>className</h5>
+<p>
+  Use <code>className</code> to add a class to component wrapper for a route.
+</p>
+<p>Example:</p>
+
+```js
+{
+  path: '/apps/ecommerce/checkout',
+  className: 'ecommerce-application',
+  component: lazy(() => import('../../views/apps/ecommerce/checkout'))
+}
+```
+
+<h5 className='mb-3 mt-5'>meta</h5>
+<ul className='pl-3 mb-5'>
+  <li>
+    <strong>navLink</strong>: Navigation link to show active in navigation menu. This should match any of{' '}
+    <a href='/docs/development/navigation'>navigation menu item's route</a>. Useful if you have dynamic param and want
+    to only set single item for it in navigation menu. e.g. Our Email & Todo App.
+  </li>
+  <li>
+    <strong>action</strong>: CASL's action value for route protection. You can read more about it in{' '}
+    <a href='/docs/development/acl'>Access Control</a> page.
+  </li>
+  <li>
+    <strong>contentWidth</strong>: Use this to set content with for a specific route.
+  </li>
+  <li>
+    <strong>menuCollapsed</strong>: Use this to set menu to collapsed for a specific route.
+  </li>
+  <li>
+    <strong>menuHidden</strong>: Use this to hide menu for a specific route.
+  </li>
+  <li>
+    <strong>authRoute</strong>: Use this to let user visit the auth routes without sending them to not authorized or
+    login.
+  </li>
+  <li>
+    <strong>publicRoute</strong>: Use this to let any user visit this route.
+  </li>
+</ul>
+
+### Route Protection (ACL)
+
+---
+
+<p className='mb-5'>
+  You will learn how to add route protection for particular route in <a href='/docs/development/acl'>Access Control</a>{' '}
+  page.
+</p>
+
+### Fallback
+
+---
+
+<p>
+  In <code>Router.js</code> in <code>ResolveRoutes</code> we have passed <code>fallback=null</code>
+</p>
+<p>If you want a fallback for your content then feel free to change fallback to your loader.</p>
+<p>
+  We have also created a content loader and imported it in <code>Router.js</code> under custom components comment you
+  can uncomment it and use it if you want.
+</p>

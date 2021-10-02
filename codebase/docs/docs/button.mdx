@@ -1,0 +1,120 @@
+---
+id: button
+title: Button
+sidebar_label: Button
+slug: /components/button
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Button component is slightly modified to make it more beautiful. Let's have a glance.</p>
+
+### Flat Button
+
+---
+
+<p>
+  We have also provided flat buttons. Use <code>flat-[color]</code> with <code>color</code> prop to create a flat
+  button.
+</p>
+
+```jsx
+<Button.Ripple color='flat-primary'>Primary</Button.Ripple>
+<Button.Ripple color='flat-secondary'>Secondary</Button.Ripple>
+<Button.Ripple color='flat-success'>Success</Button.Ripple>
+<Button.Ripple color='flat-danger'>Danger</Button.Ripple>
+<Button.Ripple color='flat-warning'>Warning</Button.Ripple>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/button-flat.jpg')} />
+
+### Gradient Button
+
+---
+
+<p>
+  We have also provided gradient buttons. Use <code>gradient-[color]</code> with <code>color</code> prop to create a
+  gradient button.
+</p>
+
+```jsx
+<Button.Ripple color='gradient-primary'>Primary</Button.Ripple>
+<Button.Ripple color='gradient-secondary'>Secondary</Button.Ripple>
+<Button.Ripple color='gradient-success'>Success</Button.Ripple>
+<Button.Ripple color='gradient-danger'>Danger</Button.Ripple>
+<Button.Ripple color='gradient-warning'>Warning</Button.Ripple>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/button-gradient.jpg')} />
+
+### Gradient Button
+
+---
+
+<p>
+  We have also provided relief buttons. Use <code>relief-[color]</code> with <code>color</code> prop to create a relief
+  button.
+</p>
+
+```jsx
+<Button.Ripple color='relief-primary'>Primary</Button.Ripple>
+<Button.Ripple color='relief-secondary'>Secondary</Button.Ripple>
+<Button.Ripple color='relief-success'>Success</Button.Ripple>
+<Button.Ripple color='relief-danger'>Danger</Button.Ripple>
+<Button.Ripple color='relief-warning'>Warning</Button.Ripple>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/button-relief.jpg')} />
+
+### Icon Only
+
+---
+
+<p>
+  You can only use <code>.btn-icon</code> when you only want icon in your button.
+</p>
+
+```jsx
+<Button.Ripple className='btn-icon' outline color='primary'>
+  <Search size={16} />
+</Button.Ripple>
+<Button.Ripple className='btn-icon' color='warning'>
+  <Inbox size={16} />
+</Button.Ripple>
+<Button.Ripple className='btn-icon' color='flat-success'>
+  <Camera size={16} />
+</Button.Ripple>
+<Button.Ripple className='btn-icon' outline color='primary' disabled>
+  <Search size={16} />
+</Button.Ripple>
+<div className='rounded-circle overflow-hidden'>
+  <Button.Ripple className='btn-icon rounded-circle' outline color='primary'>
+    <Search size={16} />
+  </Button.Ripple>
+</div>
+<div className='rounded-circle overflow-hidden'>
+  <Button.Ripple className='btn-icon rounded-circle' color='warning'>
+    <Inbox size={16} />
+  </Button.Ripple>
+</div>
+<div className='rounded-circle overflow-hidden'>
+  <Button.Ripple className='btn-icon rounded-circle' color='flat-success'>
+    <Camera size={16} />
+  </Button.Ripple>
+</div>
+<div className='rounded-circle overflow-hidden'>
+  <Button.Ripple className='btn-icon rounded-circle' outline color='primary' disabled>
+    <Search size={16} />
+  </Button.Ripple>
+</div>
+```
+
+<p className='my-4'>Result</p>
+
+<img className='rounded border' src={useBaseUrl('img/button-icons.png')} />

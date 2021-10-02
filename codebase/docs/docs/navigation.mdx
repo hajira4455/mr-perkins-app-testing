@@ -1,0 +1,155 @@
+---
+id: navigation
+title: Navigation
+sidebar_label: Navigation
+slug: /development/navigation
+---
+
+<p>In this page you will find how to add/update navigation menu items.</p>
+
+### Vertical Navigation Menu
+
+---
+
+<p className='mb-5'>
+  To update the vertical navigation menu items, update <code>src/navigation/vertical/index.js</code> file. We just
+  created different files for different sections so we can find items easily. You can follow the same or just write the
+  all the items in <code>index.js</code> file.
+</p>
+
+<h5 className='mb-3'>Header</h5>
+<p>
+  You can create header using simple object with single property <code>header</code>:
+</p>
+
+```js
+{
+  header: 'Apps & Pages'
+}
+```
+
+<p className='mt-3 mb-5'>
+  This will create header section and will handle i18n. Value of header property will be used as key for i18n.
+</p>
+
+### Navigation Menu Link
+
+---
+
+<p>This will be the route link. For creating link follow below object structure:</p>
+
+```jsx
+{
+  id: 'email',
+  title: 'Email',
+  icon: <Mail size={20} />,
+  navLink: '/apps/email'
+}
+```
+
+<p>Let's understand what each property represents:</p>
+
+<ul className='pl-3 mb-3'>
+  <li>
+    <code>id</code> is id of menu item
+  </li>
+  <li>
+    <code>title</code> is title (rendered text) of this menu item. This will be key for i18n
+  </li>
+  <li>
+    <code>icon</code> is menu item icon
+  </li>
+  <li>
+    <code>navLink</code> is menu item URL
+  </li>
+</ul>
+
+<p>You can also create link for external sites & open them in new tab:</p>
+
+```jsx
+{
+  id: 'raiseSupport',
+  title: 'Raise Support',
+  icon: <LifeBuoy size={20} />,
+  externalLink: true,
+  newTab: true,
+  navLink: 'https://pixinvent.ticksy.com/'
+}
+```
+
+<p className='my-3'>Besides this feature, you can also add tag/badge to your link:</p>
+
+```jsx
+{
+  id: 'analyticsDash',
+  title: 'Analytics',
+  icon: <Home size={20} />,
+  navLink: '/dashboard/analytics',
+  badge: 'light-warning',
+  badgeText: '2',
+}
+```
+
+<p className='my-3'>
+  There's also way to disable certain link if you don't want to allow navigation, just use <code>disable</code> property
+  and set it to <code>true</code>.
+</p>
+
+```jsx
+{
+  id: 'disabledMenu',
+  title: 'Disabled Menu',
+  icon: <EyeOff size={20} />,
+  navLink: '#',
+  disabled: true
+}
+```
+
+### Navigation Menu Group
+
+<p>For navigation menu group you can use below object:</p>
+
+```jsx
+{
+  id: 'dashboards',
+  title: 'Dashboards',
+  icon: <Home size={20} />,
+  badge: 'light-warning',
+  badgeText: '2',
+  children: [
+    // This is array of menu items or menu groups
+    // NOTE: You can't use menu header as children
+  ]
+}
+```
+
+<p className='mt-3'>Let's understand what each property represents:</p>
+
+<ul className='pl-3 mb-3'>
+  <li>
+    <code>id</code> is id of menu group.
+  </li>
+  <li>
+    <code>title</code> is title of that group and it is key for i18n as well.
+  </li>
+  <li>
+    <code>icon</code> is menu group icon
+  </li>
+  <li>
+    <code>children</code> is group children. It can have menu items or menu groups as children.
+  </li>
+</ul>
+
+### Horizontal Navigation Menu
+
+<p>
+  To update horizontal navigation menu items, update <code>src/navigation/horizontal/index.js</code> file.
+</p>
+<p className='mb-5'>Everything else is same as vertical menu</p>
+
+### Adding ACL
+
+<p>
+  You will learn how to add route protection for particular route in <a href='/docs/development/acl'>Access Control</a>{' '}
+  page.
+</p>

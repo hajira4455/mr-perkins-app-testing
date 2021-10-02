@@ -1,0 +1,73 @@
+---
+id: badge
+title: Badge
+sidebar_label: Badge
+slug: /components/badge
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>Badge component is slightly modified to make it more beautiful. Let's have a glance.</p>
+
+### Badge Light Color
+
+---
+
+<p>
+  We have added light background color badges in our template. You have to pass <code>light-[color]</code> value to{' '}
+  <code>color</code> prop.
+</p>
+
+```jsx
+  <Badge color='light-primary'>Primary</Badge>
+  <Badge color='light-secondary'>Secondary</Badge>
+  <Badge color='light-success'>Success</Badge>
+  <Badge color='light-danger'>Danger</Badge>
+  <Badge color='light-warning'>Warning</Badge>
+  <Badge color='light-info'>Info</Badge>
+  <Badge color='light-dark'>Dark</Badge>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/badge-light.jpg')} />
+
+### Badge Glow
+
+---
+
+<p>
+  You can add shadow with badges. You have to use custom class <code>badge-glow</code>.
+</p>
+
+```jsx
+<Badge color='primary' className='badge-glow'>Primary</Badge>
+<Badge color='secondary' className='badge-glow'>Secondary</Badge>
+<Badge color='success' className='badge-glow'>Success</Badge>
+<Badge color='danger' className='badge-glow'>Danger</Badge>
+<Badge color='warning' className='badge-glow'>Warning</Badge>
+<Badge color='info' className='badge-glow'>Info</Badge>
+<Badge color='dark' className='badge-glow'>Dark</Badge>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border mb-5' src={useBaseUrl('img/badge-glow.jpg')} />
+
+### Block Badge
+
+---
+
+<p>
+  Use <code>.d-block</code> class with <code>&lt;Badge&gt;</code>, to display badge as a block element.
+</p>
+
+```jsx
+<Badge color='primary' className='d-block'>
+  Primary
+</Badge>
+```
+
+<p className='my-4'>Result:</p>
+
+<img className='rounded border' src={useBaseUrl('img/badge-block.jpg')} />

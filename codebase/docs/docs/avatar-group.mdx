@@ -1,0 +1,70 @@
+---
+id: avatar-group
+title: Avatar Group
+sidebar_label: Avatar Group
+slug: /custom-components/avatar-group
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>
+  Often you need to add an user's avatar group to your app. In order to make this we have created custom avatar group
+  component. Let's have a glance.
+</p>
+
+<p>
+  You can check all of the collapse demos from{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/avatar' target='_blank'>
+    here
+  </a>
+</p>
+
+### Basic
+
+---
+
+<p>
+  Creating an avatar is easy all you have to do is pass <code>data</code> array prop
+</p>
+
+```jsx
+
+const data = [
+  {
+    img: require('@src/assets/images/portrait/small/avatar-s-5.jpg').default,
+    // Any other avatar prop will work with group add them here
+  },
+...
+]
+
+<AvatarGroup data={data} />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-group.png')} />
+
+### Tooltip
+
+---
+
+<p>
+  Use <code>title</code> to add Tooltips to avatar group.
+</p>
+
+```jsx
+
+const data = [
+  {
+    title: 'Julee Rossignol',
+    img: require('@src/assets/images/portrait/small/avatar-s-5.jpg').default
+  },
+...
+]
+
+<AvatarGroup data={data} />
+```
+
+<p className='my-4'>Result</p>
+
+<img className='border rounded mb-5' src={useBaseUrl('img/avatar-group.png')} />

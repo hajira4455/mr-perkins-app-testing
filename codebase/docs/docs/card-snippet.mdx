@@ -1,0 +1,82 @@
+---
+id: card-snippet
+title: Card Snippet
+sidebar_label: Card Snippet
+slug: /custom-components/card-snippet
+---
+
+import { Table } from 'reactstrap'
+
+<p>
+  <code>&lt;CardSnippet&gt;</code> component is used just for <strong>demo purposes</strong>. We use this component to
+  show demo and code snippet of demo in single card. <strong>You don't have to use this component</strong>.
+</p>
+
+### Default
+
+---
+
+<p>It has code slot for displaying code and it can be viewed by clicking on code icon on right top corner of card.</p>
+
+```jsx
+<Card title='Default' code={defaultAlert}>
+  ...
+</Card>
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Card title.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>code</td>
+      <td>node</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Code to render.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>iconCode</td>
+      <td>node</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Show code icon.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>noBody</td>
+      <td>boolean</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Use this prop if you don't want to render your content inside card body</p>
+      </td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Card className.</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

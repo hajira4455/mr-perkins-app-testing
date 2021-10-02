@@ -1,0 +1,134 @@
+---
+id: card-actions
+title: Card Actions
+sidebar_label: Card Actions
+slug: /custom-components/card-actions
+---
+
+import { Table, Alert } from 'reactstrap'
+
+<p>
+  Use <code>&lt;CardActions&gt;</code> component to create card with <code>collapse</code>, <code>refresh</code> and{' '}
+  <code>close</code> actions.
+</p>
+
+### Default
+
+---
+
+<Alert className='my-4' color='warning'>
+  <h4 className='alert-heading'>Warning</h4>
+  <div className='alert-body'>
+    As refresh action is used for async data fetching, you'll use <code>endLoading</code> function to false once you are
+    done with fetching data.
+  </div>
+</Alert>
+
+```jsx
+import CardAction from '@components/card-actions'
+
+const actions = () => (
+  <CardAction
+    title='Card Actions'
+    actions={['collapse', 'reload', 'remove']}
+    endReload={endLoading => {
+      setTimeout(() => endLoading(), 2000)
+    }}
+  >
+    ...
+  </CardAction>
+)
+```
+
+<p className='my-4'>
+  You can check actions actions demo on{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/cards/action' target='_blank'>
+    this
+  </a>{' '}
+  page.
+</p>
+
+### Specific Action
+
+---
+
+<p>
+  You can also use only specific action if you don't want to use all actions. Just pass the name of action with{' '}
+  <code>action </code>
+  prop as a string and you will get that specific action.
+</p>
+
+```jsx
+import CardAction from '@components/card-actions'
+
+const actions = () => (
+  <CardAction title='Collapse' actions='collapse'>
+    ...
+  </CardAction>
+)
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>title</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Card title.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>actions</td>
+      <td>array or string</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Use this prop to define actions</p>
+      </td>
+    </tr>
+    <tr>
+      <td>endReload</td>
+      <td>function</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>Use this prop to end reload once you get your data</p>
+      </td>
+    </tr>
+    <tr>
+      <td>collapseIcon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Use this prop to change collapse action icon</p>
+      </td>
+    </tr>
+    <tr>
+      <td>removeIcon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Use this prop to change remove action icon</p>
+      </td>
+    </tr>
+    <tr>
+      <td>reloadIcon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Use this prop to change reload action icon</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

@@ -1,0 +1,136 @@
+---
+id: redux
+title: Redux
+sidebar_label: Redux
+slug: /development/redux
+---
+
+<p>In this page you will understand usage of Redux in our template</p>>
+
+### Overview
+
+---
+
+<p>
+  Our template uses <a href='https://react-redux.js.org/'>react-redux</a> to bind the react with redux. Store
+  configurations are located in <code>@src/redux</code>.
+</p>
+
+<p>
+  The globally used <code>actions</code> & <code>reducers</code> are in <code>@src/redux</code>.
+</p>
+
+<p>
+  The Component specific <code>actions</code> & <code>reducers</code> are located in the <code>@src/view/</code> folder.
+  Check out <code>@src/views/apps/email/store</code> for more information.
+</p>
+
+### Store Actions & reducers
+
+---
+
+<ul className='pl-3'>
+  <li>
+    <strong>layout</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is common and you can say general app state. This module handles whole app wise state. You can find
+  its actions in: <code>src/redux/actions/layout</code> & You can find its reducers in:{' '}
+  <code>src/redux/reducers/layout</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>auth</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app authentication. You can find its actions in: <code>src/redux/actions/auth</code> &
+  You can find its reducers in: <code>src/redux/reducers/auth</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>navbar</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app navbar search & bookmarks functions. You can find its actions in:{' '}
+  <code>src/redux/actions/navbar</code> & You can find its reducers in: <code>src/redux/reducers/navbar</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>calendar</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app calendar. You can find its actions in:{' '}
+  <code>src/views/apps/calendar/actions/index.js</code> it contains actions for fetching & updating data & You can find
+  its reducers in: <code>src/views/apps/calendar/reducers/index.js</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>chat</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app chat. You can find its actions in: <code>src/views/apps/chat/actions/index.js</code>{' '}
+  it contains actions for fetching & updating data & You can find its reducers in:{' '}
+  <code>src/views/apps/chat/reducers/index.js</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>ecommerce</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app ecommerce. You can find its actions in:{' '}
+  <code>src/views/apps/ecommerce/actions/index.js</code> it contains actions for fetching & updating data & You can find
+  its reducers in: <code>src/views/apps/ecommerce/reducers/index.js</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>invoice</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app invoice. You can find its actions in:{' '}
+  <code>src/views/apps/invoice/actions/index.js</code> it contains actions for fetching & updating data & You can find
+  its reducers in: <code>src/views/apps/invoice/reducers/index.js</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>todo</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app todo. You can find its actions in: <code>src/views/apps/todo/actions/index.js</code>{' '}
+  it contains actions for fetching & updating data & You can find its reducers in:{' '}
+  <code>src/views/apps/todo/reducers/index.js</code>
+</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>users</strong>
+  </li>
+</ul>
+
+<p>
+  This store module is handles app users. You can find its actions in:{' '}
+  <code>src/views/apps/users/actions/index.js</code> it contains actions for fetching & updating data & You can find its
+  reducers in: <code>src/views/apps/users/reducers/index.js</code>
+</p>

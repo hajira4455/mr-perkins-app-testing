@@ -1,0 +1,204 @@
+---
+id: statistics-card
+title: Statistics Card
+sidebar_label: Statistics Card
+slug: /custom-components/statistics-card
+---
+
+import useBaseUrl from '@docusaurus/useBaseUrl'
+
+<p>This contains 4 components with different layout/UI. Let's have a glance.</p>
+
+### Statistics Card Horizontal
+
+---
+
+```jsx
+import StatsHorizontal from '@components/widgets/stats/StatsHorizontal'
+
+const Component = () => <StatsHorizontal icon={<Cpu size={21} />} color='primary' stats='86%' statTitle='CPU Usage' />
+```
+
+<p className='my-3'>Result:</p>
+
+<img className='rounded border mb-3' src={useBaseUrl('img/stats-card-horizontal.jpg')} />
+
+<p>
+  <code>&lt;StatsHorizontal&gt;</code> component renders content in two col and single row.
+</p>
+
+<p>Below is props supported by this component:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <strong>icon:</strong> stats icon
+  </li>
+  <li>
+    <strong>color:</strong> color variant
+  </li>
+  <li>
+    <strong>stats:</strong> stats to show
+  </li>
+  <li>
+    <strong>statTitle:</strong> stats title
+  </li>
+  <li>
+    <strong>className:</strong> card class
+  </li>
+</ul>
+
+### Statistics Card Vertical
+
+---
+
+```jsx
+import StatsHorizontal from '@components/widgets/stats/StatsVertical'
+
+const Component = () => <StatsVertical icon={<Eye size={21} />} color='info' stats='36.9k' statTitle='Views' />
+```
+
+<p className='my-3'>Result:</p>
+
+<img className='rounded border mb-3' src={useBaseUrl('img/stats-card-vertical.jpg')} />
+
+<p>
+  <code>&lt;StatsVertical&gt;</code> component renders content in two col and single row.
+</p>
+
+<p>Below is props supported by this component:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <strong>icon:</strong> stats icon
+  </li>
+  <li>
+    <strong>color:</strong> color variant
+  </li>
+  <li>
+    <strong>stats:</strong> stats to show
+  </li>
+  <li>
+    <strong>statTitle:</strong> stats title
+  </li>
+  <li>
+    <strong>className:</strong> card class
+  </li>
+</ul>
+
+### Statistics Card With Line Chart
+
+---
+
+<p>
+  <code>&lt;StatsWithLineChart&gt;</code> component renders content with line chart. It uses apex charts for chart.
+</p>
+
+```jsx
+import StatsWithLineChart from '@components/widgets/stats/StatsWithLineChart'
+
+const Component = () => (
+  <StatsWithLineChart
+    icon={<Monitor size={21} />}
+    color='primary'
+    stats='78.9k'
+    statTitle='Site Traffic'
+    series={data.series}
+    type='line'
+  />
+)
+```
+
+<p className='my-3'>Result:</p>
+
+<img className='rounded border mb-3' src={useBaseUrl('img/stats-card-with-line-chart.png')} />
+
+<p>Below is props supported by this component:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <strong>icon:</strong> stats icon
+  </li>
+  <li>
+    <strong>color:</strong> color variant
+  </li>
+  <li>
+    <strong>stats:</strong> stats to show
+  </li>
+  <li>
+    <strong>statTitle:</strong> stats title
+  </li>
+  <li>
+    <strong>className:</strong> card class
+  </li>
+  <li>
+    <strong>options:</strong> chart options
+  </li>
+  <li>
+    <strong>series:</strong> chart series
+  </li>
+  <li>
+    <strong>type:</strong> chart type
+  </li>
+  <li>
+    <strong>height:</strong> chart height
+  </li>
+</ul>
+
+### Statistics Card With Area Chart
+
+---
+
+<p>
+  <code>&lt;StatsWithAreaChart&gt;</code> component renders content with line chart. It uses apex charts for chart.
+</p>
+
+```jsx
+import StatsWithAreaChart from '@components/widgets/stats/StatsWithAreaChart'
+
+const Component = () => (
+  <StatsWithAreaChart
+    icon={<Users size={21} />}
+    color='primary'
+    stats={kFormatter(data.analyticsData.subscribers)}
+    statTitle='Subscribers Gained'
+    series={data.series}
+    type='area'
+  />
+)
+```
+
+<p className='my-3'>Result:</p>
+
+<img className='rounded border mb-3' src={useBaseUrl('img/stats-card-with-area-chart.png')} />
+
+<p>Below is props supported by this component:</p>
+
+<ul className='pl-3'>
+  <li>
+    <strong>icon:</strong> stats icon
+  </li>
+  <li>
+    <strong>color:</strong> color variant
+  </li>
+  <li>
+    <strong>stats:</strong> stats to show
+  </li>
+  <li>
+    <strong>statTitle:</strong> stats title
+  </li>
+  <li>
+    <strong>className:</strong> card class
+  </li>
+  <li>
+    <strong>options:</strong> chart options
+  </li>
+  <li>
+    <strong>series:</strong> chart series
+  </li>
+  <li>
+    <strong>type:</strong> chart type
+  </li>
+  <li>
+    <strong>height:</strong> chart height
+  </li>
+</ul>

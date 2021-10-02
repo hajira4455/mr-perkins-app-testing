@@ -1,0 +1,124 @@
+---
+id: block-ui
+title: Block UI
+sidebar_label: Block UI
+slug: /custom-components/block-ui
+---
+
+import { Table } from 'reactstrap'
+
+<p>We've created a custom block ui component. Let's have a glance.</p>
+
+### Basic
+
+---
+
+<p>
+  Creating a ui loader is easy, all you have to do is wrap your component with it and pass <code>blocking</code> prop
+</p>
+
+```jsx
+import UILoader from '@components/ui-loader'
+
+const component = () => {
+  const [block, setBlock] = useState(false)
+
+  const handleBlock = () => {
+    setBlock(true)
+
+    setTimeout(() => {
+      setBlock(false)
+    }, 3000)
+  }
+
+  return <UILoader blocking={block}>...</UILoader>
+}
+```
+
+<p className='my-4'>
+  You can check UI loader actions demo on{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/blockui' target='_blank'>
+    this
+  </a>{' '}
+  page.
+</p>
+
+### Custom Loader
+
+---
+
+<p>
+  Use <code>loader</code> prop to change loading spinner.
+</p>
+
+```jsx
+import UILoader from '@components/ui-loader'
+import Spinner from '@components/spinner/Loading-spinner'
+
+const component = () => {
+  const [block, setBlock] = useState(false)
+
+  const handleBlock = () => {
+    setBlock(true)
+
+    setTimeout(() => {
+      setBlock(false)
+    }, 3000)
+  }
+
+  return (
+    <UILoader blocking={block} loader={<Spinner />}>
+      ...
+    </UILoader>
+  )
+}
+```
+
+### Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>blocking</td>
+      <td>bool</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>To show the loader.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>loader</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Custom loader to show.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>overlayColor</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Loading overlay color.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>tag</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Ui loader tag name.</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

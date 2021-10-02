@@ -1,0 +1,265 @@
+---
+id: form-wizard
+title: Form Wizard
+sidebar_label: Form Wizard
+slug: /components/form-wizard
+---
+
+import { Table } from 'reactstrap'
+
+<p>
+  We've used{' '}
+  <a href='https://github.com/Johann-S/bs-stepper' target='_blank'>
+    bs-stepper
+  </a>{' '}
+  for Form Wizard & Customized it to make it easier for you to use.
+</p>
+
+### Overview
+
+---
+
+<p>
+  You can find the customized wizard component is <code>src/@core/components</code>
+</p>
+
+<p>Let's look at the required props you'll need to create a wizard:</p>
+
+<ul className='pl-3 mb-5'>
+  <li>
+    <strong>ref:</strong> this is required to initialize the wizard
+  </li>
+  <li>
+    <strong>steps:</strong> this should be an array of object you'll find the object properties below.{' '}
+  </li>
+</ul>
+
+### Steps
+
+---
+
+<p>You'll need steps as an array of object for wizard to work properly.</p>
+
+```jsx
+const steps = [
+  {
+    id: 'account-details',
+    title: 'Account Details',
+    subtitle: 'Enter Your Account Details.',
+    content: <AccountDetails stepper={stepper} type='wizard-horizontal' />
+  }
+]
+```
+
+<p className='my-4'>The object properties are listed below:</p>
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>id</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>
+        <p>Id is required for wizard step so it can recognize the content of current tab. It should be a string.</p>
+        <p className='mb-0'>
+          For example if your tab name is Account Details then id could be <code>account-details</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>title</td>
+      <td>string</td>
+      <td>yes</td>
+      <td>Your tab title</td>
+    </tr>
+    <tr>
+      <td>subtitle</td>
+      <td>string</td>
+      <td>no</td>
+      <td>Your tab subtitle</td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>any</td>
+      <td>no</td>
+      <td>Icon is optional. If you don't pass an icon wizard will render numbers.</td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>any</td>
+      <td>yes</td>
+      <td>Your tab content</td>
+    </tr>
+  </tbody>
+</Table>
+
+### Horizontal Wizard
+
+---
+
+<p>
+  Creating a wizard is all you have to do is pass <code>ref</code> & <code>steps</code> props to wizard
+</p>
+
+```jsx title="WizardHorizontal.js"
+import { useRef, useState } from 'react'
+import Wizard from '@components/wizard'
+
+const WizardHorizontal = () => {
+  const [stepper, setStepper] = useState(null)
+  const ref = useRef(null)
+
+  const steps = [...]
+
+  return <Wizard instance={el => setStepper(el)} ref={ref} steps={steps} />
+}
+```
+
+### Vertical Wizard
+
+---
+
+<p>
+  Use prop <code>type='vertical'</code> to change wizard type.
+</p>
+
+```jsx title="WizardHorizontal.js"
+import { useRef, useState } from 'react'
+import Wizard from '@components/wizard'
+
+const WizardHorizontal = () => {
+  const [stepper, setStepper] = useState(null)
+  const ref = useRef(null)
+
+  const steps = [...]
+
+  return <Wizard type='vertical' instance={el => setStepper(el)} ref={ref} steps={steps} />
+}
+```
+
+### Modern Horizontal Wizard
+
+---
+
+<p>
+  Use prop <code>type='modern-horizontal'</code> to change wizard type to modern horizontal.
+</p>
+
+```jsx title="WizardModernHorizontal.js"
+import { useRef, useState } from 'react'
+import Wizard from '@components/wizard'
+
+const WizardModernHorizontal = () => {
+  const [stepper, setStepper] = useState(null)
+  const ref = useRef(null)
+
+  const steps = [...]
+
+  return <Wizard type='modern-horizontal' instance={el => setStepper(el)} ref={ref} steps={steps} />
+}
+```
+
+### Modern Vertical Wizard
+
+---
+
+<p>
+  Use prop <code>type='modern-vertical'</code> to change wizard type to modern vertical.
+</p>
+
+```jsx title="WizardModernVertical.js"
+import { useRef, useState } from 'react'
+import Wizard from '@components/wizard'
+
+const WizardModernVertical = () => {
+  const [stepper, setStepper] = useState(null)
+  const ref = useRef(null)
+
+  const steps = [...]
+
+  return <Wizard type='modern-vertical' instance={el => setStepper(el)} ref={ref} steps={steps} />
+}
+```
+
+<p className='my-4'>Wizard props are as follows:</p>
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>type</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>
+          Type of wizard. Default is set to <code>horizontal</code>.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>instance</td>
+      <td>function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Function to get wizard instance to control it manually.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>options</td>
+      <td>object</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>
+          bs steppers options object. You can refer this{' '}
+          <a href='https://github.com/Johann-S/bs-stepper' target='_blank'>
+            link
+          </a>{' '}
+          for options documentation.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Prop to add Stepper class</p>
+      </td>
+    </tr>
+    <tr>
+      <td>separator</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>
+          This is tab separator icon. Default separator is set to <code>RightChevron</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>steps</td>
+      <td>array of objects</td>
+      <td>yes</td>
+      <td>
+        <p className='mb-0'>
+          Steps to render. refer <a href='#steps'>this</a> for more info on steps.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

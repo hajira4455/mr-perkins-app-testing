@@ -1,0 +1,158 @@
+---
+id: timeline
+title: Timeline
+sidebar_label: Timeline
+slug: /custom-components/timeline
+---
+
+import { Table } from 'reactstrap'
+
+<p>You can use our custom timeline components to create a timeline.</p>
+
+### Basic Timeline
+
+---
+
+<p>
+  Creating a timeline is easy all you have to do is pass <code>data</code>.
+</p>
+
+<p>
+  You can check demo on{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/components/timeline' target='_blank'>
+    this
+  </a>{' '}
+  page.
+</p>
+
+```jsx
+import Timeline from '@components/timeline'
+
+const data = [
+  {
+    title: '12 Invoices have been paid',
+    content: 'Invoices have been paid to the company.',
+    meta: '12 min ago',
+    customContent: (
+      <Media>
+        <img className='mr-1' src={pdf} alt='pdf' height='23' />
+        <Media body>invoice.pdf</Media>
+      </Media>
+    )
+  }
+  ...
+]
+
+const BasicTimeline = () => <Timeline data={data} />
+```
+
+### Icons Timeline
+
+---
+
+<p>Add icon property in data to create a timeline with icon.</p>
+
+```jsx
+import Timeline from '@components/timeline'
+
+const data = [
+  {
+    title: '12 Invoices have been paid',
+    content: 'Invoices have been paid to the company.',
+    icon: <PenTool size={14} />,
+    meta: '12 min ago',
+    customContent: (
+      <Media>
+        <img className='mr-1' src={pdf} alt='pdf' height='23' />
+        <Media body>invoice.pdf</Media>
+      </Media>
+    )
+  }
+  ...
+]
+
+const IconsTimeline = () => <Timeline data={data} />
+```
+
+### Timeline Data Props
+
+---
+
+<Table responsive>
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Required</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>tag</td>
+      <td>string or function</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>
+          Timeline item html tag. Default is <code>&lt;li&gt;</code>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td>className</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item className</p>
+      </td>
+    </tr>
+    <tr>
+      <td>color</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item color</p>
+      </td>
+    </tr>
+    <tr>
+      <td>icon</td>
+      <td>element</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item icon</p>
+      </td>
+    </tr>
+    <tr>
+      <td>meta</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item meta(date or time)</p>
+      </td>
+    </tr>
+    <tr>
+      <td>metaClassName</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item meta ClassName</p>
+      </td>
+    </tr>
+    <tr>
+      <td>content</td>
+      <td>string</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item text content</p>
+      </td>
+    </tr>
+    <tr>
+      <td>customContent</td>
+      <td>any</td>
+      <td>no</td>
+      <td>
+        <p className='mb-0'>Timeline item custom content to render</p>
+      </td>
+    </tr>
+  </tbody>
+</Table>

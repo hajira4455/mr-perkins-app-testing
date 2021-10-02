@@ -1,0 +1,173 @@
+---
+id: faq
+slug: /faq
+title: FAQ
+---
+
+import { Alert } from 'reactstrap'
+
+# FAQ
+
+<Alert className='my-5' color='info'>
+  <h4 className='alert-heading'>Info</h4>
+  <div className='alert-body'>
+    <strong className='mb-2'>I can't find my issue/problem/question listed here, What to do now?</strong>
+<br />
+<br />
+If you can't find your issue/problem/question listed here then you can <a className='alert-link' href='/docs/getting-started/getting-support'>raise support</a> at our support portal. For <strong>getting your solution quickly with minimum conversation</strong>, please check out our getting support page which provides some tips on how to raise perfect support ticket to get solution quickly so our development team don't have to ask for things which takes time and waste your precious development time.
+
+  </div>
+</Alert>
+
+### npm install or yarn install errors
+
+---
+
+<p>Causes of npm install or yarn install issue can be due to various things which include:</p>
+<ul className='pl-3'>
+  <li>Missing or inappropriate dependencies like node or some other environmental issues</li>
+  <li>Dependency resolved by package manager (npm/yarn) conflict with other installed dependency</li>
+  <li>
+    The dependency of the package we use have an internal issue or that dependency has some issue with your environment
+  </li>
+  <li>
+    Package or dependency of the package requires some additional step or configuration to work in your environment
+  </li>
+  <li>Downloaded package is broken or is tampered with</li>
+</ul>
+
+<p>To resolve such installation issues:</p>
+<ul className='pl-3'>
+  <li>Please re-download fresh package/zip from ThemeForest and perform installation again.</li>
+  <li>Please make sure you are using LTS version of node which is recommended and not one with latest features.</li>
+  <li>
+    The dependency of the package we use have an internal issue or that dependency has some issue with your environment
+  </li>
+  <li>
+    run <code>yarn cache clean</code> or <code>npm cache clean</code>
+  </li>
+  <li>Try using yarn if possible (Recommended)</li>
+</ul>
+
+<p>
+  After following above steps, if you are getting the error please <a href='/docs/getting-started/getting-support'>raise support</a> at our support portal with the below
+  details:
+</p>
+<ul className='pl-3 mb-5'>
+  <li>Your OS information, Node version, npm/yarn version, Template/Package version</li>
+  <li>Mention if you are able to run fresh react project using CRA without our template</li>
+  <li>
+   Attach log file of error you are getting in your console (Provide full log)
+
+  </li>
+  <li>
+   Mention the commands you are running
+
+  </li>
+  <li>Mention If you have any other machine, are you able to run our template in that machine
+</li>
+</ul>
+
+### npm/yarn installation warnings
+
+---
+
+<p>
+  You might get some warnings while running <code>npm install</code> or <code>yarn install</code> like below:
+</p>
+
+```bash
+info fsevents@2.3.1: The platform "win32" is incompatible with this module.
+info "fsevents@2.3.1" is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.13: The platform "win32" is incompatible with this module.
+info "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+warning " > @uppy/react@1.11.2" has unmet peer dependency "@uppy/core@^1.0.0".
+warning "@uppy/react > @uppy/file-input@1.4.22" has unmet peer dependency "@uppy/core@^1.0.0".
+```
+
+<p>The warnings you are receiving while installing is from library/packages we used.</p>
+
+<p>
+  We always keep our packages up to date when we make major release. However, the writer of that package may use an
+  older dependency that is no longer maintained for backward compatibility or any other code related issue. But, that's
+  not an issue. Those packages will work fine with our template.
+</p>
+
+<p className='mb-5'>
+  If you like to try you can install these packages in fresh CRA project without our template you will still get the
+  same warnings.
+</p>
+
+### How to update logo and text
+
+---
+
+<p className='mb-5'>
+  You can update the logo and text from <code>themeConfig.js</code> file. Please update these properties{' '}
+  <code>app.appName</code> and <code>app.appLogoImage</code> to update the text and logo.
+</p>
+
+### Why we removed agGrid
+
+---
+
+<p>
+  In our latest version we have removed agGrid. This is because agGrid was not completely free as it requires another
+  purchase to get access to all of its features. Since{' '}
+  <a href='https://reactstrap.github.io/components/tables/' target='_blank'>
+    reactstrap
+  </a>{' '}
+  provides a decent table component and we have also added{' '}
+  <a href='https://github.com/jbetancur/react-data-table-component' target='_blank'>
+    react-data-table-component
+  </a>{' '}
+  (3rd party) package. it is easier to use them over agGrid and also you don't require any additional purchase.
+</p>
+
+<p className='mb-5'>
+  So, we highly recommend you use{' '}
+  <a href='https://reactstrap.github.io/components/tables/' target='_blank'>
+    reactstrap
+  </a>{' '}
+  table component for your projects over any other table.
+</p>
+
+### Why we removed Data List
+
+---
+
+<p>
+  We have removed data list in favour of more practical table UI and UX which you can find in{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/apps/user/list' target='_blank'>
+    user list
+  </a>{' '}
+  and{' '}
+  <a href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/apps/invoice/list' target='_blank'>
+    invoice list
+  </a>
+</p>
+
+<p className='mb-5'>
+  You can still keep using data list using old files but, as we have deprecated it we will not be able provide support
+  for it.
+</p>
+
+### Why we removed Auth0 & Firebase
+
+---
+
+<p>
+  We have removed both Auth0 & Firebase in our latest update as most developers prefer JWT & it was unmaintainable
+  because with every new update of firebase code would break and it got messy for developers who don't need all three
+  authentication methods.
+</p>
+
+### eCommerce Shop filter's not working
+
+---
+
+<p>
+  We're using our own data with a fake database. Filtering on small size of data is not appropriate so we disabled
+  filters and kept just UI.
+</p>

@@ -1,0 +1,40 @@
+---
+id: react-select
+title: React Select
+sidebar_label: React Select
+slug: /forms/react-select
+---
+
+<p>We've added custom react-select theme to make it look good.</p>
+
+### Theme function
+
+---
+
+<p>
+  You find the theme function in <code>src/utility/utils.js</code>
+</p>
+
+<p>
+  <p>
+    You can check demo on{' '}
+    <a
+      href='https://pixinvent.com/demo/vuexy-react-admin-dashboard-template/demo-1/forms/elements/select'
+      target='_blank'
+    >
+      this
+    </a>{' '}
+    page.
+  </p>
+</p>
+
+<p>All you have to do is import it and pass is as theme prop like show in below example.</p>
+
+```jsx
+// Theme
+import { selectThemeColors } from '@utils'
+
+const selectComponent = () => (
+  <Select options={options} className='react-select' classNamePrefix='select' theme={selectThemeColors} />
+)
+```
