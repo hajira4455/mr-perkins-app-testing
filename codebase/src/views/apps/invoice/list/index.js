@@ -46,7 +46,7 @@ const CustomHeader = ({
             </CustomInput>
           </div>
           <Button.Ripple tag={Link} to='/create_order' color='primary'>
-            Add New Record
+            Add New Record...
           </Button.Ripple>
         </Col>
         <Col
@@ -212,7 +212,8 @@ const InvoiceList = () => {
             defaultSortField='invoiceId'
             paginationDefaultPage={currentPage}
             paginationComponent={CustomPagination}
-            data={dataToRender()}
+            data={dataToRender()?.sort((a, b) => b.created.seconds - a.created.seconds)
+            }
             subHeaderComponent={
               <CustomHeader
                 value={value}

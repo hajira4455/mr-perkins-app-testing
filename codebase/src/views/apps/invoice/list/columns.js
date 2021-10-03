@@ -2,9 +2,11 @@
 import { Fragment } from 'react'
 
 import { Link } from 'react-router-dom'
-
+import moment from 'moment'
 // ** Custom Components
 import Avatar from '@components/avatar'
+
+import avatarImg from '@src/assets/images/portrait/small/avatar-s-20.jpg'
 
 // ** Store & Actions
 import { getData, deleteInvoice } from '../store/actions'
@@ -25,7 +27,7 @@ import {
   Send,
   MoreVertical,
   Download,
-  Edit,
+
   Trash,
   Copy,
   CheckCircle,
@@ -67,7 +69,7 @@ const renderClient = row => {
 }
 const dateParser = timestamp => {
   const date = new Date(timestamp * 1000)
-  return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
+  return date
 }
 const TotalCounter = products => {
   return products.reduce((a, b) => +a + +Number(b.total), 0)
@@ -81,10 +83,19 @@ const ElementTotalCounter = products => {
 const statusFinder = state => {
   if (state === 'ENTREGADO') {
     return (
-      <Fragment>
-        <Check size='20' color='green' className='mr-1' />
-        {state}
-      </Fragment>
+      <Badge color="success">{state}</Badge>
+    )
+  } else if (state === 'PROGRAMADO') {
+    return (
+      <Badge color="info">{state}</Badge>
+    )
+  } else if (state === 'PENDIENTE') {
+    return (
+      <Badge color="danger">{state}</Badge>
+    )
+  } else if (state === 'Despacho') {
+    return (
+      <Badge color="warning">{state}</Badge>
     )
   } else {
     return state
@@ -112,6 +123,7 @@ export const columns = props => {
         return (
           <div className='d-flex justify-content-left align-items-center'>
             {/* {renderClient(row)} */}
+            <Avatar img={row?.elements[0]?.productImage || avatarImg} />
             <div className='d-flex flex-column'>
               <h6 className='user-name text-truncate text-capitalize mb-0'>
                 {name.toLowerCase()}
@@ -146,10 +158,12 @@ export const columns = props => {
     {
       name: 'Issued Date',
       selector: 'dueDate',
-      sortable: false,
+      sortable: true,
       minWidth: '200px',
-      cell: row =>
-        dateParser(row.created ? row.created.seconds : row.date.seconds)
+      cell: row => (
+        moment(dateParser(row.created ? row.created.seconds : row.date.seconds)
+        ).format("Do MMM YY")
+      )
     },
     {
       name: 'Action',
