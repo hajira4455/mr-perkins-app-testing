@@ -198,6 +198,7 @@ const InvoiceList = () => {
 
   return (
     <div className='invoice-list-wrapper'>
+      {console.log("dataToRender()", dataToRender())}
       <Card>
         <div className='invoice-list-dataTable'>
           <DataTable

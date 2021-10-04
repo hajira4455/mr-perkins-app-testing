@@ -1,5 +1,4 @@
 // ** React Imports
-import { Fragment } from 'react'
 
 import { Link } from 'react-router-dom'
 import moment from 'moment'
@@ -23,19 +22,14 @@ import {
 } from 'reactstrap'
 import {
   Eye,
-  TrendingUp,
   Send,
   MoreVertical,
-  Download,
-
   Trash,
-  Copy,
   CheckCircle,
   Save,
   ArrowDownCircle,
   Info,
-  PieChart,
-  Check
+  PieChart
 } from 'react-feather'
 
 // ** Vars
@@ -96,6 +90,10 @@ const statusFinder = state => {
   } else if (state === 'Despacho') {
     return (
       <Badge color="warning">{state}</Badge>
+    )
+  } else if (state === 'EN TRANSITO') {
+    return (
+      <Badge color="light-primary">{state}</Badge>
     )
   } else {
     return state
