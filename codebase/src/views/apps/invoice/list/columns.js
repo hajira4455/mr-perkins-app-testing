@@ -29,7 +29,8 @@ import {
   Save,
   ArrowDownCircle,
   Info,
-  PieChart
+  PieChart,
+  Repeat
 } from 'react-feather'
 
 // ** Vars
@@ -109,6 +110,14 @@ export const columns = props => {
       selector: 'id',
       cell: row => <Link to={`/invoice/preview/${row.id}`}>{`#${row.id}`}</Link>
     },
+    {
+      name: 'Product',
+      minWidth: '107px',
+      selector: 'id',
+      cell: row => (
+        <Avatar img={row?.elements[0]?.productImage || avatarImg} />
+      )
+    },
 
     {
       name: 'Client',
@@ -121,7 +130,6 @@ export const columns = props => {
         return (
           <div className='d-flex justify-content-left align-items-center'>
             {/* {renderClient(row)} */}
-            <Avatar img={row?.elements[0]?.productImage || avatarImg} />
             <div className='d-flex flex-column'>
               <h6 className='user-name text-truncate text-capitalize mb-0'>
                 {name.toLowerCase()}
@@ -170,14 +178,16 @@ export const columns = props => {
       sortable: true,
       cell: row => (
         <div className='column-action d-flex align-items-center'>
-          <Send size={17} id={`send-tooltip-${row.id}`} />
-          <UncontrolledTooltip
-            placement='top'
-            target={`send-tooltip-${row.id}`}
-          >
-            Send Mail
-          </UncontrolledTooltip>
-          <Link to={`/invoice/preview/${row.id}`} id={`pw-tooltip-${row.id}`}>
+
+          <Link to={`/invoice/preview/${row.id}`} >
+            <Repeat size={17} id={`send-tooltip-${row.id}`} />
+            <UncontrolledTooltip
+              placement='top'
+              target={`send-tooltip-${row.id}`}
+            >
+              Repeat Order
+            </UncontrolledTooltip>
+          </Link><Link to={`/invoice/preview/${row.id}`} id={`pw-tooltip-${row.id}`}>
             <Eye size={17} className='mx-1' />
           </Link>
           <UncontrolledTooltip placement='top' target={`pw-tooltip-${row.id}`}>
