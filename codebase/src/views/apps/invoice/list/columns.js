@@ -43,25 +43,6 @@ const invoiceStatusObj = {
   'Partial Payment': { color: 'light-warning', icon: PieChart }
 }
 
-// ** renders client column
-const renderClient = row => {
-  const stateNum = Math.floor(Math.random() * 6),
-    states = [
-      'light-success',
-      'light-danger',
-      'light-warning',
-      'light-info',
-      'light-primary',
-      'light-secondary'
-    ],
-    color = states[stateNum]
-  return ''
-  // if (row.avatar.length) {
-  //   return <Avatar className='mr-50' img={row.avatar} width='32' height='32' />
-  // } else {
-  //   return <Avatar color={color} className='mr-50' content={row.client ? row.client.name : 'John Doe'} initials />
-  // }
-}
 const dateParser = timestamp => {
   const date = new Date(timestamp * 1000)
   return date
@@ -111,7 +92,7 @@ export const columns = props => {
       cell: row => <Link to={`/invoice/preview/${row.id}`}>{`#${parseInt(row.number)}`}</Link>
     },
     {
-      name: 'Product',
+      name: 'Producto',
       minWidth: '',
       selector: 'id',
       cell: row => (
@@ -121,7 +102,7 @@ export const columns = props => {
 
     {
       name: 'CLIENTE',
-      minWidth: '250px',
+      minWidth: '280px',
       selector: 'client',
       sortable: true,
       cell: row => {
@@ -150,7 +131,7 @@ export const columns = props => {
       minWidth: '100px',
       cell: row => (
         <span>
-          $
+        S/
           {row.products
             ? TotalCounter(row.products)
             : ElementTotalCounter(row.elements) || 0}
@@ -175,7 +156,7 @@ export const columns = props => {
       )
     },
     {
-      name: 'Action',
+      name: 'Acccion',
       minWidth: '110px',
       selector: '',
       sortable: true,

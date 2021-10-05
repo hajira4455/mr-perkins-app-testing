@@ -22,11 +22,12 @@ import '@styles/react/libs/tables/react-dataTable-component.scss'
 const CustomHeader = ({
   handleFilter,
   value,
-  handleStatusValue,
+  handleStatus,
   statusValue,
   handlePerPage,
   rowsPerPage
 }) => {
+
   return (
     <div className='invoice-list-table-header w-100 py-2'>
       <Row>
@@ -68,13 +69,16 @@ const CustomHeader = ({
             className='w-auto '
             type='select'
             value={statusValue}
-            onChange={handleStatusValue}
+            onChange={(e) => handleStatus(e.target.value)}
           >
             <option value=''>Buscar Estado</option>
-            
+
             <option value='Programado'>Programado</option>
             <option value='Pendiente'>Pendiente</option>
             <option value='Despachado'>Despachado</option>
+            {/* <option value='ENTREGADO'>ENTREGADO</option>
+            <option value='EN TRANSITO'>EN TRANSITO</option> */}
+
           </Input>
         </Col>
       </Row>
@@ -88,10 +92,31 @@ const InvoiceList = () => {
 
   const [value, setValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const [data, setData] = useState([])
   const [statusValue, setStatusValue] = useState('')
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
+  const dataToRender = () => {
+    const filters = {
+      status: statusValue,
+      q: value
+    }
+
+    const isFiltered = Object.keys(filters).some(function (k) {
+      return filters[k].length > 0
+    })
+
+    if (store.data.length > 0) {
+      return store.data
+    } else if (store.data.length === 0 && isFiltered) {
+      return []
+    } else {
+      return store.allData.slice(0, rowsPerPage)
+    }
+  }
+
   useEffect(() => {
+    setData(dataToRender())
     dispatch(
       getData({
         page: currentPage,
@@ -126,17 +151,17 @@ const InvoiceList = () => {
     setRowsPerPage(parseInt(e.target.value))
   }
 
-  const handleStatusValue = e => {
-    setStatusValue(e.target.value)
-    dispatch(
-      getData({
-        page: currentPage,
-        perPage: rowsPerPage,
-        status: e.target.value,
-        q: value
-      })
-    )
-  }
+  // const handleStatusValue = e => {
+  //   setStatusValue(e.target.value)
+  //   dispatch(
+  //     getData({
+  //       page: currentPage,
+  //       perPage: rowsPerPage,
+  //       status: e.target.value,
+  //       q: value
+  //     })
+  //   )
+  // }
 
   const handlePagination = page => {
     dispatch(
@@ -175,28 +200,14 @@ const InvoiceList = () => {
     )
   }
 
-  const dataToRender = () => {
-    const filters = {
-      status: statusValue,
-      q: value
-    }
 
-    const isFiltered = Object.keys(filters).some(function (k) {
-      return filters[k].length > 0
-    })
-
-    if (store.data.length > 0) {
-      return store.data
-    } else if (store.data.length === 0 && isFiltered) {
-      return []
-    } else {
-      return store.allData.slice(0, rowsPerPage)
-    }
+  const handleStatus = (value) => {
+    setStatusValue(value)
+    // dataToRender().filter(sin=> sin.state=== statusValue)
   }
-
   return (
     <div className='invoice-list-wrapper'>
-      {console.log("dataToRender()", dataToRender())}
+      {console.log("dataToRender()", data?.filter(sin => sin.state === statusValue))}
       <Card>
         <div className='invoice-list-dataTable'>
           <DataTable
@@ -211,7 +222,9 @@ const InvoiceList = () => {
             defaultSortField='invoiceId'
             paginationDefaultPage={currentPage}
             paginationComponent={CustomPagination}
-            data={dataToRender()?.sort((a, b) => b.created.seconds - a.created.seconds)
+            data={
+              statusValue ? data?.filter(sin => sin.state === statusValue) :
+                dataToRender()?.sort((a, b) => b.created.seconds - a.created.seconds)
             }
             subHeaderComponent={
               <CustomHeader
@@ -220,7 +233,7 @@ const InvoiceList = () => {
                 rowsPerPage={rowsPerPage}
                 handleFilter={handleFilter}
                 handlePerPage={handlePerPage}
-                handleStatusValue={handleStatusValue}
+                handleStatus={handleStatus}
               />
             }
           />

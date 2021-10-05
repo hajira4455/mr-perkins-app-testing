@@ -37,7 +37,7 @@ const CustomHeader = ({
       <Row>
         <Col xl='2' className='d-flex align-items-center p-0'>
           <div className='d-flex align-items-center w-100'>
-            <Label for='rows-per-page'>Show</Label>
+            <Label for='rows-per-page'>Ver</Label>
             <CustomInput
               className='form-control mx-50'
               type='select'
@@ -63,7 +63,7 @@ const CustomHeader = ({
           className='d-flex align-items-center justify-content-lg-end justify-content-start flex-lg-nowrap flex-wrap flex-sm-row flex-column pr-lg-1 p-0 mt-lg-0 mt-1'
         >
           <div className=''>
-            <Label for='rows-per-page'>Show</Label>
+            <Label for='rows-per-page'>Ver</Label>
             <CustomInput
               className='form-control mx-50'
               type='select'
@@ -85,7 +85,7 @@ const CustomHeader = ({
                 )
               })}
             </CustomInput>
-            <Label for='rows-per-page'>Users</Label>
+            <Label for='rows-per-page'>Usuarias</Label>
           </div>
         </Col>
         <Col
@@ -94,12 +94,13 @@ const CustomHeader = ({
         >
           <div className='d-flex align-items-center mb-sm-0 mb-1 mr-1'>
             <Label className='mb-0' for='search-invoice'>
-              Search:
+              Buscar:
             </Label>
             <Input
               id='search-invoice'
               className='ml-50 w-100'
               type='text'
+              placeholder="factura de búsqueda"
               value={searchTerm}
               onChange={e => handleFilter(e.target.value)}
             />

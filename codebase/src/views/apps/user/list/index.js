@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getData } from '../../invoice/store/actions'
 // ** Styles
 import '@styles/react/apps/app-users.scss'
-
 const UsersList = () => {
   const dispatch = useDispatch()
   const { allData } = useSelector(state => state.invoice)

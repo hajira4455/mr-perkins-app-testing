@@ -7,7 +7,7 @@ import { Fragment } from 'react'
 import { getUser, getData, deleteUser } from '../store/action'
 import { store } from '@store/storeConfig/store'
 import { useSelector } from 'react-redux'
-
+import './style.scss'
 // ** Third Party Components
 import {
   Badge,
@@ -55,7 +55,7 @@ export const columns = props => {
     }
     return 0
   }
-  function typeFinder (type) {
+  function typeFinder(type) {
     console.log(type)
     if (type === 'admin') {
       return (
@@ -81,7 +81,7 @@ export const columns = props => {
   }
   return [
     {
-      name: 'Name',
+      name: 'Nombre',
       minWidth: '150px',
       selector: 'name',
       sortable: true,
@@ -116,22 +116,23 @@ export const columns = props => {
     },
     {
       name: 'Email',
-      minWidth: '250px',
+      minWidth: '',
       selector: 'email',
       sortable: true,
       cell: row => row.email
     },
     {
       name: 'Type',
-      minWidth: '160px',
-      maxWidth: '200px',
+      minWidth: '',
+      maxWidth: '',
       selector: 'type',
       sortable: true,
       cell: row => typeFinder(row.type)
     },
     {
       name: 'Last Month Sale',
-      maxWidth: '132px',
+      maxWidth: '',
+      minWidth: '167px',
       selector: 'role',
       cell: row => (
         <Badge color={'primary'} className='badge-sm' pill>
@@ -141,7 +142,7 @@ export const columns = props => {
     },
     {
       name: 'This Month Sale',
-      maxWidth: '132px',
+      minWidth: '167px',
       selector: 'role',
       cell: row => (
         <Badge color={'success'} className='badge-sm' pill>
@@ -151,23 +152,32 @@ export const columns = props => {
     },
     {
       name: 'Category',
-      minWidth: '200px',
+      minWidth: '',
       selector: 'category',
       cell: row => (
         <span className='text-capitalize'>
           {row.category
             ? Array.from({ length: 5 }, (_, i) => i + 1).map((item, index) => {
-                return (
-                  <Star
-                    key={`star${index}`}
-                    style={{ fill: index + 1 <= row.category ? '#7367f0' : '' }}
-                    color={index < row.category ? '#7367f0' : 'gray'}
-                  />
-                )
-              })
+              return (
+                <Star
+                  key={`star${index}`}
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                    fill: index + 1 <= row.category ? '#7367f0' : ''
+                  }}
+                  color={index < row.category ? '#7367f0' : 'gray'}
+                />
+              )
+            })
             : Array.from({ length: 5 }, (_, i) => i + 1).map((item, index) => {
-                return <Star key={`starEmpty-${index}`} color='gray' />
-              })}
+              return <Star
+                style={{
+                  width: "15px",
+                  height: "15px"
+                }}
+                key={`starEmpty-${index}`} color='gray' />
+            })}
         </span>
       )
     },
