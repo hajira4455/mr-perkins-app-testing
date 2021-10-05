@@ -105,14 +105,14 @@ const statusFinder = state => {
 export const columns = props => {
   return [
     {
-      name: '#',
-      minWidth: '107px',
+      name: 'Predido',
+      minWidth: '',
       selector: 'id',
-      cell: row => <Link to={`/invoice/preview/${row.id}`}>{`#${row.id}`}</Link>
+      cell: row => <Link to={`/invoice/preview/${row.id}`}>{`#${parseInt(row.number)}`}</Link>
     },
     {
       name: 'Product',
-      minWidth: '107px',
+      minWidth: '',
       selector: 'id',
       cell: row => (
         <Avatar img={row?.elements[0]?.productImage || avatarImg} />
@@ -120,8 +120,8 @@ export const columns = props => {
     },
 
     {
-      name: 'Client',
-      minWidth: '350px',
+      name: 'CLIENTE',
+      minWidth: '250px',
       selector: 'client',
       sortable: true,
       cell: row => {
@@ -130,9 +130,12 @@ export const columns = props => {
         return (
           <div className='d-flex justify-content-left align-items-center'>
             {/* {renderClient(row)} */}
+            <Avatar color="light-primary" className='mr-50' content={row.name ? row.name : 'John Doe'} initials />
+
             <div className='d-flex flex-column'>
+
               <h6 className='user-name text-truncate text-capitalize mb-0'>
-                {name.toLowerCase()}
+                {name.toLowerCase().slice(0, 25)}
               </h6>
               <small className='text-truncate text-muted mb-0'>{email}</small>
             </div>
@@ -155,14 +158,14 @@ export const columns = props => {
       )
     },
     {
-      name: 'Status',
+      name: 'ESTADO',
       selector: 'state',
       sortable: true,
-      minWidth: '200px',
+      minWidth: '',
       cell: row => statusFinder(row.state)
     },
     {
-      name: 'Issued Date',
+      name: 'FECHA',
       selector: 'dueDate',
       sortable: true,
       minWidth: '200px',

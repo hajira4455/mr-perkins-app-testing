@@ -32,7 +32,7 @@ const CustomHeader = ({
       <Row>
         <Col lg='6' className='d-flex align-items-center px-0 px-lg-1'>
           <div className='d-flex align-items-center mr-2'>
-            <Label for='rows-per-page'>Show</Label>
+            <Label for='rows-per-page'>Ver</Label>
             <CustomInput
               className='form-control ml-50 pr-3'
               type='select'
@@ -46,7 +46,7 @@ const CustomHeader = ({
             </CustomInput>
           </div>
           <Button.Ripple tag={Link} to='/create_order' color='primary'>
-            Add New Record...
+            Realizar Pedido
           </Button.Ripple>
         </Col>
         <Col
@@ -54,14 +54,14 @@ const CustomHeader = ({
           className='actions-right d-flex align-items-center justify-content-lg-end flex-lg-nowrap flex-wrap mt-lg-0 mt-1 pr-lg-1 p-0'
         >
           <div className='d-flex align-items-center'>
-            <Label for='search-invoice'>Search</Label>
+            <Label for='search-invoice'>Buscar Pedido</Label>
             <Input
               id='search-invoice'
               className='ml-50 mr-2 w-100'
               type='text'
               value={value}
               onChange={e => handleFilter(e.target.value)}
-              placeholder='Search Invoice'
+              placeholder='Buscar'
             />
           </div>
           <Input
@@ -70,13 +70,11 @@ const CustomHeader = ({
             value={statusValue}
             onChange={handleStatusValue}
           >
-            <option value=''>Select Status</option>
-            <option value='downloaded'>Downloaded</option>
-            <option value='draft'>Draft</option>
-            <option value='paid'>Paid</option>
-            <option value='partial payment'>Partial Payment</option>
-            <option value='past due'>Past Due</option>
-            <option value='partial payment'>Partial Payment</option>
+            <option value=''>Buscar Estado</option>
+            
+            <option value='Programado'>Programado</option>
+            <option value='Pendiente'>Pendiente</option>
+            <option value='Despachado'>Despachado</option>
           </Input>
         </Col>
       </Row>
