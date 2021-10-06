@@ -51,10 +51,11 @@ const TotalCounter = products => {
   return products.reduce((a, b) => +a + +Number(b.total), 0)
 }
 const ElementTotalCounter = products => {
-  return products.reduce(
-    (a, b) => +a + +Number(b.productPrice ? b.productPrice.split('/')[1] : '1'),
-    0
-  )
+  let sum = 0.0
+  products.map(sin => {
+    sum = sum + parseFloat(sin.productPrice.split('/')[1])
+  })
+  return sum
 }
 const statusFinder = state => {
   if (state === 'ENTREGADO') {
@@ -81,7 +82,6 @@ const statusFinder = state => {
     return state
   }
 }
-
 // ** Table columns
 export const columns = props => {
   return [
@@ -102,7 +102,7 @@ export const columns = props => {
 
     {
       name: 'CLIENTE',
-      minWidth: '280px',
+      minWidth: '250px',
       selector: 'client',
       sortable: true,
       cell: row => {
@@ -131,10 +131,9 @@ export const columns = props => {
       minWidth: '100px',
       cell: row => (
         <span>
-        S/
-          {row.products
-            ? TotalCounter(row.products)
-            : ElementTotalCounter(row.elements) || 0}
+          S/{row.products
+            ? parseFloat(TotalCounter(row.products)).toFixed(2)
+            : parseFloat(ElementTotalCounter(row.elements)).toFixed(2)}
         </span>
       )
     },

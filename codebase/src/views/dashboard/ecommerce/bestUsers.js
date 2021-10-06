@@ -21,7 +21,7 @@ const BestUsersTable = ({ data, unsortedData }) => {
       .slice(0, 30)
       .map(item => {
         const found = data.filter(id => id.id === item.id)[0]
-        found.sales = item.value
+        // found.sales = item.value
         filteredData.push(found)
       })
     setDataforTable(filteredData)

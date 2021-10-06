@@ -74,10 +74,9 @@ const CustomHeader = ({
             <option value=''>Buscar Estado</option>
 
             <option value='Programado'>Programado</option>
-            <option value='Pendiente'>Pendiente</option>
-            <option value='Despachado'>Despachado</option>
-            {/* <option value='ENTREGADO'>ENTREGADO</option>
-            <option value='EN TRANSITO'>EN TRANSITO</option> */}
+            <option value='ENTREGADO'>Pendiente</option>
+            <option value='EN TRANSITO'>Despachado</option>
+
 
           </Input>
         </Col>
@@ -207,7 +206,6 @@ const InvoiceList = () => {
   }
   return (
     <div className='invoice-list-wrapper'>
-      {console.log("dataToRender()", data?.filter(sin => sin.state === statusValue))}
       <Card>
         <div className='invoice-list-dataTable'>
           <DataTable
