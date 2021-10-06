@@ -20,7 +20,7 @@ const ProductsHeader = props => {
   const sortToggleText = {
     'price-desc': 'Highest',
     'price-asc': 'Lowest',
-    featured: 'Featured'
+    featured: 'Categoría'
   }
 
   return (

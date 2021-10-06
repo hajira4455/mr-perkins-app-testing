@@ -16,17 +16,18 @@ $search-bar-height: 48px;
   .content-body {
     position: relative;
   }
+
   // To overlay in whole page
   .body-content-overlay {
     position: fixed !important;
-    z-index: 12 !important;
+    z-index : 12 !important;
   }
 
   // Shop Sidebar
   .sidebar-shop {
     margin-top: 0.85rem;
-    width: $sidebar-width;
-    z-index: 14;
+    width     : $sidebar-width;
+    z-index   : 14;
 
     // for heading
     .filter-heading {
@@ -36,7 +37,7 @@ $search-bar-height: 48px;
     // for title
     .filter-title {
       margin-bottom: 1rem;
-      margin-top: 2.5rem;
+      margin-top   : 2.5rem;
     }
 
     // Sidebar price range and categories list
@@ -50,10 +51,10 @@ $search-bar-height: 48px;
     // Sidebar brand list
     .brand-list {
       li {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
-        align-items: center;
-        margin-bottom: 0.75rem;
+        align-items    : center;
+        margin-bottom  : 0.75rem;
       }
     }
 
@@ -61,13 +62,14 @@ $search-bar-height: 48px;
     .range-slider.noUi-horizontal {
       .noUi-handle {
         .noUi-tooltip {
-          opacity: 0;
+          opacity  : 0;
           transform: translate(-50%, -15%);
 
           &:before {
             content: '$ ';
           }
         }
+
         &:active {
           .noUi-tooltip {
             opacity: 1;
@@ -78,19 +80,23 @@ $search-bar-height: 48px;
 
     // for stars in rating
     .ratings-list {
-      display: flex;
+      display        : flex;
       justify-content: space-between;
-      margin-bottom: 0.5rem;
+      margin-bottom  : 0.5rem;
+
       &:last-child {
         margin-bottom: 2.5rem;
       }
+
       ul {
         margin-bottom: 0;
+
         .ratings-list-item {
+
           svg,
           i {
-            width: 1.25rem;
-            height: 1.25rem;
+            width    : 1.25rem;
+            height   : 1.25rem;
             font-size: 1.25rem;
           }
         }
@@ -100,24 +106,25 @@ $search-bar-height: 48px;
 
   // ratings style
   .filled-star {
-    fill: $warning;
+    fill  : $warning;
     stroke: $warning;
-    color: $warning;
+    color : $warning;
   }
+
   .unfilled-star {
     stroke: $gray-100;
-    color: $gray-100;
+    color : $gray-100;
   }
 
   // E-commerce shop main content area
 
   //ecommerce header
   .ecommerce-header-items {
-    display: flex;
+    display        : flex;
     justify-content: space-between;
 
     .result-toggler {
-      display: flex;
+      display    : flex;
       align-items: center;
 
       // Sidebar toggler
@@ -131,19 +138,21 @@ $search-bar-height: 48px;
 
         .navbar-toggler-icon {
           height: auto;
+
           i,
           svg {
-            color: $body-color;
-            height: 1.5rem;
-            width: 1.5rem;
+            color    : $body-color;
+            height   : 1.5rem;
+            width    : 1.5rem;
             font-size: 1.5rem;
           }
         }
       }
+
       // Search result title
       .search-results {
         font-weight: $font-weight-bold;
-        color: $headings-color;
+        color      : $headings-color;
       }
     }
   }
@@ -151,7 +160,7 @@ $search-bar-height: 48px;
   // Product search bar
   .ecommerce-searchbar {
     .input-group {
-      box-shadow: 0 2px 8px 0 rgba($black, 0.14);
+      box-shadow   : 0 2px 8px 0 rgba($black, 0.14);
       border-radius: 0.3rem;
     }
   }
@@ -159,9 +168,9 @@ $search-bar-height: 48px;
   // Search bar
   .search-product,
   .input-group-text {
-    height: $search-bar-height;
-    border: none;
-    font-size: 0.95rem;
+    height      : $search-bar-height;
+    border      : none;
+    font-size   : 0.95rem;
     padding-left: 1.25rem;
 
     &::placeholder {
@@ -172,7 +181,7 @@ $search-bar-height: 48px;
   // main Products
   .ecommerce-card {
     &:hover {
-      transform: translateY(-5px);
+      transform : translateY(-5px);
       box-shadow: 0 4px 25px 0 rgba($black, 0.25);
     }
 
@@ -181,10 +190,11 @@ $search-bar-height: 48px;
       ul {
         margin-bottom: 0;
       }
+
       svg,
       i {
-        height: 1.143rem;
-        width: 1.143rem;
+        height   : 1.143rem;
+        width    : 1.143rem;
         font-size: 1.143rem;
       }
     }
@@ -192,13 +202,14 @@ $search-bar-height: 48px;
     // Item name
     .item-name {
       margin-bottom: 0;
+
       a {
-        font-weight: $font-weight-bolder;
-        display: -webkit-box;
+        font-weight       : $font-weight-bolder;
+        display           : -webkit-box;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow          : hidden;
+        text-overflow     : ellipsis;
       }
     }
 
@@ -212,10 +223,12 @@ $search-bar-height: 48px;
       span {
         vertical-align: text-top;
       }
+
       i,
       svg {
-        margin-right: 0.25rem;
+        margin-right  : 0.25rem;
         vertical-align: text-top;
+
         &.text-danger {
           fill: $danger;
         }
@@ -233,9 +246,14 @@ $search-bar-height: 48px;
 
   // Grid View Specific style
   .grid-view {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 2rem;
+    display              : grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap           : 2rem;
+
+    @media (max-width: 575.98px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
     &.wishlist-items {
       grid-template-columns: 1fr 1fr 1fr 1fr;
     }
@@ -246,16 +264,16 @@ $search-bar-height: 48px;
       // Item Image
       .item-img {
         padding-top: 0.5rem;
-        min-height: 15.85rem;
-        display: flex;
+        min-height : 15.85rem;
+        display    : flex;
         align-items: center;
       }
 
       // Item content wrapper
       .item-wrapper {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items    : baseline;
       }
 
       // Hiding list view items
@@ -266,12 +284,12 @@ $search-bar-height: 48px;
       }
 
       .item-options {
-        display: flex;
+        display  : flex;
         flex-wrap: wrap;
 
         .btn-cart,
         .btn-wishlist {
-          flex-grow: 1;
+          flex-grow    : 1;
           border-radius: 0;
         }
       }
@@ -282,10 +300,10 @@ $search-bar-height: 48px;
 
       // Item Description
       .item-description {
-        overflow: hidden;
-        white-space: nowrap;
+        overflow     : hidden;
+        white-space  : nowrap;
         text-overflow: ellipsis;
-        margin-top: 0.2rem;
+        margin-top   : 0.2rem;
       }
 
       .item-price {
@@ -300,60 +318,64 @@ $search-bar-height: 48px;
 
   // List View Specific style
   .list-view {
-    display: grid;
-    grid-template-columns: 1fr;
+    display              : grid;
+    grid-template-columns: 1fr 1fr;
 
     .ecommerce-card {
-      overflow: hidden;
-      display: grid;
+      overflow             : hidden;
+      display              : grid;
       grid-template-columns: 1fr 2fr 1fr;
 
       // list view image
       .item-img {
-        display: flex;
+        display        : flex;
         justify-content: center;
-        align-items: center;
-        height: 100%;
+        align-items    : center;
+        height         : 100%;
       }
 
       .card-body {
-        padding: 1.5rem 1rem;
-        border-right: 1px solid $border-color;
-        display: flex;
+        padding       : 1.5rem 1rem;
+        border-right  : 1px solid $border-color;
+        display       : flex;
         flex-direction: column;
 
         // item name and ratings order
         .item-wrapper {
           order: 2;
         }
+
         .item-name {
           order: 1;
         }
+
         // List view description
         .item-description {
-          order: 3;
-          display: -webkit-box;
+          order             : 3;
+          display           : -webkit-box;
           -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          overflow          : hidden;
+          text-overflow     : ellipsis;
         }
 
         // .item-rating,
         .item-price {
           display: none;
         }
+
         // ratings
         .item-rating {
           margin-bottom: 0.3rem;
         }
       }
+
       // Common for list-view, checkout and wishlist
       .item-company {
-        display: inline-flex;
+        display    : inline-flex;
         font-weight: $font-weight-normal;
-        margin: 0.3rem 0 0.5rem;
-        font-size: 0.875rem;
+        margin     : 0.3rem 0 0.5rem;
+        font-size  : 0.875rem;
 
         .company-name {
           font-weight: $font-weight-bolder;
@@ -363,9 +385,9 @@ $search-bar-height: 48px;
 
       // price and btn area of list view
       .item-options {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
+        padding        : 1rem;
+        display        : flex;
+        flex-direction : column;
         justify-content: center;
 
         .item-wrapper {
@@ -373,15 +395,17 @@ $search-bar-height: 48px;
 
           .item-cost {
             .item-price {
-              color: $primary;
+              color        : $primary;
               margin-bottom: 0;
             }
           }
         }
+
         // Shipping free tag
         .shipping {
           margin-top: 0.75rem;
         }
+
         // List view btn spacing
         .btn-wishlist,
         .btn-cart {
@@ -394,12 +418,14 @@ $search-bar-height: 48px;
   // for checkout-items and options
   // Remove padding from stepper header & content area
   .checkout-tab-steps {
+
     .bs-stepper-header,
     .bs-stepper-content {
       padding: 0;
-      margin: 0;
+      margin : 0;
     }
   }
+
   // Checkout items list
   .checkout-items {
     .ecommerce-card {
@@ -408,28 +434,32 @@ $search-bar-height: 48px;
           width: 200px;
         }
       }
+
       // adding order as we have updated order for shop list view
       .item-name {
         order: 0 !important;
       }
+
       .item-company,
       .item-rating {
         margin-bottom: 0.4rem !important;
       }
+
       .item-quantity {
-        display: flex;
+        display    : flex;
         align-items: center;
       }
 
       .delivery-date {
-        margin-top: 1.2rem;
+        margin-top   : 1.2rem;
         margin-bottom: 0.25rem;
       }
+
       // Item options button
       .item-options {
         .btn {
-          display: flex;
-          align-items: center;
+          display        : flex;
+          align-items    : center;
           justify-content: center;
         }
       }
@@ -441,35 +471,41 @@ $search-bar-height: 48px;
       &:focus-within {
         box-shadow: none;
       }
+
       input {
-        border: none;
+        border      : none;
         padding-left: 0;
-        color: $body-color;
-        font-weight: $font-weight-bolder;
+        color       : $body-color;
+        font-weight : $font-weight-bolder;
+
         &::placeholder {
-          color: $body-color;
+          color      : $body-color;
           font-weight: $font-weight-bolder;
         }
       }
+
       .input-group-append {
         margin: 0;
       }
+
       .input-group-text {
-        height: auto;
+        height     : auto;
         font-weight: $font-weight-bolder;
-        padding: inherit;
+        padding    : inherit;
       }
     }
+
     .price-details {
       .price-title {
-        font-weight: $font-weight-bolder;
+        font-weight  : $font-weight-bolder;
         margin-bottom: 0.75rem;
-        margin-top: 1.5rem;
+        margin-top   : 1.5rem;
       }
+
       .price-detail {
-        display: flex;
+        display        : flex;
         justify-content: space-between;
-        margin-bottom: 0.75rem;
+        margin-bottom  : 0.75rem;
 
         .detail-title {
           &.detail-total {
@@ -479,6 +515,7 @@ $search-bar-height: 48px;
       }
     }
   }
+
   .payment-type {
     .gift-card {
       cursor: pointer;
@@ -489,7 +526,7 @@ $search-bar-height: 48px;
 
   .checkout-tab-steps {
     background-color: transparent !important;
-    box-shadow: none !important;
+    box-shadow      : none !important;
 
     .bs-stepper-header {
       border: none;
@@ -499,6 +536,7 @@ $search-bar-height: 48px;
   // To hide toggler on lg and up and grid view for btn-wishlist and list view for checkout
   @include media-breakpoint-up(lg) {
     .ecommerce-header-items {
+
       // Hide toggler in > lg screen
       .shop-sidebar-toggler {
         display: none;
@@ -509,36 +547,42 @@ $search-bar-height: 48px;
     .product-checkout {
       &.list-view {
         grid-template-columns: 2fr 1fr;
-        column-gap: 2rem;
+        column-gap           : 2rem;
       }
     }
   }
 }
+
 // Media queries to change grid columns in different Screens and to hide search results below 768px
 @include media-breakpoint-down(lg) {
   .ecommerce-application {
+
     // Header item area
     .ecommerce-header-items {
       .btn-group {
         align-items: center;
+
         .btn-icon {
           padding: 0.6rem 0.736rem;
         }
       }
     }
+
     .grid-view.wishlist-items {
       grid-template-columns: 1fr 1fr 1fr;
     }
+
     // overlay style for e-commerce page
     .body-content-overlay {
       position: fixed;
-      opacity: 0;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      opacity : 0;
+      width   : 100%;
+      height  : 100%;
+      top     : 0;
+      left    : 0;
+      right   : 0;
+      bottom  : 0;
+
       &.show {
         opacity: 1;
       }
@@ -549,6 +593,7 @@ $search-bar-height: 48px;
       .body-content-overlay {
         z-index: 998 !important;
       }
+
       .sidebar-shop {
         z-index: 999 !important;
       }
@@ -560,29 +605,32 @@ $search-bar-height: 48px;
   .ecommerce-application {
     .sidebar-left {
       .sidebar {
+
         // removed radius and margin as showing sidebar in full height
         .card {
           border-radius: 0;
-          margin: 0;
+          margin       : 0;
         }
+
         // Sidebar style
         .sidebar-shop {
-          transform: translateX(-112%);
+          transform : translateX(-112%);
           transition: all 0.25s ease;
-          position: fixed;
-          top: 0;
-          left: 0;
-          height: 100%;
+          position  : fixed;
+          top       : 0;
+          left      : 0;
+          height    : 100%;
           overflow-y: scroll;
-          margin: 0;
+          margin    : 0;
 
           &.show {
             transition: all 0.25s ease;
-            transform: translateX(0);
+            transform : translateX(0);
           }
         }
       }
     }
+
     // Grid view for responsive
     .grid-view {
       grid-template-columns: 1fr 1fr;
@@ -598,18 +646,20 @@ $search-bar-height: 48px;
     }
   }
 }
+
 @include media-breakpoint-down(sm) {
   .ecommerce-application {
     .grid-view.wishlist-items {
       grid-template-columns: 1fr 1fr;
     }
+
     // List View
     .list-view {
       .ecommerce-card {
         grid-template-columns: 1fr;
 
         .item-img {
-          padding-top: 2rem;
+          padding-top   : 2rem;
           padding-bottom: 2rem;
         }
 
@@ -621,12 +671,14 @@ $search-bar-height: 48px;
     }
   }
 }
+
 @include media-breakpoint-down(xs) {
   .ecommerce-application {
+
     // Grid View
     .grid-view,
     .grid-view.wishlist-items {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
     }
   }
 }

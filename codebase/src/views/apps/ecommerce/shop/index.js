@@ -17,6 +17,7 @@ import '@styles/base/pages/app-ecommerce.scss'
 const Shop = () => {
   // ** States
   const [activeView, setActiveView] = useState('grid')
+  const [data, setData] = useState()
 
   // ** Vars
   const dispatch = useDispatch()
@@ -24,6 +25,12 @@ const Shop = () => {
 
   // ** Get products
   useEffect(() => {
+    setData(store)
+    const dubStore = { ...store }
+    dubStore.products.sort(function (a, b) {
+      return a.category - b.category
+    })
+    setData(dubStore)
     dispatch(
       getProducts({
         q: '',
@@ -33,16 +40,16 @@ const Shop = () => {
       })
     )
   }, [dispatch])
-
   return (
     <Fragment>
-      <Products
-        store={store}
-        dispatch={dispatch}
-        activeView={activeView}
-        getProducts={getProducts}
-        setActiveView={setActiveView}
-      />
+      {data && data.products &&
+        <Products
+          store={data}
+          dispatch={dispatch}
+          activeView={activeView}
+          getProducts={getProducts}
+          setActiveView={setActiveView}
+        />}
     </Fragment>
   )
 }
