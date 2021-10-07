@@ -14,13 +14,20 @@ import {
 
 const ProductsHeader = props => {
   // ** Props
-  const { activeView, setActiveView, dispatch, getProducts, store, setSidebarOpen } = props
+  const { activeView, setActiveView, dispatch, getProducts, store, setCategoryData, setSidebarOpen } = props
 
   // ** Sorting obj
   const sortToggleText = {
     'price-desc': 'Highest',
     'price-asc': 'Lowest',
     featured: 'Categoría'
+  }
+
+  const categoryHandler = (value) => {
+    const dubPro = store.products.filter(sin => sin.category === value) || []
+    setCategoryData({
+      products: dubPro, total: dubPro.length, params: store.params
+    })
   }
 
   return (
@@ -44,21 +51,27 @@ const ProductsHeader = props => {
                 <DropdownMenu>
                   <DropdownItem
                     className='w-100'
-                    onClick={() => dispatch(getProducts({ ...store.params, sortBy: 'featured' }))}
+                    onClick={() => categoryHandler(1)}
                   >
-                    Featured
+                    Mr Perkins
                   </DropdownItem>
                   <DropdownItem
                     className='w-100'
-                    onClick={() => dispatch(getProducts({ ...store.params, sortBy: 'price-asc' }))}
+                    onClick={() => categoryHandler(2)}
                   >
-                    Lowest
+                    Indie Spirit
                   </DropdownItem>
                   <DropdownItem
                     className='w-100'
-                    onClick={() => dispatch(getProducts({ ...store.params, sortBy: 'price-desc' }))}
+                    onClick={() => categoryHandler(3)}
                   >
-                    Highest
+                    Merchandising
+                  </DropdownItem>
+                  <DropdownItem
+                    className='w-100'
+                    onClick={() => categoryHandler(4)}
+                  >
+                    +Mas
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledButtonDropdown>

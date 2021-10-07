@@ -52,7 +52,7 @@ const Details = () => {
                 data={store.productDetail}
               />
             </CardBody>
-            <ItemFeatures />
+            {/* <ItemFeatures /> */}
             <CardBody>
               <RelatedProducts relatedProds={relatedProducts} />
             </CardBody>

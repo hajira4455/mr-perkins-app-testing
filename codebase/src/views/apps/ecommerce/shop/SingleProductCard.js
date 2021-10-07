@@ -29,7 +29,7 @@ const SingleProductCard = ({ item }) => {
     }
   }, [properUser])
 
-  function PriceDisplay () {
+  function PriceDisplay() {
     if (properUser && properUser.categories && details.brand) {
       const found = properUser.categories.filter(
         item => item.title === details.brand.categoryName
@@ -63,10 +63,10 @@ const SingleProductCard = ({ item }) => {
                   <li key={index} className='ratings-list-item mr-25'>
                     <Star
                       className='filled-star'
-                      // className={classnames({
-                      //   'filled-star': index + 1 <= item.rating,
-                      //   'unfilled-star': index + 1 > item.rating
-                      // })}
+                    // className={classnames({
+                    //   'filled-star': index + 1 <= item.rating,
+                    //   'unfilled-star': index + 1 > item.rating
+                    // })}
                     />
                   </li>
                 )
@@ -96,6 +96,25 @@ const SingleProductCard = ({ item }) => {
         </h6>
         <CardText className='item-description'>{item.description}</CardText>
       </CardBody>
+
+      <div className='d-flex flex-nowrap item-options text-center'>
+        <Button
+          className='d-flex align-items-center btn-wishlist remove-wishlist'
+          color='light'
+          tag={Link}
+          to={`/product-detail/${item.id}`}
+        >
+          <span>Descubrir</span>
+        </Button>
+        <Button
+          color='primary'
+          tag={Link}
+          className='d-flex align-items-center btn-cart move-cart'
+          to={`/create_order`}
+        >
+          <span>Realizar Pedido</span>
+        </Button>
+      </div>
       <div className='item-options text-center'>
         <div className='item-wrapper'>
           <div className='item-cost'>
@@ -107,19 +126,6 @@ const SingleProductCard = ({ item }) => {
             ) : null}
           </div>
         </div>
-        <Button
-          color='primary'
-          tag={Link}
-          to={`/product-detail/${item.id}`}
-          className='btn-cart move-cart'
-
-          /*eslint-disable */
-
-          /*eslint-enable */
-        >
-          <ShoppingCart className='mr-50' size={14} />
-          <span>{item.isInCart ? 'View In Cart' : 'Add To Cart'}</span>
-        </Button>
       </div>
     </Card>
   )

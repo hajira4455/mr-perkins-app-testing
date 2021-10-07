@@ -60,7 +60,7 @@ const RelatedProducts = ({ relatedProds }) => {
                   <div className='item-heading mb-2'>
                     <h5 className='text-truncate mb-0'>{slide.name}</h5>
                   </div>
-                  <div className='img-container w-50 mx-auto py-75'>
+                  <div className='img-container  mx-auto py-75'>
                     <img src={slide.img} alt='swiper 1' className='img-fluid' />
                   </div>
                   <div className='item-meta'>
@@ -74,7 +74,7 @@ const RelatedProducts = ({ relatedProds }) => {
                       })}
                     </ul>
                     <CardText className='text-primary mb-0'>
-                      ${slide.price}
+                      S/{slide.price}
                     </CardText>
                   </div>
                 </Link>

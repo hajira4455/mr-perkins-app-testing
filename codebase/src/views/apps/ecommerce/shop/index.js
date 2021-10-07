@@ -35,7 +35,7 @@ const Shop = () => {
       getProducts({
         q: '',
         sortBy: 'featured',
-        perPage: 9,
+        perPage: 100,
         page: 1
       })
     )

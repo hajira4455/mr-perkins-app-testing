@@ -1,5 +1,5 @@
 // ** React Imports
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 // ** Product components
 import ProductCards from './ProductCards'
@@ -13,7 +13,7 @@ import { Pagination, PaginationItem, PaginationLink } from 'reactstrap'
 const ProductsPage = props => {
   // ** Props
   const { activeView, setActiveView, store, getProducts, dispatch } = props
-
+  const [categoryData, setCategoryData] = useState({})
   // ** Handles pagination
   const handlePageChange = val => {
     if (val === 'next') {
@@ -64,11 +64,13 @@ const ProductsPage = props => {
       store.params.perPage * store.params.page
     )
   }
+  console.log("categoryData", categoryData)
   return (
     <div className='content-detached content-right'>
       <div className=''>
         <ProductsHeader
           store={store}
+          setCategoryData={setCategoryData}
           dispatch={dispatch}
           activeView={activeView}
           getProducts={getProducts}
@@ -86,10 +88,10 @@ const ProductsPage = props => {
               store={store}
               dispatch={dispatch}
               activeView={activeView}
-              products={setProducts(store)}
+              products={setProducts(categoryData.products ? categoryData : store)}
               getProducts={getProducts}
             />
-            <Pagination className='d-flex justify-content-center'>
+            {/* <Pagination className='d-flex justify-content-center'>
               <PaginationItem
                 disabled={store.params.page === 1}
                 className='prev-item'
@@ -116,7 +118,7 @@ const ProductsPage = props => {
                   onClick={e => e.preventDefault()}
                 ></PaginationLink>
               </PaginationItem>
-            </Pagination>
+            </Pagination> */}
           </Fragment>
         ) : (
           <div className='d-flex justify-content-center mt-2'>

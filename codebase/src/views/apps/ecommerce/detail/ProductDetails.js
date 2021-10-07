@@ -35,7 +35,7 @@ const Product = props => {
     }
   }, [properUser])
 
-  function PriceDisplay () {
+  function PriceDisplay() {
     if (properUser && properUser.categories && details.brand) {
       const found = properUser.categories.filter(
         item => item.title === details.brand.categoryName
@@ -62,6 +62,169 @@ const Product = props => {
 
   // ** Condition btn tag
   const CartBtnTag = Link
+  const textHandler = (name) => {
+    if (name === "TÓNICA LIGHT") {
+      return (
+        <p>
+          Es un agua tónica de 34 calorías por botella. Ligera y fresca, acompaña perfectamente a los mejores destilados resaltando sus aromas y manteniendo una burbuja pequeña y delicada.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24 <br />
+          Caja x 24 (En 4Packs) <br />
+          Fourpacks <br />
+          Unidades
+        </p>
+      )
+    }
+    if (name === "LEMONGRASS") {
+      return (
+        <p>
+          Es una bebida peruana refrescante, elaborada con un agradable sabor a hierbaluisa y un final cítrico balanceado. Disfrútala sola o acompañando a un pisco de calidad.
+          <br />
+          Presentación:
+          <br />
+          Caja x 24 <br />
+          Caja x 24 (En 4Packs) <br />
+          Fourpacks <br />
+          Unidades
+        </p>
+      )
+    }
+    if (name === "GINGER ALE") {
+      return (
+        <p>
+          Nuestra Ginger Ale es una bebida peruana que ofrece el equilibrio perfecto de jengibres frescos y un dulzor sutil, de gran aroma y perfecto picor. Disfrútala con los mejores piscos y otros destilados.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24 <br />
+          Caja x 24 (En 4Packs) <br />
+          Fourpacks <br />
+          Unidades
+        </p>
+      )
+    }
+    if (name === "TÓNICA DRY") {
+      return (
+        <p>
+          Del árbol de la quina se producen las mejores aguas tónicas del mundo. Es un agua tónica de carácter seco con dulzor reducido para que tu destilado favorito sea el protagonista de cualquier cóctel.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24 <br />
+          Caja x 24 (En 4Packs) <br />
+          Fourpacks <br />
+          Unidades <br />
+        </p>
+      )
+    }
+    if (name === "TÓNICA AMAZÓNICA") {
+      return (
+        <p>
+          La Tónica Amazónica Mr Perkins, inspirada en la rica selva amazónica, exhibe toques de Camu Camu y Pitahaya que le dan un sabor exótico y único. Combina perfecto con destilados de perfil cítricos, además de ser versátil en combinación con la mayoría de destilados de calidad.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24  <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks <br />
+          Unidades  <br />
+        </p>
+      )
+    }
+    if (name === "GINGER BEER LIGHT") {
+      return (
+        <p>
+          Con tan solo 30 calorías por botella, nuestra nueva Ginger Beer Light conserva el intenso sabor de jengibres frescos ofreciendo un equilibrio perfecto de picor y burbuja delicada.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24 <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks  <br />
+          Unidades  <br />
+        </p>
+      )
+    }
+    if (name === "TÓNICA ORIGINAL") {
+      return (
+        <p>
+          Del árbol de la Quina, originario del Perú, se producen las mejores aguas tónicas del mundo. Es así como nace Mr. Perkins, Perú-Kina, un agua tónica original, premium, natural y de calidad mundial. <br />
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24  <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks  <br />
+          Unidades  <br />
+        </p>
+      )
+    }
+    if (name === "TÓNICA BlOSSOM") {
+      return (
+        <p>
+          Del árbol de la quina; originario del Perú, se producen las mejores aguas tónicas del mundo. Es una agua de aroma y sabor frutal, con notas frutales que harán resaltar a tu destilado preferido. <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24  <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks  <br />
+          Unidades  <br />
+        </p>
+      )
+    }
+    if (name === "PINK SODA") {
+      return (
+        <p>
+          Nuestra Pink Soda es una bebida peruana elaborada con selectas toronjas que, junto con notas aromáticas de mandarina, ofrece una perfecta armonía entre ligeramente amargo y muy refrescante.
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24  <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks  <br />
+          Unidades  <br />
+        </p>
+      )
+    }
+    if (name === "GINGER BEER") {
+      return (
+        <p>
+          Nuestra Ginger Beer es una bebida elaborada con el mejor jengibre orgánico del Perú, el cual le brinda un sabor robusto y picante que a la vez es refrescante. Disfrútala sola o como protagonista en un Dark & Stormy o un Pisco Mule.<br />
+          <br />
+          <br />
+          Presentación:
+          <br />
+          <br />
+          Caja x 24  <br />
+          Caja x 24 (En 4Packs)  <br />
+          Fourpacks  <br />
+          Unidades
+        </p>
+      )
+    } else {
+      return (
+        <p></p>
+      )
+    }
+  }
+
 
   return (
     <Row className='my-2'>
@@ -99,6 +262,12 @@ const Product = props => {
           Available -<span className='text-success ml-25'>In stock</span>
         </CardText>
         <CardText>{data.detail}</CardText>
+        <CardText>
+
+          {
+            textHandler(data.name)
+          }
+        </CardText>
         <ul className='product-features list-unstyled'>
           <li>
             <DollarSign size={19} />
