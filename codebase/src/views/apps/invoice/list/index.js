@@ -72,10 +72,9 @@ const CustomHeader = ({
             onChange={(e) => handleStatus(e.target.value)}
           >
             <option value=''>Buscar Estado</option>
-
             <option value='Programado'>Programado</option>
-            <option value='ENTREGADO'>Pendiente</option>
-            <option value='EN TRANSITO'>Despachado</option>
+            <option value='ENTREGADO'>Entregado</option>
+            <option value='EN TRANSITO'>Tránsito</option>
 
 
           </Input>
