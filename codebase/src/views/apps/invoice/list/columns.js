@@ -103,6 +103,7 @@ export const columns = props => {
     {
       name: 'CLIENTE',
       minWidth: '250px',
+      maxWidth: '250px',
       selector: 'client',
       sortable: true,
       cell: row => {

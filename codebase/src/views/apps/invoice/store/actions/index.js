@@ -16,8 +16,8 @@ export const getData = params => {
         type === 'admin'
           ? await ref.get()
           : userData.id
-          ? await ref.where('userID', '==', userData.id).get()
-          : null
+            ? await ref.where('userID', '==', userData.id).get()
+            : null
       const records = []
       await data.docs.map(item => {
         const record = item.data()
@@ -39,7 +39,7 @@ export const getData = params => {
         .reverse()
       dispatch({
         type: 'GET_INVOICE_DATA',
-        data: paginateArray(filteredData, perPage, page),
+        data: paginateArray(filteredData?.sort((a, b) => b.created.seconds - a.created.seconds), perPage, page),
         allData: records,
         totalPages: records.length,
         params

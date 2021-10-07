@@ -72,7 +72,7 @@ const CustomHeader = ({
             onChange={(e) => handleStatus(e.target.value)}
           >
             <option value=''>Buscar Estado</option>
-            <option value='Programado'>Programado</option>
+            <option value='PROGRAMADO'>Programado</option>
             <option value='ENTREGADO'>Entregado</option>
             <option value='EN TRANSITO'>Tránsito</option>
 
@@ -87,7 +87,6 @@ const CustomHeader = ({
 const InvoiceList = () => {
   const dispatch = useDispatch()
   const store = useSelector(state => state.invoice)
-
   const [value, setValue] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [data, setData] = useState([])
@@ -221,7 +220,7 @@ const InvoiceList = () => {
             paginationComponent={CustomPagination}
             data={
               statusValue ? data?.filter(sin => sin.state === statusValue) :
-                dataToRender()?.sort((a, b) => b.created.seconds - a.created.seconds)
+                dataToRender()
             }
             subHeaderComponent={
               <CustomHeader
