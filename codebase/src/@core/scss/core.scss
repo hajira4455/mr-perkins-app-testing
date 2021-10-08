@@ -12,6 +12,11 @@
 // React Specific
 @import "react/index";
 
-.react-dataTable > div {
+.react-dataTable>div {
   min-height: 130px;
+}
+
+.btn-pro {
+  padding: 0.786rem 0;
+  width  : 50%;
 }

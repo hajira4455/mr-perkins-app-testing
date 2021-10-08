@@ -13,7 +13,7 @@ import {
   Label,
   Input
 } from 'reactstrap'
-import MrPerkinsLogo from '../../../../assets/images/logo/mrperkinslogo.jpeg'
+import MrPerkinsLogo from '../../../../assets/images/logo/FIRMA-01-01.png'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setInvoiceStatus } from '../store/actions'
@@ -43,13 +43,9 @@ const PreviewCard = ({ data, userData }) => {
 
   const tableRows = data.products ? data.products : data.elements
   const InvoiceOptions = [
-    'unattended',
-    'acknowledged',
-    'ready to dispatch',
-    'dispatched',
-    'partialy dispatched',
-    'not able to dispatch',
-    'ENTREGADO'
+    'PROGRAMADO',
+    'ENTREGADO',
+    'EN TRANSITO'
   ]
   const changeHandler = e => {
     setInvoiceState(e.target.value)
@@ -71,7 +67,7 @@ const PreviewCard = ({ data, userData }) => {
             <div className='logo-wrapper'>
               <img
                 src={MrPerkinsLogo}
-                style={{ width: '15rem' }}
+                style={{ width: '5rem' }}
                 alt='mr perkins'
               />
             </div>
@@ -151,8 +147,7 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      $
-                      {item.product.brand
+                      S/{item.product.brand
                         ? item.product.brand.price
                         : item.product.price}
                     </span>
@@ -162,8 +157,7 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      ${' '}
-                      {item.product.brand
+                      S/{item.product.brand
                         ? (
                             Number(item.product.brand.price) * Number(item.qty)
                           ).toFixed(2)
@@ -183,7 +177,7 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      ${item.productPrice.split('/')[1]}
+                      S/{item.productPrice.split('/')[1]}
                     </span>
                   </td>
                   <td className='py-1'>
@@ -191,9 +185,7 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      $
-                      {(
-                        Number(item.productPrice.split('/')[1]) *
+                      S/{(Number(item.productPrice.split('/')[1]) *
                         Number(item.quantity)
                       ).toFixed(2)}
                     </span>
@@ -224,8 +216,7 @@ const PreviewCard = ({ data, userData }) => {
               <div className='invoice-total-item'>
                 <p className='invoice-total-title'>Total:</p>
                 <p className='invoice-total-amount'>
-                  ${' '}
-                  {data.elements
+                  S/{data.elements
                     ? ElementsPriceTotaler(data.elements)
                     : data.products
                     ? ProductsPriceTotaler(data.products)
@@ -269,7 +260,7 @@ const PreviewCard = ({ data, userData }) => {
                     >
                       {InvoiceOptions.map(item => {
                         return (
-                          <option key={item} value={item}>
+                          <option className="px-8" key={item} value={item}>
                             {item}
                           </option>
                         )

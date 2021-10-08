@@ -97,24 +97,21 @@ const SingleProductCard = ({ item }) => {
         <CardText className='item-description'>{item.description}</CardText>
       </CardBody>
 
-      <div className='d-flex flex-nowrap item-options text-center'>
-        <Button
-          className='d-flex align-items-center btn-wishlist remove-wishlist'
-          color='light'
-          tag={Link}
+      <div className='item-options text-center'>
+        <Button className='btn-pro  remove-wishlist' color='light' tag={Link}
           to={`/product-detail/${item.id}`}
         >
           <span>Descubrir</span>
         </Button>
         <Button
+          className=' btn-pro btn-cart'
           color='primary'
-          tag={Link}
-          className='d-flex align-items-center btn-cart move-cart'
           to={`/create_order`}
         >
           <span>Realizar Pedido</span>
         </Button>
       </div>
+
       <div className='item-options text-center'>
         <div className='item-wrapper'>
           <div className='item-cost'>
