@@ -125,9 +125,7 @@ const AddCard = ({ userData }) => {
                   />
                 </InputGroup>
               </div> */}
-              {
-                console.log("auth.type", auth)
-              }
+              
               <div className='d-flex align-items-center mb-1'>
                 <span className='title'>Pedidos:</span>
                 <div

@@ -106,6 +106,7 @@ const SingleProductCard = ({ item }) => {
         <Button
           className=' btn-pro btn-cart'
           color='primary'
+          tag={Link}
           to={`/create_order`}
         >
           <span>Realizar Pedido</span>

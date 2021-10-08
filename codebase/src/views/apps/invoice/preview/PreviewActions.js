@@ -25,9 +25,11 @@ const PreviewActions = ({ id, setSendSidebarOpen, setAddPaymentOpen }) => {
         >
           Print
         </Button.Ripple> */}
-        <Button.Ripple tag={Link} to={`/apps/invoice/edit/${id}`} color='secondary' block outline className='mb-75'>
-          Edit
-        </Button.Ripple>
+        <div className="d-flex  justify-content-center ">
+          <Button.Ripple tag={Link} to={`/apps/invoice/edit/${id}`} color='secondary' block outline className='mb-75 w-75'>
+            Edit
+          </Button.Ripple>
+        </div>
         {/* <Button.Ripple color='success' block onClick={() => setAddPaymentOpen(true)}>
           Add Payment
         </Button.Ripple> */}

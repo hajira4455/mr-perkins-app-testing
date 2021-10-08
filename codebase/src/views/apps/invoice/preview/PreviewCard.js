@@ -43,9 +43,19 @@ const PreviewCard = ({ data, userData }) => {
 
   const tableRows = data.products ? data.products : data.elements
   const InvoiceOptions = [
-    'PROGRAMADO',
-    'ENTREGADO',
-    'EN TRANSITO'
+    {
+      label: 'Programado',
+      value: "PROGRAMADO"
+    },
+    {
+      label: "Entregado",
+      value: "ENTREGADO"
+    },
+    {
+      label: "En Transito",
+      value: "EN TRANSITO"
+    }
+
   ]
   const changeHandler = e => {
     setInvoiceState(e.target.value)
@@ -70,6 +80,7 @@ const PreviewCard = ({ data, userData }) => {
                 style={{ width: '5rem' }}
                 alt='mr perkins'
               />
+              <h2 class="brand-text">Mr Perkins</h2>
             </div>
             <CardText className='mb-25'>
               Office 149, 450 South Brand Brooklyn
@@ -83,7 +94,7 @@ const PreviewCard = ({ data, userData }) => {
           </div>
           <div className='mt-md-0 mt-2'>
             <h4 className='invoice-title'>
-              Invoice <span className='invoice-number'>#{data.id}</span>
+              Pedido <span className='invoice-number'>#{data.id}</span>
             </h4>
             <div className='invoice-date-wrapper'>
               <p className='invoice-date-title'>Date Issued:</p>
@@ -92,8 +103,8 @@ const PreviewCard = ({ data, userData }) => {
                   data.created
                     ? data.created.seconds
                     : data.date
-                    ? data.date.seconds
-                    : new Date()
+                      ? data.date.seconds
+                      : new Date()
                 )}
               </p>
             </div>
@@ -159,11 +170,11 @@ const PreviewCard = ({ data, userData }) => {
                     <span className='font-weight-bold'>
                       S/{item.product.brand
                         ? (
-                            Number(item.product.brand.price) * Number(item.qty)
-                          ).toFixed(2)
+                          Number(item.product.brand.price) * Number(item.qty)
+                        ).toFixed(2)
                         : (
-                            Number(item.product.price) * Number(item.qty)
-                          ).toFixed(2)}
+                          Number(item.product.price) * Number(item.qty)
+                        ).toFixed(2)}
                     </span>
                   </td>
                 </tr>
@@ -219,8 +230,8 @@ const PreviewCard = ({ data, userData }) => {
                   S/{data.elements
                     ? ElementsPriceTotaler(data.elements)
                     : data.products
-                    ? ProductsPriceTotaler(data.products)
-                    : null}
+                      ? ProductsPriceTotaler(data.products)
+                      : null}
                 </p>
               </div>
             </div>
@@ -260,15 +271,15 @@ const PreviewCard = ({ data, userData }) => {
                     >
                       {InvoiceOptions.map(item => {
                         return (
-                          <option className="px-8" key={item} value={item}>
-                            {item}
+                          <option className="px-8" key={item} value={item.value}>
+                            {item.label}
                           </option>
                         )
                       })}
                     </Input>
                   </FormGroup>
                   <Button.Ripple type='submit' color='primary'>
-                    Update
+                    Guardar
                   </Button.Ripple>
                 </Form>
               </Col>
