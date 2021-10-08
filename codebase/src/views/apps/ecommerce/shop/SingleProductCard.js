@@ -75,7 +75,7 @@ const SingleProductCard = ({ item }) => {
           </div>
           <div className='item-cost'>
             <h6 className='item-price'>
-              $ {PriceDisplay() ? PriceDisplay() : item.price}
+              S/{PriceDisplay() ? PriceDisplay() : item.price}
             </h6>
           </div>
         </div>

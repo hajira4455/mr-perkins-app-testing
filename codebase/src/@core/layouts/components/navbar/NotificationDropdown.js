@@ -69,9 +69,11 @@ const NotificationDropdown = () => {
       color: 'light-success',
       subtitle: 'Last month sales report generated',
       title: (
+
         <Media tag='p' heading>
           <span className='font-weight-bolder'>Sales report</span>&nbsp;generated
         </Media>
+
       )
     },
     {
@@ -113,16 +115,16 @@ const NotificationDropdown = () => {
                         {...(item.img
                           ? { img: item.img, imgHeight: 32, imgWidth: 32 }
                           : item.avatarContent
-                          ? {
+                            ? {
                               content: item.avatarContent,
                               color: item.color
                             }
-                          : item.avatarIcon
-                          ? {
-                              icon: item.avatarIcon,
-                              color: item.color
-                            }
-                          : null)}
+                            : item.avatarIcon
+                              ? {
+                                icon: item.avatarIcon,
+                                color: item.color
+                              }
+                              : null)}
                       />
                     </Media>
                     <Media body>

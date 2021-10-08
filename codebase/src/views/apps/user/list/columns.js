@@ -116,28 +116,28 @@ export const columns = props => {
     },
     {
       name: 'Email',
-      minWidth: '',
+      minWidth: '200px',
       selector: 'email',
       sortable: true,
       cell: row => row.email
     },
     {
       name: 'Type',
-      minWidth: '',
-      maxWidth: '',
+      minWidth: '140px',
       selector: 'type',
       sortable: true,
       cell: row => typeFinder(row.type)
     },
     {
       name: 'Last Month Sale',
-      maxWidth: '',
       minWidth: '167px',
       selector: 'role',
       cell: row => (
-        <Badge color={'primary'} className='badge-sm' pill>
-          {` ${lastMonthSales(row.id)} orders`}
-        </Badge>
+        <div className="w-100 d-flex justify-content-center">
+          <Badge color={'light-info'} className='badge-sm' pill>
+            {` ${lastMonthSales(row.id)} orders`}
+          </Badge>
+        </div>
       )
     },
     {
@@ -145,9 +145,11 @@ export const columns = props => {
       minWidth: '167px',
       selector: 'role',
       cell: row => (
-        <Badge color={'success'} className='badge-sm' pill>
-          {`${thisMonthSales(row.id)} orders`}
-        </Badge>
+        <div className="w-100 d-flex justify-content-center">
+          <Badge color={'light-success'} className='badge-sm' pill>
+            {`${thisMonthSales(row.id)} orders`}
+          </Badge>
+        </div>
       )
     },
     {

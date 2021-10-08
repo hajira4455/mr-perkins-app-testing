@@ -246,7 +246,7 @@ const Product = props => {
 
         <div className='ecommerce-details-price d-flex flex-wrap mt-1'>
           <h4 className='item-price mr-1'>
-            ${PriceDisplay() ? PriceDisplay() : data.price}
+            S/{PriceDisplay() ? PriceDisplay() : data.price}
           </h4>
           <ul className='unstyled-list list-inline'>
             {new Array(5).fill().map((listItem, index) => {
@@ -259,7 +259,7 @@ const Product = props => {
           </ul>
         </div>
         <CardText>
-          Available -<span className='text-success ml-25'>In stock</span>
+          Disponibilidad -<span className='text-success ml-25'>En stock</span>
         </CardText>
         <CardText>{data.detail}</CardText>
         <CardText>
@@ -268,12 +268,7 @@ const Product = props => {
             textHandler(data.name)
           }
         </CardText>
-        <ul className='product-features list-unstyled'>
-          <li>
-            <DollarSign size={19} />
-            <span className='text-capitalize'>Bank Transfer Method</span>
-          </li>
-        </ul>
+
         <hr />
         <div className='d-flex flex-column flex-sm-row pt-1'>
           <Button
@@ -282,22 +277,11 @@ const Product = props => {
             color='primary'
             to='/create_order'
           >
-            <ShoppingCart className='mr-50' size={14} />
-            Purchase Item
+            {/* <ShoppingCart className='mr-50' size={14} /> */}
+            Realizar Pedido
           </Button>
           {userData.type && userData.type.toLowerCase() === 'admin' && (
             <Fragment>
-              <Button
-                outline
-                className='btn-cart mr-0 mr-sm-1 mb-1 mb-sm-0'
-                color='danger'
-                onClick={() => {
-                  setModalOpened(true)
-                }}
-              >
-                <Trash2 className='mr-50' size={14} />
-                Delete Item
-              </Button>
               <Modal
                 isOpen={modalOpened}
                 toggle={() => setModalOpened(!modalOpened)}

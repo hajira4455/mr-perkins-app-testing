@@ -63,7 +63,7 @@ const RelatedProducts = ({ relatedProds }) => {
                   <div className='img-container  mx-auto py-75'>
                     <img src={slide.img} alt='swiper 1' className='img-fluid' />
                   </div>
-                  <div className='item-meta'>
+                  <div className='item-meta mt-2'>
                     <ul className='unstyled-list list-inline mb-25'>
                       {new Array(5).fill().map((listItem, index) => {
                         return (
