@@ -1,8 +1,9 @@
 // ** React Imports
 import { Link } from 'react-router-dom'
 import { Fragment } from 'react'
+import moment from 'moment'
 // ** Custom Components
-
+import Avatar from '@components/avatar'
 // ** Store & Actions
 import { getUser, getData, deleteUser } from '../store/action'
 import { store } from '@store/storeConfig/store'
@@ -29,15 +30,21 @@ import {
 
 export const columns = props => {
   const { allData } = useSelector(state => state.invoice)
+  const dateParser = timestamp => {
+    const date = new Date(timestamp * 1000)
+    return date
+  }
   const lastMonthSales = id => {
     if (allData.length > 0) {
       const filteredData = allData.filter(item => item.userID === id)
+      console.log("filteredData", filteredData)
       const lmsData = filteredData.filter(item => {
         return (
           new Date(item.created.seconds * 1000).getMonth() ===
           new Date().getMonth() - 1
         )
       })
+      console.log("lmsData", lmsData)
       return lmsData.length
     }
     return 0
@@ -56,7 +63,6 @@ export const columns = props => {
     return 0
   }
   function typeFinder(type) {
-    console.log(type)
     if (type === 'admin') {
       return (
         <Fragment>
@@ -79,15 +85,20 @@ export const columns = props => {
       )
     }
   }
+  function typeUserFinder(type) {
+    console.log(type)
+  }
   return [
     {
       name: 'Nombre',
-      minWidth: '150px',
+      minWidth: '200px',
       selector: 'name',
       sortable: true,
       cell: row => (
         <div className='d-flex justify-content-left align-items-center'>
           {/* {renderClient(row)} */}
+          <Avatar color="light-primary" className='mr-50' content={row.name ? row.name : 'John Doe'} initials />
+
           <div className='d-flex flex-column'>
             <Link
               to={`/clients/view/${row.id}`}
@@ -95,31 +106,33 @@ export const columns = props => {
               onClick={() => store.dispatch(getUser(row.id))}
             >
               <span className='font-weight-bold'>
-                {row.name
-                  ? row.name.length > 15
-                    ? `${row.name.substring(0, 15)}...`
-                    : row.name
-                  : ''}
+                {row?.name?.length > 15
+                  ? `${row.name.substring(0, 15)}...`
+                  : row.name
+                }
               </span>
             </Link>
             <small className='text-truncate text-muted mb-0'>
-              @{' '}
-              {row.businessName
-                ? row.businessName.length > 15
-                  ? `${row.businessName.substring(0, 15)}...`
-                  : row.businessName
-                : ''}
+              
+              {row.email.length > 18
+                ? `${row.email.substring(0, 18)}...`
+                : row.email
+              }
             </small>
           </div>
         </div>
       )
     },
+    
     {
-      name: 'Email',
-      minWidth: '200px',
-      selector: 'email',
+      name: 'FECHA',
+      selector: 'dueDate',
       sortable: true,
-      cell: row => row.email
+      minWidth: '130px',
+      cell: row => (
+        moment(dateParser(row.created ? row.created.seconds : row.date.seconds)
+        ).format("Do MMM YY")
+      )
     },
     {
       name: 'Type',
@@ -129,32 +142,37 @@ export const columns = props => {
       cell: row => typeFinder(row.type)
     },
     {
-      name: 'Last Month Sale',
-      minWidth: '167px',
+      name: 'Role',
+      minWidth: '',
+      selector: '',
+      sortable: false,
+      cell: row => typeUserFinder(row)
+    },
+    {
+      name: 'MES ANTERIOR',
       selector: 'role',
+      minWidth: '167px',
       cell: row => (
         <div className="w-100 d-flex justify-content-center">
-          <Badge color={'light-info'} className='badge-sm' pill>
-            {` ${lastMonthSales(row.id)} orders`}
-          </Badge>
+
+          {` S/ ${lastMonthSales(row.id)}.00`}
+
         </div>
       )
     },
     {
-      name: 'This Month Sale',
-      minWidth: '167px',
+      name: 'ESTE MES',
+     
       selector: 'role',
       cell: row => (
         <div className="w-100 d-flex justify-content-center">
-          <Badge color={'light-success'} className='badge-sm' pill>
-            {`${thisMonthSales(row.id)} orders`}
-          </Badge>
+          {`S/ ${thisMonthSales(row.id)}.00`}
         </div>
       )
     },
     {
       name: 'Category',
-      minWidth: '',
+      minWidth: '117px',
       selector: 'category',
       cell: row => (
         <span className='text-capitalize'>
