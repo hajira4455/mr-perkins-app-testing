@@ -82,22 +82,20 @@ const PreviewCard = ({ data, userData }) => {
               />
               <h2 class="brand-text">Mr Perkins</h2>
             </div>
-            <CardText className='mb-25'>
-              Office 149, 450 South Brand Brooklyn
-            </CardText>
-            <CardText className='mb-25'>
-              San Diego County, CA 91905, USA
-            </CardText>
-            <CardText className='mb-0'>
-              +1 (123) 456 7891, +44 (876) 543 2198
-            </CardText>
+            <p className='card-text mb-25'>
+              Luis Felipe Villaran 1010 - 102
+            </p>
+            <p className='card-text mb-25'>San Isidro,Lima - Peru</p>
+            <p className='card-text mb-0'>
+              +(511) 924 063 822, +(511) 982 096 494
+            </p>
           </div>
           <div className='mt-md-0 mt-2'>
             <h4 className='invoice-title'>
-              Pedido <span className='invoice-number'>#{data.id}</span>
+              Pedido <span className='invoice-number'>#{data.number}</span>
             </h4>
             <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Date Issued:</p>
+              <p className='invoice-date-title'>Fecha:</p>
               <p className='invoice-date'>
                 {dateParser(
                   data.created
@@ -110,7 +108,7 @@ const PreviewCard = ({ data, userData }) => {
             </div>
             {data.dueDate && (
               <div className='invoice-date-wrapper'>
-                <p className='invoice-date-title'>Due Date:</p>
+                <p className='invoice-date-title'>Despacho::</p>
                 <p className='invoice-date'>
                   {' '}
                   {dateParser(data.dueDate.seconds)}
@@ -118,7 +116,7 @@ const PreviewCard = ({ data, userData }) => {
               </div>
             )}
             <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Status:</p>
+              <p className='invoice-date-title'>Estado:</p>
               <p className='invoice-date'>{data.status || data.state}</p>
             </div>
           </div>

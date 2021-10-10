@@ -164,7 +164,7 @@ export const columns = props => {
       selector: 'role',
       minWidth: '167px',
       cell: row => (
-        <div className="w-100 d-flex justify-content-start">
+        <div className="w-100 d-flex justify-content-center">
 
           {` S/ ${lastMonthSales(row.id)}`}
 
@@ -176,7 +176,7 @@ export const columns = props => {
 
       selector: 'role',
       cell: row => (
-        <div className="w-100 d-flex justify-content-start">
+        <div className="w-100 d-flex justify-content-center">
           {`S/ ${thisMonthSales(row.id)}`}
         </div>
       )

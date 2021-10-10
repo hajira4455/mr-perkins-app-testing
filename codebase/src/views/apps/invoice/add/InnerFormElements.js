@@ -170,7 +170,7 @@ function InnerFormElements({
           <Col className='my-lg-0 mt-2' lg='2' sm='12'>
             <CardText className='col-title mb-md-50 mb-0'>Subtotal</CardText>
             <CardText className='mb-0'>
-              ${' '}
+              S/{' '}
               <GetPriceInNumber
                 selected={selected}
                 selectedPacking={selectedPacking}

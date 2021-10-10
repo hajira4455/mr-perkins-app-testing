@@ -63,7 +63,7 @@ const Product = props => {
   // ** Condition btn tag
   const CartBtnTag = Link
   const textHandler = (name) => {
-    if (name === "TÓNICA LIGHT") {
+    if (name === "TL") {
       return (
         <p>
           Es un agua tónica de 34 calorías por botella. Ligera y fresca, acompaña perfectamente a los mejores destilados resaltando sus aromas y manteniendo una burbuja pequeña y delicada.
@@ -79,7 +79,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "LEMONGRASS") {
+    if (name === "LG") {
       return (
         <p>
           Es una bebida peruana refrescante, elaborada con un agradable sabor a hierbaluisa y un final cítrico balanceado. Disfrútala sola o acompañando a un pisco de calidad.
@@ -93,7 +93,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "GINGER ALE") {
+    if (name === "GA") {
       return (
         <p>
           Nuestra Ginger Ale es una bebida peruana que ofrece el equilibrio perfecto de jengibres frescos y un dulzor sutil, de gran aroma y perfecto picor. Disfrútala con los mejores piscos y otros destilados.
@@ -109,7 +109,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "TÓNICA DRY") {
+    if (name === "TD") {
       return (
         <p>
           Del árbol de la quina se producen las mejores aguas tónicas del mundo. Es un agua tónica de carácter seco con dulzor reducido para que tu destilado favorito sea el protagonista de cualquier cóctel.
@@ -125,7 +125,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "TÓNICA AMAZÓNICA") {
+    if (name === "TA") {
       return (
         <p>
           La Tónica Amazónica Mr Perkins, inspirada en la rica selva amazónica, exhibe toques de Camu Camu y Pitahaya que le dan un sabor exótico y único. Combina perfecto con destilados de perfil cítricos, además de ser versátil en combinación con la mayoría de destilados de calidad.
@@ -141,7 +141,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "GINGER BEER LIGHT") {
+    if (name === "GBL") {
       return (
         <p>
           Con tan solo 30 calorías por botella, nuestra nueva Ginger Beer Light conserva el intenso sabor de jengibres frescos ofreciendo un equilibrio perfecto de picor y burbuja delicada.
@@ -157,7 +157,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "TÓNICA ORIGINAL") {
+    if (name === "TO") {
       return (
         <p>
           Del árbol de la Quina, originario del Perú, se producen las mejores aguas tónicas del mundo. Es así como nace Mr. Perkins, Perú-Kina, un agua tónica original, premium, natural y de calidad mundial. <br />
@@ -173,7 +173,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "TÓNICA BlOSSOM") {
+    if (name === "TB") {
       return (
         <p>
           Del árbol de la quina; originario del Perú, se producen las mejores aguas tónicas del mundo. Es una agua de aroma y sabor frutal, con notas frutales que harán resaltar a tu destilado preferido. <br />
@@ -187,7 +187,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "PINK SODA") {
+    if (name === "PS") {
       return (
         <p>
           Nuestra Pink Soda es una bebida peruana elaborada con selectas toronjas que, junto con notas aromáticas de mandarina, ofrece una perfecta armonía entre ligeramente amargo y muy refrescante.
@@ -203,7 +203,7 @@ const Product = props => {
         </p>
       )
     }
-    if (name === "GINGER BEER") {
+    if (name === "GB") {
       return (
         <p>
           Nuestra Ginger Beer es una bebida elaborada con el mejor jengibre orgánico del Perú, el cual le brinda un sabor robusto y picante que a la vez es refrescante. Disfrútala sola o como protagonista en un Dark & Stormy o un Pisco Mule.<br />
@@ -243,7 +243,7 @@ const Product = props => {
       </Col>
       <Col md='7' xs='12'>
         <h4>{data.name}</h4>
-
+        {console.log("data", data)}
         <div className='ecommerce-details-price d-flex flex-wrap mt-1'>
           <h4 className='item-price mr-1'>
             S/{PriceDisplay() ? PriceDisplay() : data.price}
@@ -265,7 +265,7 @@ const Product = props => {
         <CardText>
 
           {
-            textHandler(data.name)
+            textHandler(data.type)
           }
         </CardText>
 

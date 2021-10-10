@@ -19,14 +19,14 @@ function CreateInvoice (props) {
               <p className='invoice-total-title'>
                 {Forms[form].product.name} ({Forms[form].qty})
               </p>
-              <p className='invoice-total-amount'>${Forms[form].total}</p>
+              <p className='invoice-total-amount'>S/ {Forms[form].total}</p>
             </div>
           )
         })}
       <hr className='my-50' />
       <div className='invoice-total-item'>
         <p className='invoice-total-title'>Total:</p>
-        <p className='invoice-total-amount'>${getGrandTotal()}</p>
+        <p className='invoice-total-amount'>S/ {getGrandTotal()}</p>
       </div>
     </div>
   )
