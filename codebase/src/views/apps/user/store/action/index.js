@@ -17,7 +17,7 @@ export const getAllData = () => {
         })
         dispatch({
           type: 'GET_ALL_DATA',
-          data: records
+          data: records?.sort((a, b) => b.created.seconds - a.created.seconds)
         })
       })
   }

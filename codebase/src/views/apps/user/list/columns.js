@@ -37,17 +37,22 @@ export const columns = props => {
   const lastMonthSales = id => {
     if (allData.length > 0) {
       const filteredData = allData.filter(item => item.userID === id)
-      console.log("filteredData", filteredData)
       const lmsData = filteredData.filter(item => {
         return (
           new Date(item.created.seconds * 1000).getMonth() ===
           new Date().getMonth() - 1
         )
       })
-      console.log("lmsData", lmsData)
-      return lmsData.length
+
+      let sum = 0.00
+      lmsData.map((sin, ind) => {
+        sin?.elements?.forEach(single => {
+          sum = sum + parseFloat(single.productPrice.split('/')[1])
+        })
+      })
+      return parseFloat(sum).toFixed(2)
     }
-    return 0
+    return 0.00
   }
   const thisMonthSales = id => {
     if (allData.length > 0) {
@@ -58,9 +63,15 @@ export const columns = props => {
           new Date().getMonth()
         )
       })
-      return lmsData.length
+      let sum = 0.00
+      lmsData.map((sin, ind) => {
+        sin?.elements?.forEach(single => {
+          sum = sum + parseFloat(single.productPrice.split('/')[1])
+        })
+      })
+      return parseFloat(sum).toFixed(2)
     }
-    return 0
+    return 0.00
   }
   function typeFinder(type) {
     if (type === 'admin') {
@@ -113,7 +124,7 @@ export const columns = props => {
               </span>
             </Link>
             <small className='text-truncate text-muted mb-0'>
-              
+
               {row.email.length > 18
                 ? `${row.email.substring(0, 18)}...`
                 : row.email
@@ -123,7 +134,7 @@ export const columns = props => {
         </div>
       )
     },
-    
+
     {
       name: 'FECHA',
       selector: 'dueDate',
@@ -135,14 +146,14 @@ export const columns = props => {
       )
     },
     {
-      name: 'Type',
+      name: 'Role',
       minWidth: '140px',
       selector: 'type',
       sortable: true,
       cell: row => typeFinder(row.type)
     },
     {
-      name: 'Role',
+      name: 'Type',
       minWidth: '',
       selector: '',
       sortable: false,
@@ -153,20 +164,20 @@ export const columns = props => {
       selector: 'role',
       minWidth: '167px',
       cell: row => (
-        <div className="w-100 d-flex justify-content-center">
+        <div className="w-100 d-flex justify-content-start">
 
-          {` S/ ${lastMonthSales(row.id)}.00`}
+          {` S/ ${lastMonthSales(row.id)}`}
 
         </div>
       )
     },
     {
       name: 'ESTE MES',
-     
+
       selector: 'role',
       cell: row => (
-        <div className="w-100 d-flex justify-content-center">
-          {`S/ ${thisMonthSales(row.id)}.00`}
+        <div className="w-100 d-flex justify-content-start">
+          {`S/ ${thisMonthSales(row.id)}`}
         </div>
       )
     },
