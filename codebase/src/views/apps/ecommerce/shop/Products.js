@@ -64,7 +64,6 @@ const ProductsPage = props => {
       store.params.perPage * store.params.page
     )
   }
-  console.log("categoryData", categoryData)
   return (
     <div className='content-detached content-right'>
       <div className=''>

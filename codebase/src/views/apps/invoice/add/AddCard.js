@@ -76,9 +76,9 @@ const AddCard = ({ userData }) => {
   const PackingOptions = [
     { title: 'Single Bottle', value: 1 },
     { title: '4 Bottles Packing', value: 4 },
-    { title: '6 Bottles Packing', value: 6 },
+    // { title: '6 Bottles Packing', value: 6 },
     { title: '8 Bottles Packing', value: 8 },
-    { title: '12 Bottles Packing', value: 12 },
+    // { title: '12 Bottles Packing', value: 12 },
     { title: '24 Bottles Packing', value: 24 }
   ]
   const SaveInvoiceMethod = () => {

@@ -243,7 +243,6 @@ const Product = props => {
       </Col>
       <Col md='7' xs='12'>
         <h4>{data.name}</h4>
-        {console.log("data", data)}
         <div className='ecommerce-details-price d-flex flex-wrap mt-1'>
           <h4 className='item-price mr-1'>
             S/{PriceDisplay() ? PriceDisplay() : data.price}

@@ -35,9 +35,10 @@ import '@styles/base/pages/dashboard-ecommerce.scss'
 
 const EcommerceDashboard = () => {
   const dispatch = useDispatch()
+  const userData = useSelector(state => state.auth.userData)
   const { colors } = useContext(ThemeColors),
     Categories = useSelector(state => state.Clients),
-    { userData } = useSelector(state => state.auth),
+
     { allData } = useSelector(state => state.invoice),
     { offers } = useSelector(state => state.offers),
     userState = useSelector(state => state.users),
@@ -137,13 +138,13 @@ const EcommerceDashboard = () => {
           +(b.elements
             ? b.elements.length
             : b.products
-            ? b.products.length
-            : 0),
+              ? b.products.length
+              : 0),
         0
       )
     }
   }
-  function getWeekNumber (d) {
+  function getWeekNumber(d) {
     // Copy date so don't modify original
     d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()))
     // Set to nearest Thursday: current date + 4 - current day number
@@ -207,7 +208,7 @@ const EcommerceDashboard = () => {
     })
     return grandTotal.toFixed(2)
   }
-  function groupByKey (array, key) {
+  function groupByKey(array, key) {
     return array.reduce((hash, obj) => {
       if (obj[key] === undefined) return hash
       return Object.assign(hash, {

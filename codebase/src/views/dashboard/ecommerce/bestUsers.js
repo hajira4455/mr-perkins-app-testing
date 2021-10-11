@@ -28,7 +28,11 @@ const BestUsersTable = ({ data, unsortedData }) => {
   }, [unsortedData])
 
   const SalesCalculator = ({ row }) => {
-    return row.sales
+    return (
+      <div>
+        {row.sales}
+      </div>
+    )
   }
   const basicColumns = [
     {

@@ -13,7 +13,7 @@ const BestProductsTable = ({ data }) => {
   }, [data])
 
   const SalesCalculator = ({ row }) => {
-    return row.sales
+    return row?.sales
   }
   const basicColumns = [
     {
