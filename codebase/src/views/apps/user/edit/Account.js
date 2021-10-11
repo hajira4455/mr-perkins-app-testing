@@ -76,7 +76,8 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
             borderRadius: 0,
             fontSize: 'calc(36px)',
             width: '100%',
-            height: '100%'
+            height: '100%',
+            color: "#7367f0"
           }}
           style={{
             height: '90px',
@@ -128,7 +129,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
                 className='mr-75 mb-0'
                 color='primary'
               >
-                <span className='d-none d-sm-block btn-sm'>Change</span>
+                <span className='d-none d-sm-block btn-sm'>Editar</span>
                 <span className='d-block d-sm-none'>
                   <Edit size={14} />
                 </span>
@@ -140,7 +141,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
                   accept='image/*'
                 />
               </Button.Ripple>
-              
+
             </div>
           </Media>
         </Media>
@@ -150,7 +151,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
           <Row>
             <Col md='4' sm='12'>
               <FormGroup>
-                <Label for='username'>Username</Label>
+                <Label for='username'>Usuario</Label>
                 <Input
                   type='text'
                   id='username'
@@ -163,7 +164,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
             </Col>
             <Col md='4' sm='12'>
               <FormGroup>
-                <Label for='businessName'>Business Name</Label>
+                <Label for='businessName'>Compania</Label>
                 <Input
                   type='text'
                   id='businessName'
@@ -176,7 +177,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
             </Col>
             <Col md='4' sm='12'>
               <FormGroup>
-                <Label for='status'>Payment Type</Label>
+                <Label for='status'>Forma de Pago</Label>
                 <Input
                   type='select'
                   name='paymentType'
@@ -221,22 +222,22 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
                   onChange={ChangeHandler}
                 >
                   <option value='user'>User</option>
-                  <option value='empresa'>Empersa</option>
+                  {/* <option value='empresa'>Empersa</option>
                   <option value='persona'>Persona</option>
-                  <option value='friend'>Friend</option>
+                  <option value='friend'>Friend</option> */}
                   <option value='admin'>Admin</option>
                 </Input>
               </FormGroup>
             </Col>
             <Col md='4' sm='12'>
               <FormGroup>
-                <Label for='company'>Company</Label>
+                <Label for='company'>Type</Label>
                 <Input
                   type='text'
                   id='company'
                   name='company'
                   value={userData && userData.company}
-                  placeholder='WinDon Technologies Pvt Ltd'
+                  placeholder='Horeca'
                   onChange={ChangeHandler}
                 />
               </FormGroup>
@@ -248,7 +249,7 @@ const UserAccountTab = ({ selectedUser, setShowToast, ShowToast }) => {
                 color='primary'
                 onClick={submitForm}
               >
-                Save Changes
+                Guardar Cambios
               </Button.Ripple>
             </Col>
           </Row>
