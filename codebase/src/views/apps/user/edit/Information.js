@@ -68,7 +68,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         </Col>
         <Col md={4}>
           <FormGroup>
-            <Label for='phone'>Mobile or Phone</Label>
+            <Label for='phone'>Telefono</Label>
             <Input
               type='phone'
               name='phone'
@@ -94,7 +94,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         </Col>
         <Col md={4}>
           <FormGroup>
-            <Label for='Website'>Category</Label>
+            <Label for='Website'>Categoria</Label>
             <Stars value={stars} ChangeValue={ChangeStars} />
           </FormGroup>
         </Col>
@@ -103,12 +103,12 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         <Col sm='12'>
           <h4 className='mb-1 mt-2'>
             <MapPin size={20} className='mr-50' />
-            <span className='align-middle'>Address</span>
+            <span className='align-middle'>Direccion</span>
           </h4>
         </Col>
         <Col md='4' sm='12'>
           <FormGroup>
-            <Label for='state'>State</Label>
+            <Label for='state'>Departamento</Label>
             <Input
               type='select'
               name='state'
@@ -124,7 +124,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         </Col>
         <Col md='4' sm='12'>
           <FormGroup>
-            <Label for='province'>Province</Label>
+            <Label for='province'>Ciudad</Label>
             <Input
               type='text'
               name='province'
@@ -137,7 +137,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         </Col>
         <Col md='4' sm='12'>
           <FormGroup>
-            <Label for='district'>District</Label>
+            <Label for='district'>Distrito</Label>
             <Input
               type='text'
               name='district'
@@ -150,7 +150,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
         </Col>
         <Col sm='12'>
           <FormGroup>
-            <Label for='address'>Full Address</Label>
+            <Label for='address'>Direccion</Label>
             <Input
               type='textarea'
               name='address'
@@ -166,7 +166,7 @@ const UserInfoTab = ({ selectedUser, setShowToast, ShowToast }) => {
             color='primary'
             className='mb-1 mb-sm-0 mr-0 mr-sm-1'
           >
-            Save Changes
+            Guardar Cambios
           </Button>
         </Col>
       </Row>

@@ -68,6 +68,7 @@ const StatsCard = ({ orders, users, products, cols }) => {
           })}
         >
           <Media>
+            {console.log("item", item)}
             <Avatar color={item.color} icon={item.icon} className='mr-2' />
             <Media className='my-auto' body>
               <h4 className='font-weight-bolder mb-0'>{item.title}</h4>

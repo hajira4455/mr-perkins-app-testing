@@ -50,6 +50,7 @@ const UserEdit = () => {
   const id = fullLOcation[fullLOcation.length - 1]
 
   // ** Function to toggle tabs
+  console.log("Categories", Categories)
   const toggle = tab => setActiveTab(tab)
 
   // ** Function to get userDollarSign on mount
@@ -76,7 +77,7 @@ const UserEdit = () => {
                 <NavLink active={activeTab === '1'} onClick={() => toggle('1')}>
                   <User size={14} />
                   <span className='align-middle d-none d-sm-block'>
-                   Me Cuenta
+                    Me Cuenta
                   </span>
                 </NavLink>
               </NavItem>
@@ -90,8 +91,7 @@ const UserEdit = () => {
               </NavItem>
               <NavItem>
                 <NavLink active={activeTab === '3'} onClick={() => toggle('3')}>
-                  <DollarSign size={14} />
-                  <span className='align-middle d-none d-sm-block'>Precios</span>
+                  <span className='align-middle d-none d-sm-block'> S/ Precios</span>
                 </NavLink>
               </NavItem>
             </Nav>

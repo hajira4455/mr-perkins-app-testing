@@ -47,7 +47,7 @@ const CustomHeader = ({
             </CustomInput>
           </div>
           <Button.Ripple tag={Link} to='/create_order' color='primary'>
-            Realizar Pedido
+            Realizar Pedido 
           </Button.Ripple>
         </Col>
         <Col

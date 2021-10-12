@@ -5,9 +5,10 @@ import { Link, useHistory } from 'react-router-dom'
 import Avatar from '@components/avatar'
 import { deleteUser, disableUserById } from '../store/action'
 import { store } from '@store/storeConfig/store'
+import './style.scss'
 
 // ** Third Party Components
-import { Card, CardBody, CardText, Button, Row, Col } from 'reactstrap'
+import { Card, CardBody, CardText, Button, Row, Col, Media } from 'reactstrap'
 import {
   DollarSign,
   TrendingUp,
@@ -93,6 +94,7 @@ const UserInfoCard = ({ selectedUser, FetchData }) => {
             <div className='user-avatar-section'>
               <div className='d-flex justify-content-start'>
                 {renderUserImg()}
+
                 <div className='d-flex flex-column ml-1'>
                   <div className='user-info mb-1'>
                     <h4 className='mb-0'>
@@ -114,7 +116,7 @@ const UserInfoCard = ({ selectedUser, FetchData }) => {
                         color='primary'
                         className='btn-sm'
                       >
-                        Edit
+                        Editar
                       </Button.Ripple>
                       <Button.Ripple
                         className='ml-1 btn-sm'
@@ -124,7 +126,7 @@ const UserInfoCard = ({ selectedUser, FetchData }) => {
                           deleteUserMethod(selectedUser.id)
                         }}
                       >
-                        Delete
+                        Borar
                       </Button.Ripple>
                     </div>
                     <Button.Ripple
@@ -146,10 +148,28 @@ const UserInfoCard = ({ selectedUser, FetchData }) => {
                     >
                       {selectedUser.status === 'inactive'
                         ? 'Enable'
-                        : 'Disable'}
+                        : 'desactivar'}
                     </Button.Ripple>
                   </div>
                 </div>
+              </div>
+              <div className="d-flex my-2 userssales">
+                <Media className="mx-2">
+                  <Avatar icon={<div >S/</div>} className='mr-2 bg-light-primary' />
+                  <Media className='my-auto' body>
+                    {/* current sale*/}
+                    <h4 className='font-weight-bolder mb-0'>S/ 1234</h4>
+                    <CardText className='font-small-3 mb-0'>Ventas Mes</CardText>
+                  </Media>
+                </Media>
+                <Media>
+                  <Avatar icon={<TrendingUp size={24} />} className='mr-2 bg-light-success' />
+                  <Media className='my-auto' body>
+                    {/* current sala */}
+                    <h4 className='font-weight-bolder mb-0'>S/ 1234</h4>
+                    <CardText className='font-small-3 mb-0'>Ventas Año</CardText>
+                  </Media>
+                </Media>
               </div>
             </div>
           </Col>

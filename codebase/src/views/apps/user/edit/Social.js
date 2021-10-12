@@ -50,8 +50,8 @@ const UserSocialTab = ({ cats }) => {
                 <FormGroup tag={InputGroup} className='input-group-merge'>
                   <InputGroupAddon addonType='prepend'>
                     <InputGroupText>
-                      <DollarSign size={17} />
-                    </InputGroupText>
+                      {/* <DollarSign size={17} /> */}
+                      S/</InputGroupText>
                   </InputGroupAddon>
                   <Input
                     id={item.categoryName}
@@ -76,7 +76,7 @@ const UserSocialTab = ({ cats }) => {
           })}
         <Col className='d-flex flex-sm-row flex-column mt-2' sm='12'>
           <Button className='mb-1 mb-sm-0 mr-0 mr-sm-1' color='primary'>
-            Save Changes
+          Guardar Cambios
           </Button>
         </Col>
       </Row>

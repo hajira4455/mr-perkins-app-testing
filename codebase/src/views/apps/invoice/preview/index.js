@@ -42,7 +42,7 @@ const InvoicePreview = () => {
         <Col  xl={9} md={8} sm={12}>
           <PreviewCard data={data} userData={userData} />
         </Col>
-      
+  
         <Col xl={3} md={4} sm={12}>
           <PreviewActions
             id={id}
