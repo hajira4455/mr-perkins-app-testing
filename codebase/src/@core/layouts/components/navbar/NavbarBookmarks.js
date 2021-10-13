@@ -148,7 +148,7 @@ const NavbarBookmarks = props => {
         <NavItem className='nav-item d-none d-lg-block'>
           <div className={classnames('bookmark-input search-input', { show: openSearch })}>
             <div className='bookmark-input-icon'>
-              <Icon.Search size={14} />
+              <Icon.Search size={14} /> 
             </div>
             {openSearch && store.suggestions.length ? (
               <Autocomplete

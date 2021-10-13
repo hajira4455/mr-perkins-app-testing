@@ -129,11 +129,11 @@ const VerticalNavMenuGroup = ({
           <FormattedMessage id={item.title} />
         </span>
 
-        {item.badge && item.badgeText ? (
+        {/* {item.badge && item.badgeText ? (
           <Badge className="ml-auto mr-1" color={item.badge} pill>
             {item.badgeText}
           </Badge>
-        ) : null}
+        ) : null} */}
       </Link>
 
       {/* Render Child Recursively Through VerticalNavMenuItems Component */}
