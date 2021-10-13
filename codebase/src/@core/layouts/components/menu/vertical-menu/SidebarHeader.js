@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Disc, X, Circle } from "react-feather";
-import themeConfig from "@configs/themeConfig";
+import MrPerkinsLogo from '../../../../../assets/images/logo/FIRMA-01-01.png'
+
 import classnames from "classnames";
 class SidebarHeader extends Component {
   render() {
@@ -18,9 +19,12 @@ class SidebarHeader extends Component {
         <ul className="nav navbar-nav flex-row">
           <li className="nav-item mr-auto">
             <NavLink to="/" className="navbar-brand">
-              <span className="brand-logo">
-                <img src={themeConfig.app.appLogoImage} alt="logo" />
-              </span>
+              <img
+                src={MrPerkinsLogo}
+                style={{ width: '5rem' }}
+                alt='mr perkins'
+              />
+              <h2 class="brand-text">Mr Perkins</h2>
             </NavLink>
           </li>
 

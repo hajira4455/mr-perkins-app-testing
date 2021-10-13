@@ -142,7 +142,7 @@ class Sidebar extends Component {
                 }}
                 direction={"DIRECTION_LEFT"}
               >
-                <div className="menu-swipe-area d-xl-none d-block vh-100"></div>
+                <div className="menu-swipe-area d-xl-none d-block"></div>
               </Hammer>
 
               <div

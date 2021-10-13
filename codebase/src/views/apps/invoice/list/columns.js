@@ -119,9 +119,11 @@ export const columns = (props) => {
 
             <div className="d-flex flex-column">
               <h6 className="user-name text-truncate text-capitalize mb-0">
-                {name.toLowerCase().slice(0, 25)}
+                {name.toLowerCase().slice(0, 20)}
               </h6>
-              <small className="text-truncate text-muted mb-0">{email}</small>
+              <small className="text-truncate text-muted mb-0">
+              {email.toLowerCase().slice(0, 25)}
+              </small>
             </div>
           </div>
         );
@@ -134,7 +136,7 @@ export const columns = (props) => {
       minWidth: "100px",
       cell: (row) => (
         <span>
-          S/
+          S/ {" "}
           {row.products
             ? parseFloat(TotalCounter(row.products)).toFixed(2)
             : parseFloat(ElementTotalCounter(row.elements)).toFixed(2)}

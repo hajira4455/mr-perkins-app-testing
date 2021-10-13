@@ -74,12 +74,14 @@ const AddCard = ({ userData }) => {
   //   return `${S4()}${S4()}${S4()}`
   // }
   const PackingOptions = [
-    { title: 'Unidades', value: 1 },
-    { title: 'Fourpacks', value: 4 },
-    // { title: '6 Bottles Packing', value: 6 },
+    { title: 'Caja x 24', value: 24 },
     { title: 'Caja x 24 (En Fourpack)', value: 8 },
+    { title: 'Fourpacks', value: 4 },
+    { title: 'Unidades', value: 1 }
+    // { title: '6 Bottles Packing', value: 6 },
+  
     // { title: '12 Bottles Packing', value: 12 },
-    { title: 'Caja x 24', value: 24 }
+    
   ]
   const SaveInvoiceMethod = () => {
     dispatch(SaveInvoice({ note, date: picker, dueDate: dueDatepicker })).then(

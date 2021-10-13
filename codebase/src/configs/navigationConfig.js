@@ -16,7 +16,7 @@ const navigationConfig = [
         type: "item",
         icon: <Icon.Circle size={12} />,
         permissions: ["admin"],
-        navLink: "/ecommerce-dashboard",
+        navLink: "/dashboard",
       },
     ],
   },
@@ -28,26 +28,26 @@ const navigationConfig = [
     navLink: "/clients",
     permissions: ["admin"],
   },
-  {
-    id: "Contacto",
-    title: "Contacto",
-    type: "item",
-    icon: <Icon.PieChart size={16} />,
-    navLink: "/contact",
-    permissions: ["admin", "user", "personal", "friend", "relatives"],
-  },
-  {
-    id: "pages",
-    title: "Noticias",
-    type: "item",
-    icon: <Icon.FileText size={16} />,
-    navLink: "/news/offers",
-    permissions: ["admin"],
-  },
-  {
-    type: "groupHeader",
-    groupTitle: "COMERCIO",
-  },
+  // {
+  //   id: "Contacto",
+  //   title: "Contacto",
+  //   type: "item",
+  //   icon: <Icon.PieChart size={16} />,
+  //   navLink: "/contact",
+  //   permissions: ["admin", "user", "personal", "friend", "relatives"],
+  // },
+  // {
+  //   id: "pages",
+  //   title: "Noticias",
+  //   type: "item",
+  //   icon: <Icon.FileText size={16} />,
+  //   navLink: "/news/offers",
+  //   permissions: ["admin"],
+  // },
+  // {
+  //   type: "groupHeader",
+  //   groupTitle: "COMERCIO",
+  // },
   {
     id: "realizar pedido",
     title: "Realizar Pedido",
@@ -64,31 +64,47 @@ const navigationConfig = [
     permissions: ["admin", "user", "personal", "friend", "relatives"],
     navLink: "/orders",
   },
-
   {
-    id: "eCommerce",
-    title: "Ecommerce",
-    type: "collapse",
-    icon: <Icon.ShoppingCart size={20} />,
-    children: [
-      {
-        id: "productos",
-        title: "Productos",
-        type: "item",
-        icon: <Icon.Circle size={12} />,
-        navLink: "/products",
-        permissions: ["admin", "user", "personal", "friend", "relatives"],
-      },
-      {
-        id: "agregarNuevo",
-        title: "Agregar Nuevo",
-        type: "item",
-        icon: <Icon.Circle size={12} />,
-        permissions: ["admin", "editor"],
-        navLink: "/ecommerce/product-detail",
-      },
-    ],
+    id: "productos",
+    title: "Productos",
+    type: "item",
+    icon: <Icon.Edit size={12} />,
+    navLink: "/products",
+    permissions: ["admin", "user", "personal", "friend", "relatives"],
   },
+  {
+    id: "agregarNuevo",
+    title: "Agregar Nuevo",
+    type: "item",
+    icon: <Icon.Server size={12} />,
+    permissions: ["admin", "editor"],
+    navLink: "/ecommerce/product-detail",
+  }
+
+  // {
+  //   id: "eCommerce",
+  //   title: "Ecommerce",
+  //   type: "collapse",
+  //   icon: <Icon.ShoppingCart size={20} />,
+  //   children: [
+  //     {
+  //       id: "productos",
+  //       title: "Productos",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       navLink: "/products",
+  //       permissions: ["admin", "user", "personal", "friend", "relatives"],
+  //     },
+  //     {
+  //       id: "agregarNuevo",
+  //       title: "Agregar Nuevo",
+  //       type: "item",
+  //       icon: <Icon.Circle size={12} />,
+  //       permissions: ["admin", "editor"],
+  //       navLink: "/ecommerce/product-detail",
+  //     },
+  //   ],
+  // },
 ];
 
 export default navigationConfig;
