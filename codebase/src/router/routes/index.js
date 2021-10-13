@@ -1,13 +1,13 @@
 // ** Routes Imports
-import UsedRoutes from './UsedRoutes'
-import Forms from './Forms'
+import UsedRoutes from "./UsedRoutes";
+import Forms from "./Forms";
 // ** Document title
-const TemplateTitle = '%s -Mr Perkins Web Store'
+const TemplateTitle = "%s -Mr Perkins Web Store";
 
 // ** Default Route
-const DefaultRoute = '/dashboard'
+const DefaultRoute = "/dashboard";
 
 // ** Merge Routes
-const Routes = [...UsedRoutes, ...Forms]
+const Routes = [...UsedRoutes, ...Forms];
 
-export { DefaultRoute, TemplateTitle, Routes }
+export { DefaultRoute, TemplateTitle, Routes };
