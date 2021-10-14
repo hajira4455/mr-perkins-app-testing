@@ -17,6 +17,7 @@ import MrPerkinsLogo from '../../../../assets/images/logo/FIRMA-01-01.png'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setInvoiceStatus } from '../store/actions'
+import { numberFormat } from '../../../../utility/Utils'
 const PreviewCard = ({ data, userData }) => {
   const history = useHistory()
   const dispatch = useDispatch()
@@ -72,6 +73,7 @@ const PreviewCard = ({ data, userData }) => {
     <Card className='invoice-preview-card'>
       <CardBody className='invoice-padding pb-0'>
         {/* Header */}
+        {console.log(data)}
         <div className='d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0'>
           <div>
             <div className='logo-wrapper'>
@@ -119,7 +121,25 @@ const PreviewCard = ({ data, userData }) => {
               <p className='invoice-date-title'>Estado:</p>
               <p className='invoice-date'>{data.status || data.state}</p>
             </div>
+            <div className='invoice-date-wrapper'>
+              <p className='invoice-date-title'>Name:</p>
+              <p className='invoice-date'>{data.name}</p>
+            </div>
+            <div className='invoice-date-wrapper'>
+              <p className='invoice-date-title'>Email:</p>
+              <p className='invoice-date'>{data.email}</p>
+            </div>
+            <div className='invoice-date-wrapper'>
+              <p className='invoice-date-title'>Dni:</p>
+              <p className='invoice-date'>{data.dni}</p>
+            </div>
+            <div className='invoice-date-wrapper'>
+              <p className='invoice-date-title'>Address:</p>
+              <p className='invoice-date'>{data.district} <br /> {data.direction}</p>
+            </div>
+
           </div>
+
         </div>
         {/* /Header */}
       </CardBody>
@@ -156,9 +176,10 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      S/{item.product.brand
-                        ? item.product.brand.price
-                        : item.product.price}
+                      S/ {item.product.brand
+                        ? `${numberFormat(parseInt(item.product.brand.price))}.00`
+                        : `${numberFormat(parseInt(item.product.price))}.00`
+                      }
                     </span>
                   </td>
                   <td className='py-1'>
@@ -167,12 +188,12 @@ const PreviewCard = ({ data, userData }) => {
                   <td className='py-1'>
                     <span className='font-weight-bold'>
                       S/{item.product.brand
-                        ? (
-                          Number(item.product.brand.price) * Number(item.qty)
-                        ).toFixed(2)
-                        : (
-                          Number(item.product.price) * Number(item.qty)
-                        ).toFixed(2)}
+                        ?
+                        `${numberFormat(parseInt(Number(item.product.brand.price) * Number(item.qty)))}.00`
+                        :
+                        `${numberFormat(parseInt(Number(item.product.price) * Number(item.qty)))}.00`
+
+                      }
                     </span>
                   </td>
                 </tr>
@@ -186,7 +207,7 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      S/{item.productPrice.split('/')[1]}
+                      S/{numberFormat(item.productPrice.split('/')[1])}
                     </span>
                   </td>
                   <td className='py-1'>
@@ -194,9 +215,10 @@ const PreviewCard = ({ data, userData }) => {
                   </td>
                   <td className='py-1'>
                     <span className='font-weight-bold'>
-                      S/{(Number(item.productPrice.split('/')[1]) *
-                        Number(item.quantity)
-                      ).toFixed(2)}
+                      S/{` ${numberFormat(Number(item.productPrice.split('/')[1]) *
+                        Number(item.quantity))
+                        }.00`
+                      }
                     </span>
                   </td>
                 </tr>
@@ -225,10 +247,10 @@ const PreviewCard = ({ data, userData }) => {
               <div className='invoice-total-item'>
                 <p className='invoice-total-title'>Total:</p>
                 <p className='invoice-total-amount'>
-                  S/{data.elements
-                    ? ElementsPriceTotaler(data.elements)
+                  S/{" "}{data.elements
+                    ? `${numberFormat(parseInt(ElementsPriceTotaler(data.elements)))}.00`
                     : data.products
-                      ? ProductsPriceTotaler(data.products)
+                      ? `${numberFormat(parseInt(ProductsPriceTotaler(data.products)))}.00`
                       : null}
                 </p>
               </div>

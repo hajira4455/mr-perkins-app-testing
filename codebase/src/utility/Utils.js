@@ -68,6 +68,9 @@ export const getHomeRouteForLoggedInUser = userRole => {
   return '/login'
 }
 
+export const numberFormat = (value) =>
+  value !== 0 ?
+    new Intl.NumberFormat().format(value) : 0.00
 // ** React Select Theme Colors
 export const selectThemeColors = theme => ({
   ...theme,

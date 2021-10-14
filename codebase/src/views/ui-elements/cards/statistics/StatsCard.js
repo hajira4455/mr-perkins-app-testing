@@ -32,25 +32,25 @@ const StatsCard = ({ orders, users, products, cols }) => {
   const data = [
     {
       title: orders(),
-      subtitle: 'Orders',
+      subtitle: 'Pedidos',
       color: 'light-primary',
       icon: <TrendingUp size={24} />
     },
     {
       title: users.length,
-      subtitle: 'Customers',
+      subtitle: 'Clientes',
       color: 'light-info',
       icon: <User size={24} />
     },
     {
       title: products,
-      subtitle: 'Products',
+      subtitle: 'Productos',
       color: 'light-danger',
       icon: <Box size={24} />
     },
     {
       title: NewUsersCalculator(),
-      subtitle: 'New Customers',
+      subtitle: 'Nuevos Clientes',
       color: 'light-success',
       icon: <User size={24} />
     }
@@ -58,7 +58,9 @@ const StatsCard = ({ orders, users, products, cols }) => {
 
   const renderData = () => {
     return data.map((item, index) => {
-      const margin = Object.keys(cols)
+      // const margin = Object.keys(cols)
+      const margin = ""
+
       return (
         <Col
           key={index}
@@ -68,7 +70,7 @@ const StatsCard = ({ orders, users, products, cols }) => {
           })}
         >
           <Media>
-            {console.log("item", item)}
+
             <Avatar color={item.color} icon={item.icon} className='mr-2' />
             <Media className='my-auto' body>
               <h4 className='font-weight-bolder mb-0'>{item.title}</h4>
@@ -83,7 +85,7 @@ const StatsCard = ({ orders, users, products, cols }) => {
   return (
     <Card className='card-statistics'>
       <CardHeader>
-        <CardTitle tag='h4'>Statistics</CardTitle>
+        <CardTitle tag='h4'>Estadisticas</CardTitle>
         <CardText className='card-text font-small-2 mr-25 mb-0'>
           Updated 1 month ago
         </CardText>

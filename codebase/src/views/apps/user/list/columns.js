@@ -27,6 +27,7 @@ import {
   Settings,
   Briefcase
 } from 'react-feather'
+import { numberFormat } from '../../../../utility/Utils'
 
 export const columns = props => {
   const { allData } = useSelector(state => state.invoice)
@@ -165,19 +166,16 @@ export const columns = props => {
       minWidth: '167px',
       cell: row => (
         <div className="w-100 d-flex justify-content-center">
-
-          {` S/ ${lastMonthSales(row.id)}`}
-
+          {` S/ ${numberFormat(parseInt(lastMonthSales(row.id)))}.00`}
         </div>
       )
     },
     {
       name: 'ESTE MES',
-
-      selector: 'role',
+      selector: '',
       cell: row => (
-        <div className="w-100 d-flex justify-content-center">
-          {`S/ ${thisMonthSales(row.id)}`}
+        <div className="w-100 d-flex justify-content-left">
+          {`S/ ${numberFormat(parseInt(thisMonthSales(row.id)))}.00`}
         </div>
       )
     },

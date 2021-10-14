@@ -1,9 +1,10 @@
 import { useState, useEffect, Fragment } from 'react'
 import { Card, CardBody, CardText, Button } from 'reactstrap'
-import medal from '@src/assets/images/logo/mrperkinslogo.jpeg'
+import medal from '@src/assets/images/logo/FIRMA-01-01.png'
 import { TrendingUp, TrendingDown } from 'react-feather'
 import { Link } from 'react-router-dom'
 import Avatar from '@components/avatar'
+import { numberFormat } from '../../../../utility/Utils'
 const CardMedal = ({
   thisMonthSales,
   title1,
@@ -14,6 +15,7 @@ const CardMedal = ({
   buttonTitle
 }) => {
   const [Status, setStatus] = useState(true)
+
   useEffect(() => {
     if (PreviousMonthSale && thisMonthSales) {
       setStatus(thisMonthSales() > PreviousMonthSale() ? Status : !Status)
@@ -27,7 +29,7 @@ const CardMedal = ({
 
           <h3 className='mb-75'>
             <a href='/' onClick={e => e.preventDefault()}>
-              {price ? 'S/' : ''} {thisMonthSales()}
+              {price ? 'S/' : ''} {numberFormat(thisMonthSales())}
             </a>
             &nbsp;
             <Fragment>
@@ -46,12 +48,12 @@ const CardMedal = ({
               )}
             </Fragment>
           </h3>
-          <CardText className='font-small-3'>{title2} </CardText>
+         {/* <CardText className='font-small-3'>{title2} </CardText> */}
         </div>
         <img
           className='congratulation-medal'
           width='100px'
-          style={{ marginTop: '20px', right: '7px' }}
+          style={{ marginTop: '47px', right: '20px' }}
           src={medal}
           alt='Medal Pic'
         />

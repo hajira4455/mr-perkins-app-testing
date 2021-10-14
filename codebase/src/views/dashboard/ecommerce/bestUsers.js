@@ -27,20 +27,10 @@ const BestUsersTable = ({ data, unsortedData }) => {
     setDataforTable(filteredData)
   }, [unsortedData])
 
-  const SalesCalculator = ({ row }) => {
-    return (
-      <div>
-        {row.sales}
-      </div>
-    )
+  const SalesCalculator = (row) => {
+    return row.sales;
   }
   const basicColumns = [
-    {
-      name: 'ID',
-      selector: 'id',
-      sortable: true,
-      maxWidth: '300px'
-    },
     {
       name: 'Name',
       selector: 'name',
@@ -58,13 +48,17 @@ const BestUsersTable = ({ data, unsortedData }) => {
       selector: 'sales',
       sortable: true,
       maxWidth: '20px',
-      cell: row => <SalesCalculator row={row} />
+      cell: (row) => {
+        return (
+          <div>{SalesCalculator(row)}</div>
+        )
+      }
     }
   ]
   return (
     <Card>
       <CardHeader>
-        <CardTitle tag='h4'>Top Purchasing Clients</CardTitle>
+        <CardTitle tag='h4'>Mejores Clientes</CardTitle>
       </CardHeader>
       <DataTable
         noHeader

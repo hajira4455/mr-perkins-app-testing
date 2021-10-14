@@ -32,6 +32,7 @@ import {
   PieChart,
   Repeat,
 } from "react-feather";
+import { numberFormat } from "../../../../utility/Utils";
 
 // ** Vars
 const invoiceStatusObj = {
@@ -90,11 +91,13 @@ export const columns = (props) => {
       minWidth: "",
       selector: "id",
       cell: (row) => (
-        <Avatar
-          img={
-            row && row?.elements?.length ? row.elements[0].productImage : "ts"
-          }
-        />
+        <div className="avatar-2">
+          <Avatar
+            img={
+              row && row?.elements?.length ? row.elements[0].productImage : "ts"
+            }
+          />
+        </div>
       ),
     },
 
@@ -108,7 +111,7 @@ export const columns = (props) => {
         const name = row.name ? row.name : "Name Not Present",
           email = row.email ? row.email : "EMAILNOTFOUND";
         return (
-          <div className="d-flex justify-content-left align-items-center">
+          <div className=" d-flex justify-content-left align-items-center">
             {/* {renderClient(row)} */}
             <Avatar
               color="light-primary"
@@ -122,7 +125,7 @@ export const columns = (props) => {
                 {name.toLowerCase().slice(0, 20)}
               </h6>
               <small className="text-truncate text-muted mb-0">
-              {email.toLowerCase().slice(0, 25)}
+                {email.toLowerCase().slice(0, 25)}
               </small>
             </div>
           </div>
@@ -138,8 +141,8 @@ export const columns = (props) => {
         <span>
           S/ {" "}
           {row.products
-            ? parseFloat(TotalCounter(row.products)).toFixed(2)
-            : parseFloat(ElementTotalCounter(row.elements)).toFixed(2)}
+            ? `${(numberFormat(parseInt(TotalCounter(row.products))))}.00`
+            : `${numberFormat(parseInt(ElementTotalCounter(row.elements)))}.00`}
         </span>
       ),
     },

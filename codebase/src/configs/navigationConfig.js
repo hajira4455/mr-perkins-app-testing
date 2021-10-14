@@ -80,31 +80,31 @@ const navigationConfig = [
     permissions: ["admin", "editor"],
     navLink: "/ecommerce/product-detail",
   }
-
-  // {
-  //   id: "eCommerce",
-  //   title: "Ecommerce",
-  //   type: "collapse",
-  //   icon: <Icon.ShoppingCart size={20} />,
-  //   children: [
-  //     {
-  //       id: "productos",
-  //       title: "Productos",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       navLink: "/products",
-  //       permissions: ["admin", "user", "personal", "friend", "relatives"],
-  //     },
-  //     {
-  //       id: "agregarNuevo",
-  //       title: "Agregar Nuevo",
-  //       type: "item",
-  //       icon: <Icon.Circle size={12} />,
-  //       permissions: ["admin", "editor"],
-  //       navLink: "/ecommerce/product-detail",
-  //     },
-  //   ],
-  // },
+  ,
+  {
+    id: "eCommerce",
+    title: "Ecommerce",
+    type: "collapse",
+    icon: <Icon.ShoppingCart size={20} />,
+    children: [
+      {
+        id: "productos",
+        title: "Productos",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        navLink: "/products",
+        permissions: ["admin", "user", "personal", "friend", "relatives"],
+      },
+      {
+        id: "agregarNuevo",
+        title: "Agregar Nuevo",
+        type: "item",
+        icon: <Icon.Circle size={12} />,
+        permissions: ["admin", "editor"],
+        navLink: "/ecommerce/product-detail",
+      },
+    ],
+  },
 ];
 
 export default navigationConfig;

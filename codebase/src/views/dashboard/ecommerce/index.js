@@ -317,9 +317,9 @@ const EcommerceDashboard = () => {
           <Col xl='4' md='6' xs='12'>
             <CardMedal
               thisMonthSales={thisMonthSales}
-              title1='This Month Earning is'
+              title1='Total DE Ventas del Mes'
               title2='Target is S/ 250,000'
-              buttonTitle='View Sale'
+              buttonTitle='Ver Vintas'
               PreviousMonthSale={PreviousMonthSale}
               type={userData.type}
               price={true}
@@ -332,7 +332,7 @@ const EcommerceDashboard = () => {
               orders={thisMonthOrdersCalculator}
               users={userState.allData}
               products={productsState.allProducts.length}
-              cols={{ xl: '3', sm: '6' }}
+              cls={{ xl: '3', sm: '6' }}
             />
           </Col>
         )}
