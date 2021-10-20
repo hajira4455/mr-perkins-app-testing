@@ -73,7 +73,6 @@ const PreviewCard = ({ data, userData }) => {
     <Card className='invoice-preview-card'>
       <CardBody className='invoice-padding pb-0'>
         {/* Header */}
-        {console.log(data)}
         <div className='d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0'>
           <div>
             <div className='logo-wrapper'>
@@ -91,6 +90,20 @@ const PreviewCard = ({ data, userData }) => {
             <p className='card-text mb-0'>
               +(511) 924 063 822, +(511) 982 096 494
             </p>
+            <br />
+            <br />
+            <br />
+            <br />
+            <p className='card-text mb-25'>
+              {data.name}
+            </p>
+            <p className='card-text mb-25'>{data.district} <br /> {data.direction}</p>
+            <p className='card-text mb-25'>{data.email}</p>
+            {/* <p className='card-text mb-25'>{data.dni}</p> */}
+
+
+
+
           </div>
           <div className='mt-md-0 mt-2'>
             <h4 className='invoice-title'>
@@ -121,22 +134,6 @@ const PreviewCard = ({ data, userData }) => {
               <p className='invoice-date-title'>Estado:</p>
               <p className='invoice-date'>{data.status || data.state}</p>
             </div>
-            <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Name:</p>
-              <p className='invoice-date'>{data.name}</p>
-            </div>
-            <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Email:</p>
-              <p className='invoice-date'>{data.email}</p>
-            </div>
-            <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Dni:</p>
-              <p className='invoice-date'>{data.dni}</p>
-            </div>
-            <div className='invoice-date-wrapper'>
-              <p className='invoice-date-title'>Address:</p>
-              <p className='invoice-date'>{data.district} <br /> {data.direction}</p>
-            </div>
 
           </div>
 
@@ -150,9 +147,9 @@ const PreviewCard = ({ data, userData }) => {
       <Table responsive>
         <thead>
           <tr>
-            <th className='py-1'>Task description</th>
-            <th className='py-1'>Rate</th>
+            <th className='py-1'>PRODUCTOS</th>
             <th className='py-1'>QTY</th>
+            <th className='py-1'>Rate</th>
             <th className='py-1'>Total</th>
           </tr>
         </thead>
@@ -162,8 +159,10 @@ const PreviewCard = ({ data, userData }) => {
             tableRows.map((item, index) => {
               return item.product ? (
                 <tr key={`newProducts-${index}`}>
+
                   <td className='py-1'>
                     <p className='card-text font-weight-bold mb-25'>
+                      {console.log("item", item.product)}...
                       {item.product.name}
                     </p>
                     {item.product.detail && (

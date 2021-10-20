@@ -77,7 +77,7 @@ const statusFinder = (state) => {
 export const columns = (props) => {
   return [
     {
-      name: "Predido",
+      name: "Pedido",
       minWidth: "",
       selector: "id",
       cell: (row) => (
