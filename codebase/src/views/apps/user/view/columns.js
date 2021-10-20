@@ -10,6 +10,7 @@ import avatarImg from "@src/assets/images/portrait/small/avatar-s-20.jpg";
 // ** Store & Actions
 import { getData } from "../store/action";
 import { store } from "@store/storeConfig/store";
+import { numberFormat } from "../../../../utility/Utils";
 
 // ** Third Party Components
 import {
@@ -32,6 +33,7 @@ import {
   PieChart,
   Repeat,
 } from "react-feather";
+import { FormattedNumber } from "react-intl";
 
 // ** Vars
 const invoiceStatusObj = {
@@ -80,11 +82,7 @@ export const columns = (props) => {
       minWidth: "",
       selector: "id",
       cell: (row) => (
-        <Link to={`/invoice/preview/${row.id}`}>
-          {`#${row.id}`}
-
-          {console.log("row", row)}
-        </Link>
+        <Link to={`/invoice/preview/${row.id}`}>{`#${row.number}`}</Link>
       ),
     },
     {
@@ -102,8 +100,8 @@ export const columns = (props) => {
         <span>
           S/
           {row.products
-            ? parseFloat(TotalCounter(row.products)).toFixed(2)
-            : parseFloat(ElementTotalCounter(row.elements)).toFixed(2)}
+            ? `${numberFormat(parseInt(TotalCounter(row.products)))}.00`
+            : `${numberFormat(parseInt(ElementTotalCounter(row.elements)))}.00`}
         </span>
       ),
     },
