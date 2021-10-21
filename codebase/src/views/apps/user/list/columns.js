@@ -67,7 +67,7 @@ export const columns = props => {
       let sum = 0.00
       lmsData.map((sin, ind) => {
         sin?.elements?.forEach(single => {
-          sum = sum + parseFloat(single.productPrice.split('/')[1])
+          sum = sum + parseFloat(single?.productPrice?.split('/')[1])
         })
       })
       return parseFloat(sum).toFixed(2)
@@ -97,9 +97,23 @@ export const columns = props => {
       )
     }
   }
-  function typeUserFinder(type) {
-    console.log(type)
-  }
+
+  const typeUserFinder = (state) => {
+    console.log(state)
+    if (state === "horeca") {
+      return <Badge color="success">{state}</Badge>;
+    } else if (state === "distribution") {
+      return <Badge color="info">{state}</Badge>;
+    } else if (state === "retail_online") {
+      return <Badge color="danger">{state}</Badge>;
+    } else if (state === "friend") {
+      return <Badge color="warning">{state}</Badge>;
+    } else if (state === "other") {
+      return <Badge color="light-primary">{state}</Badge>;
+    } else {
+      return state;
+    }
+  };
   return [
     {
       name: 'Nombre',
@@ -158,7 +172,7 @@ export const columns = props => {
       minWidth: '',
       selector: '',
       sortable: false,
-      cell: row => typeUserFinder(row)
+      cell: row => typeUserFinder(row.role)
     },
     {
       name: 'MES ANTERIOR',

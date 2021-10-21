@@ -54,7 +54,7 @@ const TotalCounter = (products) => {
 const ElementTotalCounter = (products) => {
   let sum = 0.0;
   products.map((sin) => {
-    sum = sum + parseFloat(sin.productPrice.split("/")[1]);
+    sum = sum + parseFloat(sin?.productPrice?.split("/")[1]);
   });
   return sum;
 };
