@@ -80,9 +80,10 @@ const CustomHeader = ({
             className="w-auto "
             type="select"
             value={statusValue}
-            // onChange={(e) => handleStatus(e.target.value)}
+          // onChange={(e) => handleStatus(e.target.value)}
           >
             <option value="">Buscar Estado</option>
+            <option value="PENDIENTE">Pendiente</option>
             <option value="PROGRAMADO">Programado</option>
             <option value="ENTREGADO">Entregado</option>
             <option value="EN TRANSITO">Tránsito</option>
@@ -113,7 +114,7 @@ const UserView = (props) => {
   useEffect(() => {
     FetchData();
   }, []);
-  // console.log("store", store.selectedUser)
+  console.log("data", data)
   return store.selectedUser !== null && store.selectedUser !== undefined ? (
     <div className="app-user-view">
       <Row>
@@ -158,9 +159,9 @@ const UserView = (props) => {
                     value={value}
                     statusValue={statusValue}
                     rowsPerPage={rowsPerPage}
-                    // handleFilter={handleFilter}
-                    // handlePerPage={handlePerPage}
-                    // handleStatus={handleStatus}
+                  // handleFilter={handleFilter}
+                  // handlePerPage={handlePerPage}
+                  // handleStatus={handleStatus}
                   />
                 }
               />

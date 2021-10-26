@@ -54,6 +54,8 @@ const CustomHeader = ({
               <option value='10'>10</option>
               <option value='25'>25</option>
               <option value='50'>50</option>
+              <option value='100'>100</option>
+              <option value='200'>200</option>
             </CustomInput>
             <Label for='rows-per-page'>Entries</Label>
           </div>
@@ -124,6 +126,8 @@ const UsersList = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [currentRole, setCurrentRole] = useState(0)
+  const [data, setData] = useState([])
+  const [newData, setNewData] = useState([])
 
   // ** Function to toggle sidebar
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen)
@@ -139,9 +143,29 @@ const UsersList = () => {
       )
     })
   }
+  // ** Table data to render
+  const dataToRender = () => {
+    const filters = {
+      role: currentRole,
+      q: searchTerm
+    }
+    const isFiltered = Object.keys(filters).some(function (k) {
+      return filters[k].length > 0
+    })
+    if (store.data.users && store.data.users.length > 0) {
+      return store.data.users
+    } else if (
+      store.data.users &&
+      store.data.users.length === 0 &&
+      isFiltered
+    ) {
+      return []
+    }
+  }
   // ** Get data on mount
   useEffect(() => {
     LoadData()
+    setData(dataToRender())
   }, [dispatch, store.data.length])
 
   // ** Function in get data on page change
@@ -187,20 +211,24 @@ const UsersList = () => {
   // ** Function in get data on search query change
   const handleFilter = val => {
     setSearchTerm(val)
-    dispatch(
-      getData({
-        page: currentPage,
-        perPage: rowsPerPage,
-        role: currentRole,
-        q: val
-      })
-    )
+    setNewData(data && data.filter(sin => sin.name.toLowerCase().includes(val.toLowerCase())
+      ||
+      sin.email.toLowerCase().includes(val.toLowerCase())
+    ))
+    // dispatch(
+    //   getData({
+    //     page: currentPage,
+    //     perPage: rowsPerPage,v
+    //     role: currentRole,
+    //     q: val
+    //   })
+    // )
   }
 
   // ** Custom Pagination
   const CustomPagination = () => {
     const count = Number(Math.ceil(store.total / rowsPerPage))
-
+    dataToRender()
     return (
       <ReactPaginate
         previousLabel={''}
@@ -222,25 +250,7 @@ const UsersList = () => {
     )
   }
 
-  // ** Table data to render
-  const dataToRender = () => {
-    const filters = {
-      role: currentRole,
-      q: searchTerm
-    }
-    const isFiltered = Object.keys(filters).some(function (k) {
-      return filters[k].length > 0
-    })
-    if (store.data.users && store.data.users.length > 0) {
-      return store.data.users
-    } else if (
-      store.data.users &&
-      store.data.users.length === 0 &&
-      isFiltered
-    ) {
-      return []
-    }
-  }
+
 
   return (
     <Fragment>
@@ -255,7 +265,7 @@ const UsersList = () => {
           sortIcon={<ChevronDown />}
           className='react-dataTable'
           paginationComponent={CustomPagination}
-          data={dataToRender()}
+          data={searchTerm ? newData : dataToRender()}
           subHeaderComponent={
             <CustomHeader
               toggleSidebar={toggleSidebar}

@@ -54,9 +54,7 @@ const TotalCounter = (products) => {
 const ElementTotalCounter = (products) => {
   let sum = 0.0;
   products.map((sin) => {
-    if (sin.productPrice) {
-      sum = sum + parseFloat(sin.productPrice?.split("/")[1]);
-    }
+    sum = sum + parseFloat(sin?.productPrice?.split("/")[1]);
   });
   return sum;
 };
@@ -79,7 +77,7 @@ const statusFinder = (state) => {
 export const columns = (props) => {
   return [
     {
-      name: "Predido",
+      name: "Pedido",
       minWidth: "",
       selector: "id",
       cell: (row) => (

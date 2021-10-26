@@ -44,10 +44,12 @@ const CustomHeader = ({
               <option value='10'>10</option>
               <option value='25'>25</option>
               <option value='50'>50</option>
+              <option value='100'>100</option>
+              <option value='200'>200</option>
             </CustomInput>
           </div>
           <Button.Ripple tag={Link} to='/create_order' color='primary'>
-            Realizar Pedido 
+            Realizar Pedido
           </Button.Ripple>
         </Col>
         <Col
@@ -72,6 +74,7 @@ const CustomHeader = ({
             onChange={(e) => handleStatus(e.target.value)}
           >
             <option value=''>Buscar Estado</option>
+            <option value="PENDIENTE">Pendiente</option>
             <option value='PROGRAMADO'>Programado</option>
             <option value='ENTREGADO'>Entregado</option>
             <option value='EN TRANSITO'>Tránsito</option>
@@ -122,7 +125,7 @@ const InvoiceList = () => {
         q: value
       })
     )
-  }, [dispatch, store.data.length])
+  }, [dispatch, store.data.length,])
 
   const handleFilter = val => {
     setValue(val)
@@ -170,11 +173,12 @@ const InvoiceList = () => {
       })
     )
     setCurrentPage(page.selected + 1)
+
   }
 
   const CustomPagination = () => {
     const count = Number((store.total / rowsPerPage).toFixed(0))
-
+    setData(dataToRender())
     return (
       <ReactPaginate
         pageCount={count || 1}
@@ -204,6 +208,7 @@ const InvoiceList = () => {
   }
   return (
     <div className='invoice-list-wrapper'>
+
       <Card>
         <div className='invoice-list-dataTable'>
           <DataTable
