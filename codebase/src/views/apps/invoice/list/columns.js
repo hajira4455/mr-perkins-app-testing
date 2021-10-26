@@ -54,7 +54,9 @@ const TotalCounter = (products) => {
 const ElementTotalCounter = (products) => {
   let sum = 0.0;
   products.map((sin) => {
-    sum = sum + parseFloat(sin.productPrice.split("/")[1]);
+    if (sin.productPrice) {
+      sum = sum + parseFloat(sin.productPrice?.split("/")[1]);
+    }
   });
   return sum;
 };
@@ -92,11 +94,19 @@ export const columns = (props) => {
       selector: "id",
       cell: (row) => (
         <div className="avatar-2">
-          <Avatar
-            img={
-              row && row?.elements?.length ? row.elements[0].productImage : "ts"
-            }
-          />
+          {console.log(row)}
+          {row && row.elements?.length ? (
+            <Avatar
+              img={row && row?.elements?.length && row.elements[0].productImage}
+            />
+          ) : (
+            <Avatar
+              color="light-primary"
+              className="mr-50"
+              content={"Pro"}
+              initials
+            />
+          )}
         </div>
       ),
     },
@@ -139,9 +149,9 @@ export const columns = (props) => {
       minWidth: "100px",
       cell: (row) => (
         <span>
-          S/ {" "}
+          S/{" "}
           {row.products
-            ? `${(numberFormat(parseInt(TotalCounter(row.products))))}.00`
+            ? `${numberFormat(parseInt(TotalCounter(row.products)))}.00`
             : `${numberFormat(parseInt(ElementTotalCounter(row.elements)))}.00`}
         </span>
       ),

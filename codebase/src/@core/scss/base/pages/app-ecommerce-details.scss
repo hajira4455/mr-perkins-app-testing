@@ -7,8 +7,8 @@
 //  Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
 
-@import '../bootstrap-extended/include'; // Bootstrap includes
-@import '../components/include'; // Components includes
+@import "../bootstrap-extended/include"; // Bootstrap includes
+@import "../components/include"; // Components includes
 
 // App e-commerce detail style
 .ecommerce-application {
@@ -19,24 +19,23 @@
 
     // ratings style
     .ratings-list-item {
-
       svg,
       i {
         font-size: 1.286rem;
-        height   : 1.286rem;
-        width    : 1.286rem;
+        height: 1.286rem;
+        width: 1.286rem;
       }
     }
 
     .filled-star {
-      fill  : $warning;
+      fill: $warning;
       stroke: $warning;
-      color : $warning;
+      color: $warning;
     }
 
     .unfilled-star {
       stroke: $gray-100;
-      color : $gray-100;
+      color: $gray-100;
     }
 
     // Item Price
@@ -46,9 +45,9 @@
 
     // Common for list-view, checkout and wishlist
     .item-company {
-      display    : inline-flex;
+      display: inline-flex;
       font-weight: $font-weight-normal;
-      font-size  : 0.875rem;
+      font-size: 0.875rem;
 
       .company-name {
         font-weight: $font-weight-bolder;
@@ -58,21 +57,20 @@
 
     // Product feature list
     .product-features {
-      margin-top   : 1.5rem;
+      margin-top: 1.5rem;
       margin-bottom: 1.5rem;
 
       li {
-
         svg,
         i {
-          height      : 1.4rem;
-          width       : 1.4rem;
-          font-size   : 1.4rem;
+          height: 1.4rem;
+          width: 1.4rem;
+          font-size: 1.4rem;
           margin-right: 0.75rem;
         }
 
-        display      : flex;
-        align-items  : center;
+        display: flex;
+        align-items: center;
         margin-bottom: 1rem;
 
         span {
@@ -82,20 +80,20 @@
     }
 
     .product-color-options {
-      margin-top   : 1.5rem;
+      margin-top: 1.5rem;
       margin-bottom: 1.2rem;
     }
 
     .btn-wishlist {
       .text-danger {
         color: $danger;
-        fill : $danger;
+        fill: $danger;
       }
     }
 
     .btn-share {
       .btn-icon {
-        ~.dropdown-menu {
+        ~ .dropdown-menu {
           min-width: 3rem;
         }
       }
@@ -103,15 +101,15 @@
 
     .item-features {
       background-color: $body-bg;
-      padding-top     : 5.357rem;
-      padding-bottom  : 5.357rem;
+      padding-top: 5.357rem;
+      padding-bottom: 5.357rem;
 
       i,
       svg {
         font-size: 2.5rem;
-        height   : 2.5rem;
-        width    : 2.5rem;
-        color    : $primary;
+        height: 2.5rem;
+        width: 2.5rem;
+        color: $primary;
       }
     }
   }
@@ -120,16 +118,16 @@
   .swiper-responsive-breakpoints {
     &.swiper-container {
       .swiper-slide {
-        text-align         : center;
+        text-align: center;
         // background-color: $body-bg;
         // padding: 1.5rem 3rem;
-        border-radius      : $card-border-radius;
+        border-radius: $card-border-radius;
 
         .img-container {
-          display        : flex;
-          align-items    : center;
+          display: flex;
+          align-items: center;
           justify-content: center;
-          height         : 250px;
+          // height         : 250px;
         }
       }
     }
@@ -141,8 +139,8 @@
   .swiper-container-rtl .swiper-button-prev,
   .swiper-container-rtl .swiper-button-next {
     background-image: none;
-    width           : 35px;
-    font-size       : $h1-font-size;
+    width: 35px;
+    font-size: $h1-font-size;
 
     &:focus {
       outline: none;
@@ -153,14 +151,18 @@
     left: 0;
 
     &:after {
-      background-image   : url(str-replace(str-replace($chevron-left, 'currentColor', $primary), '#', '%23'));
-      background-repeat  : no-repeat;
+      background-image: url(str-replace(
+        str-replace($chevron-left, "currentColor", $primary),
+        "#",
+        "%23"
+      ));
+      background-repeat: no-repeat;
       background-position: center;
-      background-size    : 44px;
-      color              : $body-color;
-      width              : 44px;
-      height             : 44px;
-      content            : '';
+      background-size: 44px;
+      color: $body-color;
+      width: 44px;
+      height: 44px;
+      content: "";
     }
   }
 
@@ -168,41 +170,53 @@
     right: 0;
 
     &:after {
-      background-image   : url(str-replace(str-replace($chevron-right, 'currentColor', $primary), '#', '%23'));
-      background-repeat  : no-repeat;
+      background-image: url(str-replace(
+        str-replace($chevron-right, "currentColor", $primary),
+        "#",
+        "%23"
+      ));
+      background-repeat: no-repeat;
       background-position: center;
-      background-size    : 44px;
-      color              : $body-color;
-      width              : 44px;
-      height             : 44px;
-      content            : '';
+      background-size: 44px;
+      color: $body-color;
+      width: 44px;
+      height: 44px;
+      content: "";
     }
   }
 
   .swiper-container-rtl {
     .swiper-button-prev {
       &:after {
-        background-image   : url(str-replace(str-replace($chevron-right, 'currentColor', $primary), '#', '%23'));
-        background-repeat  : no-repeat;
+        background-image: url(str-replace(
+          str-replace($chevron-right, "currentColor", $primary),
+          "#",
+          "%23"
+        ));
+        background-repeat: no-repeat;
         background-position: center;
-        background-size    : 44px;
-        color              : $body-color;
-        width              : 44px;
-        height             : 44px;
-        content            : '';
+        background-size: 44px;
+        color: $body-color;
+        width: 44px;
+        height: 44px;
+        content: "";
       }
     }
 
     .swiper-button-next {
       &:after {
-        background-image   : url(str-replace(str-replace($chevron-left, 'currentColor', $primary), '#', '%23'));
-        background-repeat  : no-repeat;
+        background-image: url(str-replace(
+          str-replace($chevron-left, "currentColor", $primary),
+          "#",
+          "%23"
+        ));
+        background-repeat: no-repeat;
         background-position: center;
-        background-size    : 44px;
-        color              : $body-color;
-        width              : 44px;
-        height             : 44px;
-        content            : '';
+        background-size: 44px;
+        color: $body-color;
+        width: 44px;
+        height: 44px;
+        content: "";
       }
     }
   }
@@ -211,22 +225,21 @@
 
   .product-color-options {
     .color-option {
-      border       : 1px solid transparent;
+      border: 1px solid transparent;
       border-radius: 50%;
-      position     : relative;
-      cursor       : pointer;
-      padding      : 3px;
+      position: relative;
+      cursor: pointer;
+      padding: 3px;
 
       .filloption {
-        height       : 18px;
-        width        : 18px;
+        height: 18px;
+        width: 18px;
         border-radius: 50%;
       }
     }
 
     // selected
     .selected {
-
       // these use for border color only page specific
       .b-primary {
         border-color: $primary;
@@ -292,7 +305,9 @@
 }
 
 @include media-breakpoint-down(sm) {
-  .ecommerce-application .swiper-responsive-breakpoints.swiper-container .swiper-slide {
+  .ecommerce-application
+    .swiper-responsive-breakpoints.swiper-container
+    .swiper-slide {
     padding: 1rem;
   }
 }
@@ -300,15 +315,13 @@
 @include media-breakpoint-down(sm) {
   .ecommerce-application {
     .app-ecommerce-details {
-
       // ratings style
       .ratings-list-item {
-
         svg,
         i {
           font-size: 1rem;
-          height   : 1rem;
-          width    : 1rem;
+          height: 1rem;
+          width: 1rem;
         }
       }
     }

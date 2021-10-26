@@ -346,26 +346,17 @@ const EcommerceDashboard = () => {
                   allUsers={userState.allData}
                   usersData={calculateUserWithType}
                 />
-                {/* <OrdersBarChart orders={allData} warning={colors.warning.main} /> */}
               </Col>
-              <Col xl="6" lg="12">
-                <ApexBarChart
-                  direction="ltr"
-                  allUsers={userState.allData}
-                  info={colors.info.main}
-                  groupByKey={groupByKey}
+              <Col lg="6" md="6" xs="12">
+                <BestUsersTable
+                  data={userState.allData}
+                  unsortedData={CalculateInvoicesWIthUsers}
                 />
               </Col>
             </Row>
           </Col>
           {userData.type === "admin" && (
             <Fragment>
-              <Col lg="12" xs="12">
-                <BestUsersTable
-                  data={userState.allData}
-                  unsortedData={CalculateInvoicesWIthUsers}
-                />
-              </Col>
               <Col lg="12" xs="12">
                 <CompanyTable data={cats} />
               </Col>

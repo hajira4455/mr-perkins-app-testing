@@ -53,7 +53,6 @@ const VerticalMenuHeader = (props) => {
           <NavLink to="/" className="navbar-brand">
             <span className="brand-logo">
               <img src={themeConfig.app.appLogoImage} alt="logo" />
-              ...
             </span>
           </NavLink>
         </li>
