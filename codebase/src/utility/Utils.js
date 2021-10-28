@@ -74,6 +74,9 @@ export const getHomeRouteForLoggedInUser = (userRole) => {
 
 export const numberFormat = (value) =>
   value !== 0 ? new Intl.NumberFormat().format(value) : 0.0;
+
+export const numberFormat2 = (value) =>
+  value !== 0 ? new Intl.NumberFormat("de-DE").format(value) : 0.0;
 // ** React Select Theme Colors
 export const selectThemeColors = (theme) => ({
   ...theme,
@@ -86,3 +89,44 @@ export const selectThemeColors = (theme) => ({
     neutral30: "#ededed", // for input hover border-color
   },
 });
+export const formatToNumber = (value) => {
+  //return parseFloat(value.split('S/')[1].replace(/,/g, ''))//
+  const newValue = value.replace("S/", "");
+  return parseFloat(newValue.replace("$", ""));
+};
+export const calculateTotalnteger = (elements) => {
+  if (!elements) return [];
+
+  const hasProductPrice = elements.every((element) => element.productPrice);
+  if (hasProductPrice === false) return 0;
+
+  const total = elements.reduce(
+    (acc, curr) => acc + formatToNumber(curr.productPrice),
+    0
+  );
+  return total;
+};
+export const transformPacking = (packing) => {
+  let count = 1;
+  switch (packing) {
+    case "Caja x 24":
+      count = 24;
+      break;
+    case "Caja x 24 (En 4pack)":
+      count = 24;
+      break;
+    case "Fourpacks":
+      count = 4;
+      break;
+    case "Botellas":
+      count = 1;
+      break;
+    case "Unidades":
+      count = 1;
+      break;
+    default:
+      count = 1;
+      break;
+  }
+  return count;
+};

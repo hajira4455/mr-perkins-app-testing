@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { numberFormat } from "../../../../utility/Utils";
+import { numberFormat2 } from "../../../../utility/Utils";
 
 function CreateInvoice(props) {
   const { createInvoice } = useSelector((state) => state.invoice);
@@ -21,7 +21,7 @@ function CreateInvoice(props) {
                 {Forms[form].product.name} ({Forms[form].qty})
               </p>
               <p className="invoice-total-amount">
-                S/ {numberFormat(parseInt(Forms[form].total))} {".00"}
+                S/ {numberFormat2(parseInt(Forms[form].total))} {".00"}
               </p>
             </div>
           );
@@ -30,7 +30,7 @@ function CreateInvoice(props) {
       <div className="invoice-total-item">
         <p className="invoice-total-title">Total:</p>
         <p className="invoice-total-amount">
-          S/ {numberFormat(parseInt(getGrandTotal()))} {".00"}
+          S/ {numberFormat2(parseInt(getGrandTotal()))} {".00"}
         </p>
       </div>
     </div>

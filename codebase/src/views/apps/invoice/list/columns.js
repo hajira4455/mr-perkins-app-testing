@@ -92,7 +92,6 @@ export const columns = (props) => {
       selector: "id",
       cell: (row) => (
         <div className="avatar-2">
-          {console.log(row)}
           {row && row.elements?.length ? (
             <Avatar
               img={row && row?.elements?.length && row.elements[0].productImage}

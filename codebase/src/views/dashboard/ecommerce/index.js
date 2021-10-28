@@ -21,21 +21,13 @@ import ApexBarChart from "@src/views/charts/apex/ApexBarChart";
 import BestUsersTable from "./bestUsers";
 import TopProductsTable from "./TopProducts";
 import ClientDashboard from "./ClientDashboard";
-import GoalOverview from "@src/views/ui-elements/cards/analytics/GoalOverview";
-import RevenueReport from "@src/views/ui-elements/cards/analytics/RevenueReport";
-import OrdersBarChart from "@src/views/ui-elements/cards/statistics/OrdersBarChart";
-import ProfitLineChart from "@src/views/ui-elements/cards/statistics/ProfitLineChart";
-import CardTransactions from "@src/views/ui-elements/cards/advance/CardTransactions";
-import CardBrowserStates from "@src/views/ui-elements/cards/advance/CardBrowserState";
-
-import CardMeetup from "@src/views/ui-elements/cards/advance/CardMeetup";
-import Earnings from "@src/views/ui-elements/cards/analytics/Earnings";
 import "@styles/react/libs/charts/apex-charts.scss";
 import "@styles/base/pages/dashboard-ecommerce.scss";
 
 const EcommerceDashboard = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.userData);
+
   const { colors } = useContext(ThemeColors),
     Categories = useSelector((state) => state.Clients),
     { allData } = useSelector((state) => state.invoice),
@@ -348,26 +340,17 @@ const EcommerceDashboard = () => {
                 />
               </Col>
               <Col lg="6" md="6" xs="12">
-                <BestUsersTable
-                  data={userState.allData}
-                  unsortedData={CalculateInvoicesWIthUsers}
-                />
+                <BestUsersTable />
               </Col>
             </Row>
           </Col>
           {userData.type === "admin" && (
             <Fragment>
-              <Col lg="12" xs="12">
-                <CompanyTable data={cats} />
-              </Col>
               <Col lg="6" xs="12">
-                <TopProductsTable data={TopSellingProductsCalculator()} />
+                <TopProductsTable />
               </Col>
             </Fragment>
           )}
-          {/* <Col lg='8' md='12'>
-          <RevenueReport primary={colors.primary.main} warning={colors.warning.main} />
-        </Col> */}
         </Row>
       )}
       {Offers.length > 0 && <h3 className="my-2"> Special Offers</h3>}
@@ -401,39 +384,6 @@ const EcommerceDashboard = () => {
             );
           })}
       </Row>
-      <Row className="match-height">
-        <Col lg="4" md="12">
-          <Row className="match-height">
-            <Col lg="6" md="3" xs="6">
-              <OrdersBarChart warning={colors.warning.main} />
-            </Col>
-            <Col lg="6" md="3" xs="6">
-              <ProfitLineChart info={colors.info.main} />
-            </Col>
-            <Col lg="12" md="6" xs="12">
-              <Earnings success={colors.success.main} />
-            </Col>
-          </Row>
-        </Col>
-        <Col lg="8" md="12">
-          <RevenueReport
-            primary={colors.primary.main}
-            warning={colors.warning.main}
-          />
-        </Col>
-      </Row>
-      {/* <Row className="match-height">
-       
-        <Col lg="4" md="6" xs="12">
-          <CardBrowserStates colors={colors} trackBgColor={trackBgColor} />
-        </Col>
-        <Col lg="4" md="6" xs="12">
-          <GoalOverview success={colors.success.main} />
-        </Col>
-        <Col lg="4" md="6" xs="12">
-          <CardTransactions />
-        </Col>
-      </Row> */}
     </div>
   );
 };

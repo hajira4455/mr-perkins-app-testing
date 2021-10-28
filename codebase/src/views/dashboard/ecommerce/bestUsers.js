@@ -1,78 +1,106 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 // ** Third Party Components
+import { useSelector } from "react-redux";
+import { ChevronDown } from "react-feather";
+import DataTable from "react-data-table-component";
+import { Card, CardHeader, CardTitle } from "reactstrap";
+import { calculateTotalnteger, numberFormat } from "../../../utility/Utils";
+const BestUsersTable = () => {
+  const data2 = useSelector((state) => state);
+ 
+  const data = useSelector((state) => state?.invoice?.allData);
+ 
+  const [dataforTable, setDataforTable] = useState([]);
+  const getTotalClients = () => {
+    return new Promise((resolve) => {
+      const arrUserTotal = [];
+      // Agrupo en un array todos los clientes
+      const grouped = Array.from(
+        data
+          .reduce(
+            (m, o) => m.set(o.userID, (m.get(o.userID) || []).concat(o)),
+            new Map()
+          )
+          .values()
+      );
+      // Formeto los pedidos totales por producto y los sumo
+      for (let i = 0; i < grouped.length; i++) {
+        const obj = {};
+        obj.count = 0;
 
-import { ChevronDown } from 'react-feather'
-import DataTable from 'react-data-table-component'
-import { Card, CardHeader, CardTitle } from 'reactstrap'
+        for (let j = 0; j < grouped[i].length; j++) {
+          obj.name = grouped[i][j].name;
+          obj.userID = grouped[i][j].userID;
+          obj.count += calculateTotalnteger(grouped[i][j].elements);
+        }
 
-const BestUsersTable = ({ data, unsortedData }) => {
-  const sortedData = unsortedData()
-  const [dataforTable, setDataforTable] = useState([])
+        arrUserTotal.push(obj);
+
+        if (i === grouped.length - 1) {
+          resolve(arrUserTotal);
+        }
+      }
+    });
+  };
 
   useEffect(() => {
-    sortedData.sort((a, b) => {
-      if (a.value < b.value) return -1
-      return a.value > b.value ? 1 : 0
-    })
-    // setSelectedRows(sortedData.reverse().slice(0, 30))
-    const filteredData = []
-    sortedData
-      .reverse()
-      .slice(0, 30)
-      .map(item => {
-        const found = data.filter(id => id.id === item.id)[0]
-        // found.sales = item.value
-        filteredData.push(found)
-      })
-    setDataforTable(filteredData)
-  }, [unsortedData])
+    if (data) {
+      getTotalClients()
+        .then((res) => {
+          const reorder = res.sort(
+            (a, b) => parseFloat(b.count) - parseFloat(a.count)
+          );
+          const limitFiveUSers = reorder.splice(0, 20);
+          setDataforTable(limitFiveUSers);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
 
-  const SalesCalculator = (row) => {
-    return row.sales;
-  }
   const basicColumns = [
     {
-      name: 'Name',
-      selector: 'name',
+      name: "Name",
+      selector: "name",
       sortable: true,
-      minWidth: '300px'
+      minWidth: "300px",
     },
     {
-      name: 'Email',
-      selector: 'email',
-      sortable: true,
-      minWidth: '200px'
+      name: "",
+      selector: "",
+      sortable: "",
+      minWidth: "100px",
     },
     {
-      name: 'Sales',
-      selector: 'sales',
+      name: "Sales",
+      selector: "count",
       sortable: true,
-      maxWidth: '20px',
+      minWidth: "300px",
       cell: (row) => {
-        return (
-          <div>{SalesCalculator(row)}</div>
-        )
-      }
-    }
-  ]
+        return <div>S/ {numberFormat(row.count)}</div>;
+      },
+    },
+  ];
   return (
     <Card>
       <CardHeader>
-        <CardTitle tag='h4'>Mejores Clientes</CardTitle>
+        <CardTitle tag="h4">Mejores Clientes</CardTitle>
       </CardHeader>
-      <DataTable
-        noHeader
-        pagination
-        data={dataforTable}
-        columns={basicColumns}
-        className='react-dataTable'
-        sortIcon={<ChevronDown size={10} />}
-
-        paginationPerPage={15}
-        paginationRowsPerPageOptions={[15, 25, 50, 100]}
-      />
+      {dataforTable.length > 0 && (
+        <DataTable
+          noHeader
+          pagination
+          data={dataforTable}
+          columns={basicColumns}
+          className="react-dataTable"
+          sortIcon={<ChevronDown size={10} />}
+          paginationPerPage={15}
+          paginationRowsPerPageOptions={[15, 25, 50, 100]}
+        />
+      )}
     </Card>
-  )
-}
+  );
+};
 
-export default BestUsersTable
+export default BestUsersTable;
