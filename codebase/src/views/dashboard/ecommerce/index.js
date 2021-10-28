@@ -338,19 +338,13 @@ const EcommerceDashboard = () => {
                   allUsers={userState.allData}
                   usersData={calculateUserWithType}
                 />
+                <TopProductsTable />
               </Col>
               <Col lg="6" md="6" xs="12">
                 <BestUsersTable />
               </Col>
             </Row>
           </Col>
-          {userData.type === "admin" && (
-            <Fragment>
-              <Col lg="6" xs="12">
-                <TopProductsTable />
-              </Col>
-            </Fragment>
-          )}
         </Row>
       )}
       {Offers.length > 0 && <h3 className="my-2"> Special Offers</h3>}
