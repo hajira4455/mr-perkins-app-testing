@@ -1,6 +1,6 @@
 // ** Third Party Components
 import { PlusCircle } from 'react-feather'
-import { Form, Label, Input, Button, Card, CardHeader, CardTitle, CardBody, CardText, CustomInput } from 'reactstrap'
+import { Form, Label, Input, Button, Card, CardHeader, CardTitle, CardBody, CardText,    } from 'reactstrap'
 
 const Payment = () => {
   return (
