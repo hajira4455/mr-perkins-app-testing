@@ -11,16 +11,14 @@ import {
   Input,
   Form,
   CustomInput,
-  messages,
+  Alert,
 } from "reactstrap";
 import { Home, ShoppingBag, MapPin } from "react-feather";
-
-// import firebase from "../utils/firebaseSetUp";
-
+import firebase from 'firebase/app'
 // import LoadingFeedback from "./loaders/LoadingFeedback";
-
 const ModalDirections = (props) => {
-  let { show, setShow } = props;
+  let { show, setShow, getDirections } = props;
+  const [message, setMessage] = useState();
   const [data, setData] = useState({
     direction: "",
     door: "",
@@ -29,33 +27,29 @@ const ModalDirections = (props) => {
     title: "",
   });
   const changeHandler = (e) => {
+    setMessage("")
     setData({ ...data, [e.target.name]: e.target.value });
   };
   const addDirection = () => {
-    let flag = 0;
-    let messages = [];
-
+    // e.preventDefault();
     if (data.title.length < 1) {
-      flag = 1;
-      messages.push("Por favor colocal el título de la nueva dirección");
+      setMessage("Por favor colocal el título de la nueva dirección");
     }
 
     if (data.direction.length < 1) {
-      flag = 1;
-      messages.push("Por favor coloca la dirección");
+      setMessage("Por favor coloca la dirección")
     }
 
     if (data.door.length < 1) {
-      flag = 1;
-      messages.push("Debes colocar alguna Puerta, oficina o referencia");
+      setMessage("Debes colocar alguna Puerta, oficina o referencia");
     }
-
-    if (flag === 0) {
+    else if (data.title && data.direction && data.door && data.district && data.option) {
       // feedback: "Agregando dirección",
+      setShow(!show);
       firebase
         .firestore()
         .collection("users")
-        .doc(firebase.auth().currentUser.uid)
+        .doc(window?.location?.pathname?.split('/')[3])
         .collection("directions")
         .add({
           title: data.title,
@@ -66,31 +60,36 @@ const ModalDirections = (props) => {
           type: data.option,
         })
         .then(() => {
-          console.log("Address added");
+          setShow(!show);
+          getDirections()
         })
         .catch((e) => {
           console.log(e, "Algo salió mal");
-          //   this.props.addToast("Algo salió mal");
         });
-    } else {
-      //   for (let i = 0; i < messages.length; i++) {
-      //     this.props.addToast(messages[i]);
-      //   }
+
     }
   };
   return (
     <div>
       <Form
-        onSubmit={(e) => {
-          e.preventDefault();
-          //   dispatch(UpdateUser(selectedUser.id, data, ShowToast, setShowToast));
-        }}
+
       >
         <Modal isOpen={show} toggle={() => setShow(!show)}>
           <ModalHeader toggle={() => setShow(!show)}>
             AGREGAR DIRECCIÓN
           </ModalHeader>
           <ModalBody>
+            {message &&
+              <Alert color="danger">
+                <div>
+                  <h4 class="alert-heading">
+                    Error
+                  </h4>
+                </div>
+                <div class="alert-body">
+                  <span>{message}</span>
+                </div>
+              </Alert>}
             <FormGroup>
               <Label for="phone">Dirección</Label>
               <Input
@@ -120,6 +119,7 @@ const ModalDirections = (props) => {
                 className="custom-select"
                 value={data.district}
                 onChange={(e) => {
+                  setMessage("")
                   let dubData = { ...data };
                   dubData.district =
                     e.currentTarget.options[
@@ -188,6 +188,7 @@ const ModalDirections = (props) => {
             <div className="d-flex justify-content-between ">
               <FormGroup
                 onClick={() => {
+                  setMessage("")
                   let dubData = { ...data };
                   dubData.option = 0;
                   setData(dubData);
@@ -206,6 +207,7 @@ const ModalDirections = (props) => {
               </FormGroup>
               <FormGroup
                 onClick={() => {
+                  setMessage("")
                   let dubData = { ...data };
                   dubData.option = 1;
                   setData(dubData);
@@ -254,10 +256,11 @@ const ModalDirections = (props) => {
           </ModalBody>
           <ModalFooter>
             <Button
+              type="submit"
               color="primary"
               onClick={() => {
                 addDirection();
-                // setShow(!show);
+
               }}
             >
               Guardar
