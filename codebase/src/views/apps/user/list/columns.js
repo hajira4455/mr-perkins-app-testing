@@ -101,15 +101,27 @@ export const columns = (props) => {
   const typeUserFinder = (state) => {
     console.log(state);
     if (state === "horeca") {
-      return <Badge color="success">{state}</Badge>;
+      return <Badge
+        style={{
+          textTransform: 'capitalize'
+        }}
+        color="success" > {state}</Badge >;
     } else if (state === "distribution") {
-      return <Badge color="info">{state}</Badge>;
+      return <Badge style={{
+        textTransform: 'capitalize'
+      }} color="info">{state}</Badge>;
     } else if (state === "retail_online") {
-      return <Badge color="danger">{state}</Badge>;
+      return <Badge style={{
+        textTransform: 'capitalize'
+      }} color="danger">{state}</Badge>;
     } else if (state === "friend") {
-      return <Badge color="warning">{state}</Badge>;
+      return <Badge style={{
+        textTransform: 'capitalize'
+      }} color="warning">{state}</Badge>;
     } else if (state === "other") {
-      return <Badge color="light-primary">{state}</Badge>;
+      return <Badge style={{
+        textTransform: 'capitalize'
+      }} color="light-primary">{state}</Badge>;
     } else {
       return state;
     }
@@ -203,30 +215,30 @@ export const columns = (props) => {
         <span className="text-capitalize">
           {row.category
             ? Array.from({ length: 5 }, (_, i) => i + 1).map((item, index) => {
-                return (
-                  <Star
-                    key={`star${index}`}
-                    style={{
-                      width: "15px",
-                      height: "15px",
-                      fill: index + 1 <= row.category ? "#7367f0" : "",
-                    }}
-                    color={index < row.category ? "#7367f0" : "gray"}
-                  />
-                );
-              })
+              return (
+                <Star
+                  key={`star${index}`}
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                    fill: index + 1 <= row.category ? "#7367f0" : "",
+                  }}
+                  color={index < row.category ? "#7367f0" : "gray"}
+                />
+              );
+            })
             : Array.from({ length: 5 }, (_, i) => i + 1).map((item, index) => {
-                return (
-                  <Star
-                    style={{
-                      width: "15px",
-                      height: "15px",
-                    }}
-                    key={`starEmpty-${index}`}
-                    color="gray"
-                  />
-                );
-              })}
+              return (
+                <Star
+                  style={{
+                    width: "15px",
+                    height: "15px",
+                  }}
+                  key={`starEmpty-${index}`}
+                  color="gray"
+                />
+              );
+            })}
         </span>
       ),
     },
