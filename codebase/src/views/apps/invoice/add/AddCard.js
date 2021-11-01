@@ -40,7 +40,7 @@ const AddCard = ({ userData }) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { allProducts } = useSelector((state) => state.products);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [picker, setPicker] = useState(new Date());
   const [dueDatepicker, setDueDatePicker] = useState(new Date());
   const [products, setProducts] = useState([]);
